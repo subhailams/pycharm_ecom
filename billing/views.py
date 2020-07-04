@@ -1,0 +1,82 @@
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
+from .models import BillingProfile
+from accounts.models import GuestEmail
+from orders.models import Order, OrderConfirmation
+from cart.models import Cart
+from .Checksum import generate_checksum, verify_checksum
+from products.models import Product
+from addresses.models import Address
+
+merchant_key = settings.PAYTM_SECRET_KEY
+
+order_id = None
+cart_items=None
+req = None
+cart_id = None
+GLOBAL_Entry = None
+# Create your views here.
+def initiate_payment(request):
+	if request.method == 'GET':
+		cart_obj, cart_created = Cart.objects.new_or_get(request)
+		order_obj = None
+		billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
+		order_obj, order_obj_created= Order.objects.new_or_get(billing_profile, cart_obj)
+		global order_id, cart_id, cart_items, req, GLOBAL_Entry
+		order_id=order_obj
+		cart_id=cart_obj
+		request.session['cart_items'] = 0
+		del request.session['cart_id']
+		print("Order:",order_obj)
+		print("cart_obj",cart_obj)
+		# print(order_obj,cart_obj.total,billing_profile.email)
+		param_dict = {
+		'MID': settings.PAYTM_MERCHANT_ID,
+		'ORDER_ID': str(order_obj),
+		'CUST_ID': str(billing_profile.email),
+		'TXN_AMOUNT': str(cart_obj.total),
+		'CHANNEL_ID': settings.PAYTM_CHANNEL_ID,
+		'WEBSITE': settings.PAYTM_WEBSITE,
+		# ('EMAIL', request.user.email),
+		# ('MOBILE_N0', '9911223388'),
+		'INDUSTRY_TYPE_ID': settings.PAYTM_INDUSTRY_TYPE_ID,
+		'CALLBACK_URL': 'http://127.0.0.1:8000/billing/callback/',
+		# ('PAYMENT_MODE_ONLY', 'NO'),
+		}
+		
+		param_dict['CHECKSUMHASH'] = generate_checksum(param_dict, merchant_key)
+		return render(request,"billing/paytm.html",{'param_dict': param_dict})
+
+@csrf_exempt
+def callback(request):
+	
+	form=request.POST
+	response_dict={}
+	for i in form.keys():
+		response_dict[i] = form[i]
+		print("response:",i,response_dict[i])
+		if i == 'CHECKSUMHASH':
+			checksum = form[i]
+	
+	verify = verify_checksum(response_dict, merchant_key ,checksum)
+	
+	if verify:
+		if response_dict['RESPCODE'] == '01':
+		
+			cart_obj,cart_created = Cart.objects.new_or_get(request)
+			billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
+		
+			print('Order Successful')
+			global order_id
+			order_obj=order_id
+			order_obj.mark_paid()
+			obj = OrderConfirmation.objects.create(billing_profile = order_obj.billing_profile,order_id=order_obj,email=order_obj.billing_profile.email)
+			obj.send_order_confirmation()
+			order_obj.save()
+			global cart_id
+			cart_id=cart_id
+		else:
+			print('Order was not successful because' + response_dict['RESPMSG'])
+	return render(request, 'carts/checkout-done.html', {'response': response_dict})

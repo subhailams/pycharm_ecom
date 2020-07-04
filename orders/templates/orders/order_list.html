@@ -1,0 +1,56 @@
+{% load static %}
+{% include "nav.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'css/orders.css' %}">
+</head>
+<body>
+<div class='row'>
+    <div class='center'>
+        <h1>Orders</h1>
+    </div>
+</div>
+<div class="container">
+<div class='row'>
+    <div class='col'>
+        <table class='table'>
+            <thead><th>Order Id</th><th>Status</th><th>Total</th></thead>
+
+            <tbody>
+                {% for object in object_list %}
+                    <tr>
+                        <td><a href='{{ object.get_absolute_url }}'>{{ object.order_id }}</a></td>
+                        <td>{{ object.get_status }}</td>
+                        <td>{{ object.total }}</td>
+                    </tr>
+                {% empty %}
+                <tr><td colspan="3"><p class='lead'>No orders yet.</td></tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+</div>
+</div>
+<div class="footer1">
+    <!-- <p>Footer</p> -->
+  
+    <div class="logo2">
+        <a href="index.html"><img src="{% static 'images/logo2.png' %}" alt=""/></a>
+   </div>
+    <div class="ftr-menu">
+        <ul>
+            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook fa-fw"></i>Facebook</a></li>
+            <li><a href="https://www.twitter.com/"><i class="fa fa-twitter fa-fw"></i>Twitter</a></li>
+            <li><a href="https://www.instagram.com/"><i class="fa fa-instagram fa-fw"></i>Instagram</a></li>
+            <li><a href="{% url 'contact' %}"><i class="fa fa-address-card" aria-hidden="true"></i>Contact Us</a></li>
+        </ul>
+   </div>
+   <div class="clearfix"></div>
+</div>
+
+</body>
+</html>
+

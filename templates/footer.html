@@ -1,0 +1,16 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/orders.css' %}">
+<div class="footer">
+    <div class="logo2">
+        <a href="index.html"><img src="{% static 'images/logo2.png' %}" alt=""/></a>
+   </div>
+    <div class="ftr-menu">
+        <ul>
+            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook fa-fw"></i>Facebook</a></li>
+            <li><a href="https://www.twitter.com/"><i class="fa fa-twitter fa-fw"></i>Twitter</a></li>
+            <li><a href="https://www.instagram.com/"><i class="fa fa-instagram fa-fw"></i>Instagram</a></li>
+            <li><a href="{% url 'contact' %}"><i class="fa fa-phone-square fa-fw" aria-hidden="true"></i>Contact Us</a></li>
+        </ul>
+   </div>
+   <div class="clearfix"></div>
+</div>

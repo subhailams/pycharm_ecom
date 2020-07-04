@@ -1,0 +1,80 @@
+{% load static %}
+{% url 'login' as login_url %}
+{% url 'logout' as logout_url %}
+{% include "nav.html" %}
+<!--/banner-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'css/orders.css' %}">
+</head>
+<body>
+<div class="cart cart-table">
+	<!-- <div class="container"> -->
+		<div class="cart-top">
+		   <a href="index.html">home</a>
+		</div>	
+		<div class="cart-body">
+		<div class="col-md-9 cart-items ">
+			<h2>Your Orders({{object}})</h2>
+	
+			{% if object.cart.cartitem_set.exists %}
+				<div class="cart-header">
+		   {% for item in object.cart.cartitem_set.all %}
+
+				<div class="cart-sec">
+					   <div class="cart-item cyc">
+							<img src="{{ item.product.image.url }}"/>
+					   </div>
+					  
+					  <div class="cart-item-info">
+							<h4>{{ item.product.title }}</h4><br/><h4><span>Model No: 3578</span></h4>
+							<h4>Rs. {{ item.product.price }}</h4>
+                            <h4><span>Qty: {{ item.quantity }}</span></h4>
+							<a class="btn btn-danger" href="{% url 'orders:request-refund' %}">Cancel Order</a>
+							
+                            <!-- {% include 'carts/snippets/remove-product.html' with product_id=item.product.id %} -->
+                            <h3>Order Status: {{object.get_status}}</h3>
+					  </div>
+					  <div class="clearfix"></div>
+					   <div class="delivery">
+							<p>Service Charges:: Rs.100.00</p>
+							<span>Delivered in 2-3 bussiness days</span>
+							<div class="clearfix"></div>
+					   </div>						
+				 </div>
+			{% endfor %}
+		   </div>
+			{% endif %}
+			<div class="center1">
+				<div class="price-details">
+					<span>SubTotal:</span>
+				<span class="cart-subtotal">{{ object.cart.total }}</span>
+				<span>ShippingTotal:</span>
+				<span class="total">{{ object.shipping_total }}</span>
+				<span>Order Total:</span>
+				<span class="total">{{ object.total }}</span>
+				<span>Order Status:</span>
+				<span class="total">{{ object.get_status }}</span>
+				<div class="clearfix"></div>
+				</div>
+				
+			</div>
+		
+            
+				   
+		</div>
+		
+	</div>
+   
+</div>
+<!-- </div> -->
+<!---->
+{% include "footer1.html" %}
+</body>
+</html>
+
+<!-- <p><b>Subtotal:</b> {{ object.cart.total }}</p>
+<p><b>Shipping Total:</b> {{ object.shipping_total }}</p>
+<p><b>Order Total:</b> {{ object.total }}</p>
+<p><b>Order Status:</b> {{ object.get_status }}</p> -->

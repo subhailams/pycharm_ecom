@@ -1,0 +1,57 @@
+[
+{
+    "model": "products.product",
+    "pk": 17,
+    "fields": {
+        "title": "suspensions",
+        "description": "good one pls try",
+        "quantity": 1,
+        "price": "1213.00",
+        "image": "products/1041919892/1041919892.JPG"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 18,
+    "fields": {
+        "title": "helmet",
+        "description": "dsfdksd",
+        "quantity": 1,
+        "price": "2220.00",
+        "image": "products/72958278/72958278.jpg"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 19,
+    "fields": {
+        "title": "bikes",
+        "description": "speedster",
+        "quantity": 1,
+        "price": "123.00",
+        "image": "products/3264189096/3264189096.jpg"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 20,
+    "fields": {
+        "title": "cycles",
+        "description": "awesome bike must try",
+        "quantity": 1,
+        "price": "2345.00",
+        "image": "products/1798179401/1798179401.jpg"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 21,
+    "fields": {
+        "title": "helmet",
+        "description": "cool one",
+        "quantity": 1,
+        "price": "39.99",
+        "image": "products/1562360411/1562360411.png"
+    }
+}
+]

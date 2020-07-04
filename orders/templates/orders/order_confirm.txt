@@ -1,0 +1,10 @@
+Hello,
+
+Your order has been placed successfully!
+{{order_id}}
+
+
+
+Thank you, keep shopping with us!!!
+
+Team Enduro
