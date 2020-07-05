@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     
+     #thirdparty
+    'storages',
+
 
     #ourapps
     'accounts',
@@ -195,7 +198,7 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "static_root
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "media_root")
 
-
+from ecommerce.aws.conf import *
 
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_EMAIL_REQUIRED = True

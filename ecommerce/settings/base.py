@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     
+    #thirdparty
+    'storages',
 
     #ourapps
     'accounts',
@@ -222,3 +224,8 @@ SECURE_FRAME_DENY               = False
 
 
 
+#aws
+AWS_GROUP_NAME = "Ecommerce"
+AWS_USERNAME = "Ecommerce"
+AWS_ACCESS_KEY_ID = "AKIA3F7XMNZ4PTBRDF5U"
+AWS_SECRET_KEY = "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"
