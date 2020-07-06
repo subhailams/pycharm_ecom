@@ -216,7 +216,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "narmusanjay@gmail.com"
 EMAIL_HOST_PASSWORD = 'sanman000'
 DEFAULT_FROM_EMAIL = 'Team Enduro <narmusanjay@gmail.com>'
-BASE_URL = '127.0.0.1:8000'
+BASE_URL = 'https://enduro2020.herokuapp.com/'
 
 #https encrypt
 
