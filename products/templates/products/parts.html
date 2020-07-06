@@ -12,10 +12,40 @@
 
 
 <script type="text/javascript">
-var x = window.matchMedia("(max-width: 700px)")
-myFunction(x) // Call listener function at run time
-x.addListener(myFunction)
+
   $(document).ready(function() {
+	if (document.documentElement.clientWidth < 640)
+	{
+		$('.post-wrapper1').slick({
+  
+		slidesToShow: 3,
+		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 2000,
+		centerPadding:'0',
+		nextArrow: $('.next1'),
+		prevArrow: $('.prev1'),
+		dots: true,
+		centerMode: true,
+		focusOnSelect: true,
+	});
+
+}
+	else{
+		$('.post-wrapper1').slick({
+  
+			slidesToShow: 3,
+			slidesToScroll: 1,
+			autoplay: true,
+			autoplaySpeed: 2000,
+			centerPadding:'0',
+			nextArrow: $('.next1'),
+			prevArrow: $('.prev1'),
+			dots: true,
+			centerMode: true,
+			focusOnSelect: true,
+	});
+}
 
 
   $('.post-wrapper2').slick({
@@ -38,45 +68,7 @@ x.addListener(myFunction)
   prevArrow: $('.prev3'),
 	});
   
-
- 
-function myFunction(x) {
-  if (x.matches) { // If media query matches
-	$('.post-wrapper1').slick({
-  
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 2000,
-  centerPadding:'0',
-  nextArrow: $('.next1'),
-  prevArrow: $('.prev1'),
-  dots: true,
-  centerMode: true,
-  focusOnSelect: true,
-	});
-   
-  } else {
-	$('.post-wrapper1').slick({
-  
-  slidesToShow: 4,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 2000,
-  centerPadding:'0',
-  nextArrow: $('.next1'),
-  prevArrow: $('.prev1'),
-  dots: true,
-  centerMode: true,
-  focusOnSelect: true,
-	});
-  }
-}
-
-var x = window.matchMedia("(max-width: 640px)")
-myFunction(x) // Call listener function at run time
-x.addListener(myFunction) // Attach listener function on state changes
-});
+ });
 </script>
 </head>
 <body>
