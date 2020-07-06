@@ -42,7 +42,7 @@ def initiate_payment(request):
 		# ('EMAIL', request.user.email),
 		# ('MOBILE_N0', '9911223388'),
 		'INDUSTRY_TYPE_ID': settings.PAYTM_INDUSTRY_TYPE_ID,
-		'CALLBACK_URL': 'http://127.0.0.1:8000/billing/callback/',
+		'CALLBACK_URL': 'https://enduro2020.herokuapp.com/billing/callback/',
 		# ('PAYMENT_MODE_ONLY', 'NO'),
 		}
 		
