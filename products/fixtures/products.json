@@ -15,20 +15,6 @@
 },
 {
     "model": "products.product",
-    "pk": 18,
-    "fields": {
-        "title": "helmet",
-        "description": "dsfdksd",
-        "slug": "porukki",
-        "category": "safety",
-        "quantity": 1,
-        "price": "2220.00",
-        "image": "products/72958278/72958278.jpg",
-        "active": true
-    }
-},
-{
-    "model": "products.product",
     "pk": 19,
     "fields": {
         "title": "bikes",
