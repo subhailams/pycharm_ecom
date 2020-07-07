@@ -4,11 +4,8 @@ ul {
 }
 .footer-section {
   background: #151414;
-  padding-top: 10px;
-    padding-bottom: 0px;
-    position:relative;
-    bottom:-143px;
-    width:100%;
+  position: relative;
+  bottom: -143px;
 }
 .footer-cta {
   border-bottom: 1px solid #373636;
@@ -94,10 +91,6 @@ ul {
 .google-bg{
   background: #DD4B39;
 }
-.footer-widget{
-    background: #151414;
-
-}
 .footer-widget-heading h3 {
   color: #fff;
   font-size: 20px;
@@ -105,6 +98,7 @@ ul {
   margin-bottom: 40px;
   position: relative;
 }
+
 .footer-widget-heading h3::before {
   content: "";
   position: absolute;
