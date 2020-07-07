@@ -74,6 +74,8 @@ class RegisterForm(forms.ModelForm):
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
         full_name= self.cleaned_data.get("full_name")
+        print("Mynae:", full_name)
+
         # contact= self.cleaned_data.get("contact")
         if password1 and password2 and password1 != password2:
             raise forms.ValidationError("Passwords don't match")
@@ -81,15 +83,16 @@ class RegisterForm(forms.ModelForm):
 
     def save(self, commit=True):
         # Save the provided password in hashed format
-        user = super(RegisterForm, self).save(commit=False) 
+        print("hellooo")
+        user = super(RegisterForm, self).save(commit=False)
         user.set_password(self.cleaned_data["password1"])
-        user.full_name=self.cleaned_data.get("full_name")
-        # user.contact=self.cleaned_data.get("contact")
-        # print("userNmae:",user.full_name, user.contact)
+        # user.contact = self.cleaned_data.get("contact")
+        # print(contact)
+        # print("user contact:", user.contact)
         user.is_active = False  # send confirmation email via signals
         # obj = EmailActivation.objects.create(user=user)
         # obj.send_activation_email()
         if commit:
             user.save()
-            print("User:", user)
+            print(user)
         return user
