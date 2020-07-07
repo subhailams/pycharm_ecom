@@ -12,7 +12,7 @@
         <h1>Orders</h1>
     </div>
 </div>
-<div class="container">
+<div class="container1">
 <div class='row'>
     <div class='col'>
         <table class='table'>
@@ -34,22 +34,7 @@
     </div>
 </div>
 </div>
-<div class="footer1">
-    <!-- <p>Footer</p> -->
-  
-    <div class="logo2">
-        <a href="index.html"><img src="{% static 'images/logo2.png' %}" alt=""/></a>
-   </div>
-    <div class="ftr-menu">
-        <ul>
-            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook fa-fw"></i>Facebook</a></li>
-            <li><a href="https://www.twitter.com/"><i class="fa fa-twitter fa-fw"></i>Twitter</a></li>
-            <li><a href="https://www.instagram.com/"><i class="fa fa-instagram fa-fw"></i>Instagram</a></li>
-            <li><a href="{% url 'contact' %}"><i class="fa fa-address-card" aria-hidden="true"></i>Contact Us</a></li>
-        </ul>
-   </div>
-   <div class="clearfix"></div>
-</div>
+{% include "footer1.html" %}
 
 </body>
 </html>

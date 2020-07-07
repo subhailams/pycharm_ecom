@@ -448,7 +448,8 @@
 	flex-direction: column;
 	padding-left: 0;
 	margin-bottom: 0;
-	list-style: none
+    list-style: none;
+    color:black;
 }
 
 .navbar-nav .nav-link {
@@ -458,7 +459,8 @@
 
 .navbar-nav .dropdown-menu {
 	position: static;
-	float: none
+    float: none;
+    color:black;
 }
 
 .navbar-text {
@@ -475,7 +477,8 @@
 	flex-grow: 1;
 	-webkit-box-align: center;
 	-ms-flex-align: center;
-	align-items: center
+    align-items: center;
+    /* color: black; */
 }
 
 .navbar-toggler {
@@ -583,7 +586,8 @@
 		flex-direction: row;
 	}
 	.navbar-expand-md .navbar-nav .dropdown-menu {
-		position: absolute
+        position: absolute;
+        /* color:black; */
 	}
 	.navbar-expand-md .navbar-nav .dropdown-menu-right {
 		right: 0;

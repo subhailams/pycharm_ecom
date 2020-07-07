@@ -142,15 +142,15 @@ def RegisterView(request):
     if request.method =="POST":
         full_name=form['full_name'].value()
         email=form['email'].value()
-
         password1=form['password1'].value()
         password2=form['password2'].value()
         qs = User.objects.filter(email=email)
         if qs.count() == 1:
             messages.error(request,'User is already registered')
         elif form.is_valid():
-            # user.save()
+            form.save()
             # print("User:", user)
+            messages.error(request,'A link has been sent to your email.Follow the link to activate your account')
             return redirect('login')
         elif not email:
             messages.error(request,'email cannot be empty')
