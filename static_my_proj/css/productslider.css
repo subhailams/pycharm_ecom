@@ -17,6 +17,7 @@
 }
 @media (max-width: 640px){
  .post-slider .next1{
+	 opacity: 0;
 	position: absolute;
 	top: 65%;
 	right: 0;
@@ -56,6 +57,7 @@
 } 
 @media (max-width: 640px){
 .post-slider .prev1{
+	opacity:0;
 	position: absolute;
 	top: 65%;
 	left: 0;
