@@ -25,7 +25,7 @@ SECRET_KEY = ')(h*y!uaq+@4$xb(uu95r*cbpr*mu4#5!%1hk8@)9tqy4m&ndm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.herokuapp.com']
+ALLOWED_HOSTS = ['.herokuapp.com' 'example.com']
 
 
 # Application definition
@@ -60,7 +60,7 @@ INSTALLED_APPS = [
     'socialapp'
 ]
 
-SITE_ID = 3
+SITE_ID = 2
 
 AUTH_USER_MODEL = 'accounts.User'
 LOGIN_URL='/applogin/'
