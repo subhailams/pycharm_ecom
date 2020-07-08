@@ -293,13 +293,13 @@ a.store:hover{
 	float:left;
 	width:50%;
 }
-select{
+/* select{
 	padding:10px 2.5em 10px 0.5em;
 	border-radius:5px;
 	margin-right:5px;
 	outline:none;
 	cursor:pointer;
-}
+} */
 .model-info a{
 	color:#fff;
 	font-size:0.9em;
@@ -1280,7 +1280,7 @@ h4.last-price{
   border-left: 1px solid;
 }
 a.order {
-  background:#333;
+  background:orangered;
   padding: 10px 1.5em;
   border-radius: 7px;
   font-size: 1em;
@@ -1293,7 +1293,7 @@ a.order {
   margin: 3em auto 0 auto;
 }
 a.order:hover{
-	background:orange;
+	background:green;
 }
 .total-item{
 	margin-top:2em;
@@ -1413,9 +1413,10 @@ a.morebtn {
 }
 .cate-grid {
   padding: 7em 0 0 0;
-  min-height: 273px;
+  min-height: 263px;
   margin: 0px 15px;
-  width: 30%;
+  width: 29%;
+  float: left;
 }
 .categories {
   min-height: 513px;
@@ -1429,10 +1430,8 @@ a.morebtn {
 .model {
   width: 30%;
 }
-select {
-  padding: 6px 1em 6px 0.5em;
-  margin-right: 5px;
-  font-size: 0.95em;
+select { 
+  overflow: hidden !important;
 }
 .model-info a {
   font-size: 0.9em;
@@ -1549,7 +1548,7 @@ a.shop {
   padding: 6em 0 0 0;
   min-height: 223px;
   float: left;
-  width: 29%;
+  width: 28%;
 }
 .categories {
   padding:3em 0 0 0;
@@ -1575,10 +1574,10 @@ a.shop {
 .model h4 {
   font-size: 1em;
 }
-select {
+/* select {
     padding: 1px 1em 3px 0.5em;
   font-size: 0.8em;
-}
+} */
 .model-info a {
     font-size: 0.8em;
   padding: 0.4em 2em;
@@ -1658,7 +1657,7 @@ a.add-cart {
 }
 p.desc {
   overflow: hidden;
-  height: 131px;
+  height: 0px;
 }
 }
 @media (max-width:640px){
@@ -1703,8 +1702,8 @@ a.shop img {
 }
 .cate-grid {
   padding: 4em 0 0 0;
-  min-height: 166px;
-  width: 28%;
+  min-height: 173px;
+  width: 26.5%;
 }
 .cate-grid h4 {
   font-size: 0.9em;
@@ -1807,7 +1806,7 @@ a.qck{
 }
 p.desc {
   overflow: hidden;
-  height: 110px;
+  height: 0px;
 }
 .prod1-desc p{
 	font-size:0.9em;
@@ -1895,10 +1894,10 @@ a.store {
 .model,.model-info{
 	text-align:center;
 }
-select {
+/* select {
   padding: 7px 2em 8px 1.5em;
   font-size: 0.9em;
-}
+} */
 .model-info a {
   padding: 0.7em 3em;
 }
