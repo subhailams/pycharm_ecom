@@ -146,6 +146,7 @@ def checkout_home(request):
             return redirect("billing:payment")
 
     context = {
+        "cart_obj" : cart_obj,
         "object": order_obj,
         "billing_profile": billing_profile,
         "login_form": login_form,
