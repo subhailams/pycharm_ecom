@@ -438,7 +438,7 @@ a.store:hover{
 .banner-sec{
 	background:url(../images/bg.jpg) no-repeat;
 	background-size:cover;
-	min-height:200px;
+	/* min-height:200px; */
 }
 .bikes{
 	padding:4em 0;
@@ -1332,10 +1332,22 @@ a.cpns:hover{
 	color:#333;
 	text-decoration:underline;
 }
-label{
 
-}
 /*--responsive--*/
+/* @media (max-width:640px){
+	.caption h1 {
+		opacity: 0;
+	  }
+	  .caption p {
+		opacity: 0;	
+	  }
+	a.morebtn{
+		opacity: 0;
+
+	}
+
+} */
+
 @media (max-width: 1440px){
 .model {
   width: 45%;

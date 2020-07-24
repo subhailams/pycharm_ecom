@@ -2,10 +2,12 @@
 {% url 'logout' as logout_url %}
 {% include 'base/js.html' %}
 {% include 'base/css.html' %}
+{% include 'temp/indexnav.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html>
 <head>
+<!-- <link href="{% static 'css/index.css' %}" rel='stylesheet' type='text/css' /> -->
 <title>Bike Shop a Ecommerce Category Flat Bootstarp Responsive Website Template| Home :: w3layouts</title>
 
 
@@ -33,6 +35,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!---- start-smoth-scrolling---->
 
 
+	<!-- </head>	 -->
 </head>
 <body>
 <!--banner-->
@@ -48,82 +51,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       });
     });
   </script>
+<!-- <div class="container-fluid"> -->
 <div class="banner-bg banner-bg1" >
-	<!-- <div class="container"> -->
+	<div class="container">
 		
-		<nav class="navbar navbar-expand-lg navbar-dark bg-trans " >
-
-			<a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="" /></a>
 	
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			  </button>
+						
+				</div>
+		<!-- </div> -->
 	
-			  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 		
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active">
-						<a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
-					</li>
-	
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="{% url 'products:products' %}" id="navbarDropdown"
-							role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Products
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="{% url 'products:products' %}">Chains</a>
-							<a class="dropdown-item" href="{% url 'products:products' %}">Tubes</a>
-							<!-- <div class="dropdown-divider"></div> -->
-							<a class="dropdown-item" href="{% url 'products:products' %}">Tires</a>
-							<a class="dropdown-item" href="{% url 'products:products' %}">Disk brakes</a>
-						</div>
-					</li>
-
-					<form class="form-inline my-2 my-lg-0 search-form" action="{% url 'search' %}"  method="GET" >
-						<input class="form-control mr-sm-2" type="search" name="q" placeholder="Search">
-						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-							<i class="fa fa-search" aria-hidden="true"></i></button>
-					<!-- </li> -->
-					</form><br/>	
-					<!-- <li class="nav-item">
-						<a class="nav-link" href="{% url 'contact' %}">Contact</a>
-					</li> -->
-	
-					{% if request.user.is_authenticated %}
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<i class="fa fa-user-circle" aria-hidden="true"></i>
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						  <a class="dropdown-item" href="#">{{request.user.full_name}} </a>
-						  <a class="dropdown-item" href="{% url 'account:home' %}">Home
-						  <div class="dropdown-divider"></div>
-						  <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-						</div>
-					  </li>
-					{% else %}
-					<li class="nav-item {% if request.path == login_url %}active{% endif %}">
-						<a class="nav-link" href="{% url 'login'%}">Login</a>
-					</li>
-					{% endif %}
-					<li class="nav-item active">
-						<a class="nav-link" href="{% url 'cart:cart' %}"> <span class='navbar-cart-count'>{{request.session.cart_items}}</span><img src="{% static 'images/cart.png' %}" alt="" /></a>
-					</li>
-					
-					<!-- <li class="nav-item"> -->
-					
-					
-					<!-- <li class="nav-item">
-			 <a class="nav-link disabled" href="#">Disabled</a>
-		   </li> -->
-				</ul>
-	
-			</div>
-		</nav>
-<!-- </div> -->
-</div>
-<div>		
 	 <div class="caption">
 		 <div class="slider">
 					   <div class="callbacks_container">

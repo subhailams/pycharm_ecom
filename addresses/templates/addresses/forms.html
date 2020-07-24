@@ -1,5 +1,18 @@
 {% load static %}
 <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <script>
+    function myFunction(x) {
+      x.style.background = "transparent";
+    }
+  </script> -->
+
+</head>
+<body>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="{% static 'css/password-reset.css' %}" rel='stylesheet' type='text/css' />
@@ -20,11 +33,11 @@
     {% endif %}
     <!-- {{form.as_p}} -->
         Address 1:
-        <input type="text" name="address_line_1" maxlength="120" id="id_address_line_1"><br><br>
+        <input type="text" name="address_line_1" maxlength="120" required id="id_address_line_1" ><br><br>
         Address 2:
-        <input type="text" name="address_line_2" maxlength="120" id="id_address_line_2"><br><br>
+        <input type="text" name="address_line_2" maxlength="120" id="id_address_line_2" ><br><br>
         City      :
-        <input type="text" name="city" maxlength="120" required id="id_city"><br><br>
+        <input type="text" name="city" maxlength="120" required id="id_city" ><br><br>
         Country:
         <!-- <input type="text" name="country"  maxlength="120" required id="id_country"> -->
         <select id="country" name="country">
@@ -278,7 +291,7 @@
         State:
         <input type="text" name="state" maxlength="120" required id="id_state"><br><br> 
         Postal code:
-        <input type="text" name="postal_code" maxlength="120" required id="id_postal_code"><br><br>
+        <input type="number" name="postal_code" max="6"  required id="id_postal_code"><br><br>
     <button type="submit">Submit</button> 
 </form>
 </div>
@@ -287,4 +300,6 @@
 </div>
 </div>
 </div>
+</body>
+</html>
 

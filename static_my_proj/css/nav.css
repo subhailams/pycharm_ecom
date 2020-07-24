@@ -17,6 +17,9 @@
     display: block;
     padding: .5rem 1rem
 }
+.navbar-custom{
+    background-color: red;
+}
 /* @media only screen and (max-width: 480px){
     .navbar-expand-sm .navbar-collapse {
     padding: 7px 0;
