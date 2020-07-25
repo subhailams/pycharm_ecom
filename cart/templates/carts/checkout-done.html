@@ -146,7 +146,7 @@
 </head>
 <body>
     <!-- {{response}} -->
-   <center><h2>Payment status regarding your Order Id{{response.ORDERID}}</h2></center><hr/>
+   <center><h2>Payment status regarding your Order Id: {{response.ORDERID}}</h2></center><hr/>
     {% if response.RESPCODE == '01' %}
     <div class='col-6 mx-auto py-5 text-center'>
 		<h1 class='display-1'>Thank you for your order!!!</h1>
@@ -155,7 +155,10 @@
     <div class='col-6 mx-auto py-5 text-center'>
 		<h1 class='display-1'>Ouch your order failed!!!</h1>
 		  </div> 
-    {% endif %}
+	{% endif %}
+	<!-- <div> -->
+	<img src="{% static 'images/like.png' %}" alt="" />
+	<!-- </div> -->
 
 	
 </body>
