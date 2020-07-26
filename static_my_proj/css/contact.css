@@ -157,12 +157,12 @@
     transition: all .2s ease-in-out;
   }
  
-  .social-media-list .fa-instagram {
+  /* .social-media-list .fa-instagram {
     color :#e1306c;
     transform : scale(1.1);
     background: linear-gradient(45deg,#252323 50%, #302c2c 50%);
     box-shadow: 0 0 20px #e1306c;
-  } 
+  }  */
   /* .fa-instagram:checked ~ .social-media-list .fa-instagram
   {
     color :#e1306c;
