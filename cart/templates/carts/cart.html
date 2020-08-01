@@ -33,8 +33,8 @@
 					   </div>
 					  <div class="cart-item-info">
 							<h4>{{ item.product.title }}</h4><br/><h4><span>Model No: 3578</span></h4>
-							<h4>Rs.{{ item.product.price }}</h4>
-							<h4><span>Qty: {{ item.quantity }}</span></h4>
+							<h4>₹.{{ item.product.price }}</h4>
+							<h4><span>Quantity: {{ item.quantity }}</span></h4>
 							<!-- <p class="qty">Qty ::</p>
 							<input min="1" type="number" id="quantity" name="quantity" value="1" class="form-control input-small"> -->
 							{% include 'carts/snippets/remove-product.html' with product_id=item.product.id %}
@@ -42,7 +42,7 @@
 					  <div class="clearfix"></div>
 					   <div class="delivery">
 							<!-- <p>Service Charges:: Rs.100.00</p> -->
-							<span>Delivered in 5-7 bussiness days</span>
+								<span>Delivered in 5-7 bussiness days</span>
 							<div class="clearfix"></div>
 					   </div>						
 				 </div>
@@ -74,7 +74,7 @@
 				<span>Discount</span>
 				<span class="total">---</span>
 				<span>Delivery Charges</span>
-				<span class="total">150.00</span>
+				<span class="total">100.00</span>
 				<div class="clearfix"></div>				 
 			</div>	
 			<h4 class="last-price">TOTAL</h4>

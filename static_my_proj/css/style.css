@@ -20,7 +20,7 @@ body a{
 	-ms-transition:0.5s all;
 }
 h1,h2,h3,h4,h5,h6{
-	margin:0;			   
+	margin:3px;			   
 }	
 p{
 	margin:0;
@@ -28,6 +28,11 @@ p{
 ul{
 margin:0;
 padding:0;
+}
+.img-shop{
+	padding-right: 5em;
+	padding-bottom: 6em;
+	
 }
 /*----*/
 .banner-bg1{

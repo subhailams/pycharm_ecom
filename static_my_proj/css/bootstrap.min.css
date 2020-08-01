@@ -59,7 +59,7 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
 
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: 'Roboto',sans-serif;
     font-size: 1.5rem;
     font-weight: 400;
     line-height: 1.5;
@@ -1883,14 +1883,15 @@ pre code {
     display: block;
     width: 100%;
     padding: .375rem .75rem;
-    font-size: 1rem;
+    font-size: 1.25rem;
     line-height: 1.5;
     color: #495057;
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: .25rem;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    font-family: sans-serif;
 }
 
 .form-control::-ms-expand {
@@ -2152,6 +2153,17 @@ select.form-control:focus::-ms-value {
 .custom-file-input.is-valid:focus~.custom-file-label, .was-validated .custom-file-input:valid:focus~.custom-file-label {
     box-shadow: 0 0 0 .2rem rgba(40, 167, 69, .25)
 }
+.container {
+    max-width: 960px;
+  }
+  
+  .border-top { border-top: 1px solid #e5e5e5; }
+  .border-bottom { border-bottom: 1px solid #e5e5e5; }
+  .border-top-gray { border-top-color: #adb5bd; }
+  
+  .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+  
+  .lh-condensed { line-height: 1.25; }
 
 .invalid-feedback {
     display: none;
@@ -3490,7 +3502,7 @@ tbody.collapse.show {
 .custom-select {
     display: inline-block;
     width: 100%;
-    height: calc(2.25rem + 2px);
+    height: calc(2.65rem + 2px);
     padding: .375rem 1.75rem .375rem .75rem;
     line-height: 1.5;
     color: #495057;
@@ -3950,7 +3962,7 @@ tbody.collapse.show {
     }
     .navbar-expand-lg .navbar-nav .nav-link {
         padding-right: .5rem;
-        padding-left: .5rem
+        padding-left: 3.5rem
     }
     .navbar-expand-lg>.container, .navbar-expand-lg>.container-fluid {
         -ms-flex-wrap: nowrap;
@@ -5798,11 +5810,11 @@ button.close {
 }
 
 .bg-primary {
-    background-color: #007bff!important
+    background-color: #343a40!important
 }
 
 a.bg-primary:focus, a.bg-primary:hover, button.bg-primary:focus, button.bg-primary:hover {
-    background-color: #0062cc!important
+    background-color: #343a40!important
 }
 
 .bg-secondary {
@@ -7201,7 +7213,8 @@ a.bg-dark:focus, a.bg-dark:hover, button.bg-dark:focus, button.bg-dark:hover {
 }
 
 .mb-4, .my-4 {
-    margin-bottom: 1.5rem!important
+    margin-bottom: 1.5rem!important;
+    margin-top: 1rem!important;
 }
 
 .ml-4, .mx-4 {

@@ -52,11 +52,15 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'contact' %}">Contact</a>
             </li>
-            <form class="form-inline my-2 my-lg-0 search-form" action="{% url 'search' %}"  method="GET" >
-                <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}"  method="GET" autocomplete="on"  required >
+                <div class="wrap">
+                <div class="search">
+                <input class="searchTerm" type="search" name="q" placeholder="Search">
+                <button class="searchButton" type="submit">
                     <i class="fa fa-search" aria-hidden="true"></i></button>
             </form>
+                </div>
+            </div>
             <li class="nav-item active">
                 <a class="nav-link" href="{% url 'cart:cart' %}"> <span class='navbar-cart-count'>{{request.session.cart_items}}</span><img src="{% static 'images/cart.png' %}" alt="" /></a>
             </li>

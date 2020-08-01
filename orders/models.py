@@ -153,6 +153,7 @@ class OrderConfirmationManager(models.Manager):
 
 class OrderConfirmation(models.Model):
     billing_profile = models.ForeignKey(BillingProfile ,null=True,blank=True,on_delete=models.CASCADE)
+    # cart            = models.ForeignKey(Cart, null=True, blank=True, on_delete=models.CASCADE)
     order_id        = models.CharField(max_length=120, blank=True) 
     email           = models.EmailField()
     timestamp       = models.DateTimeField(auto_now_add=True)
@@ -170,7 +171,8 @@ class OrderConfirmation(models.Model):
         context = {
             # 'path': path,
             'email': self.billing_profile.email,
-            'order_id': self.order_id
+            'order_id': self.order_id,
+
         }
         txt_ = get_template("orders/order_confirm.txt").render(context)
         html_ = get_template("orders/order_confirm.html").render(context)

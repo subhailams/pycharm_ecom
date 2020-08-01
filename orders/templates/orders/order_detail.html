@@ -7,10 +7,48 @@
 <html lang="en">
 <head>
 <link rel="stylesheet" type="text/css" href="{% static 'css/orders.css' %}">
+<style>
+	@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400);
+
+.word {
+  bottom: 0;
+  color: #fff;
+  font-size: 2.5em;
+  height: 2.5em;
+  left: 0;
+  line-height: 2.5em;
+  margin: auto;
+  right: 0;
+  position: absolute;
+  text-shadow: 0 0 10px rgba(50, 255, 50, 0.5), 0 0 5px rgba(100, 255, 100, 0.5);
+  top: 0
+}
+
+.word span {
+  display: inline-block;
+  transform: translateX(100%) scale(0.9);
+  transition: transform 500ms;
+}
+
+.word .done {
+  color: #6f6;
+  transform: translateX(0) scale(1);
+}
+
+.overlay {
+  background-image: linear-gradient(transparent 0%, rgba(10, 16, 10, 0.5) 50%);
+  background-size: 1000px 2px;
+  bottom: 0;
+  content: '';
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+</style>
 </head>
 <body>
-<div class="cart cart-table">
-	<!-- <div class="container"> -->
+<div id="mainDiv" class="cart cart-table">
 		<div class="cart-top">
 		   <a href="index.html">home</a>
 		</div>	
@@ -28,51 +66,82 @@
 					   </div>
 					  
 					  <div class="cart-item-info">
-							<h4>{{ item.product.title }}</h4><br/><h4><span>Model No: 3578</span></h4>
-							<h4>Rs. {{ item.product.price }}</h4>
-                            <h4><span>Qty: {{ item.quantity }}</span></h4>
-							<a class="btn btn-danger" href="{% url 'orders:request-refund' %}">Cancel Order</a>
+							<h4>{{ item.product.title }}</h4><br/>
+							<h4>₹. {{ item.product.price }}</h4>
+                            <h4><span>Quantity: {{ item.quantity }}</span></h4>
+							<a class="btn btn-danger" href="{% url 'orders:request-refund' %}" onclick="Login();">Cancel Order</a>
 							
                             <!-- {% include 'carts/snippets/remove-product.html' with product_id=item.product.id %} -->
-                            <h3>Order Status: {{object.get_status}}</h3>
+                            
 					  </div>
-					  <div class="clearfix"></div>
+					  <!-- <div class="clearfix"></div> -->
+					  <div class="center1">
+						<!-- <div class="price-details"> -->
+							<b><span>SubTotal : </span></b>
+						<span class="cart-subtotal">{{ object.cart.total }}</span><br/>
+						<b><span>ShippingTotal : </span></b>
+						<span class="cart-subtotal">{{ object.shipping_total }}</span><br/>
+						<b><span>Order Total : </span></b>
+						<span class="cart-subtotal">{{ object.total }}</span><br/>
+						<b><span>Order Status : </span></b>
+						<span class="cart-subtotal">{{ object.get_status }}</span><br/>
+						<div class="clearfix"></div>
+						</div>
+						
+					
 					   <div class="delivery">
-							<p>Service Charges:: Rs.100.00</p>
+			
 							<span>Delivered in 2-3 bussiness days</span>
+							
 							<div class="clearfix"></div>
-					   </div>						
+				 </div>
 				 </div>
 			{% endfor %}
 		   </div>
 			{% endif %}
-			<div class="center1">
-				<div class="price-details">
-					<span>SubTotal:</span>
-				<span class="cart-subtotal">{{ object.cart.total }}</span>
-				<span>ShippingTotal:</span>
-				<span class="total">{{ object.shipping_total }}</span>
-				<span>Order Total:</span>
-				<span class="total">{{ object.total }}</span>
-				<span>Order Status:</span>
-				<span class="total">{{ object.get_status }}</span>
-				<div class="clearfix"></div>
-				</div>
-				
-			</div>
+			
 		
             
 				   
 		</div>
 		
 	</div>
+	<span id="loading" style="visibility: hidden; text-align: center;">
+		<img src="C:\Users\jayashree\Downloads\389.gif"  data-transition="slide" />
+	</span>
+	<script>
+		// $(document).ready(function() {
+			// function pageLoad(sender, args) {
+			// 	var prm = Sys.WebForms.PageRequestManager.getInstance();
+			// 	prm.add_beginRequest(BeginRequestHandler);
+			// 	prm.add_endRequest(EndRequestHandler);
+			// }
+		
+			// function BeginRequestHandler(sender, args) {
+			// 	document.getElementById("mainDiv").style.visibility = 'hidden';
+			// 	document.getElementById("loading").style.visibility = 'visible';
+			// }
+		
+			// function EndRequestHandler(sender, args) {
+			//    document.getElementById("mainDiv").style.visibility = 'visible';
+			//    document.getElementById("loading").style.visibility = 'hidden';
+			// }
+		
+		function Login() {
+			
+			document.getElementById("body").style.visibility = 'hidden';
+			document.getElementById("loading").style.visibility = 'visible';
+			location = "https://youtube.com";
+			}
+		
+		// });
+		
+		</script>
+		
    
 </div>
 
 </body>
 </html>
 
-<!-- <p><b>Subtotal:</b> {{ object.cart.total }}</p>
-<p><b>Shipping Total:</b> {{ object.shipping_total }}</p>
-<p><b>Order Total:</b> {{ object.total }}</p>
-<p><b>Order Status:</b> {{ object.get_status }}</p> -->
+

@@ -62,7 +62,7 @@
 							<p><label>₹</label> {{ object.price }}</p>
 								<!-- <a href="#">Click for offer</a></p> -->
 								<form action="{% url 'cart:update' %}" method="POST">
-									<span class="product-quantity"><p class="qty">Qty :</p>
+									<span class="product-quantity"><p class="qty">Quantity:</p>
 									<input min="1" type="number" id="quantity" name="qty" value="1" class="form-control input-small"></span>
 									 {% include 'products/snippets/update-cart.html' with product=object cart=cart %}
 									</form>

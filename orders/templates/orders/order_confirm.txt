@@ -2,6 +2,7 @@ Hello,
 
 Your order has been placed successfully!
 {{order_id}}
+{{cart_id}}
 
 
 

@@ -6,6 +6,7 @@
 <html lang="en">
 <head>
 <link rel="stylesheet" type="text/css" href="{% static 'css/orders.css' %}">
+
 </head>
 <!-- <body> -->
 <div class="parts">
@@ -40,13 +41,13 @@
 
 				<div class='row'>
 				</br>
-					<center><h3>Shipping Address</h3></center>
-				   <div class='col-md-4 col-md-offset-1'>
+				<center><h3>Shipping Address</h3></center><br/>
+				   <!-- <div class='col-md-4 col-md-offset-1'> -->
 					  
 					   <hr/>
 				   {% url "checkout_address_create" as checkout_address_create %}
 				   {% include 'addresses/forms.html' with form=address_form next_url=request.build_absolute_uri action_url=checkout_address_create address_type='shipping' %}
-				</div>
+				<!-- </div> -->
 			   </div>
 	   
 	   
@@ -54,12 +55,12 @@
 			   <div class='row'>
 				</br>
 				<center><h3>Billing Address</h3></center>
-		   		<div class='col-md-4 col-md-offset-1'>
+		   		<!-- <div class='col-md-4 col-md-offset-1'> -->
 			   <hr/>
 				   {% url "checkout_address_create" as checkout_address_create %}
 				   {% include 'addresses/forms.html' with form=address_form next_url=request.build_absolute_uri action_url=checkout_address_create address_type='billing' %}
 					
-				</div>
+				<!-- </div> -->
 			   </div>
 			   {% else %}
 					   <h1>Final checkout</h1>&nbsp;

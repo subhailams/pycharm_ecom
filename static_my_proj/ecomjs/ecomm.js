@@ -98,7 +98,7 @@ $(document).ready(function () {
 
   function displaySearching() {
     searchBtn.addClass("disabled")
-    searchBtn.html("<i class='fa fa-spin fa-spinner'></i> Searching...")
+    searchBtn.html("<i class='fa fa-spin fa-spinner'></i>")
   }
 
   function perfomSearch() {

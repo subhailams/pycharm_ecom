@@ -42,6 +42,7 @@ class RequestRefundView(View):
             message = form.cleaned_data.get('message')
             email = form.cleaned_data.get('email')
             # edit the order
+            print("Order:",order_id,message)
             try:
                 order_obj = Order.objects.get(order_id=order_id)
                 if email != order_obj.billing_profile.email:
