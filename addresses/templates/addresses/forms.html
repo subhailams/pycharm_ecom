@@ -14,6 +14,27 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="{% static 'css/password-reset.css' %}" rel='stylesheet' type='text/css' />
 <link href="{% static 'css/bootstrap.min.css' %}" rel='stylesheet' type='text/css' />
+<script>
+   $(document).ready(function(){ 
+     $('#check-address').click(function(){ 
+     if ($('#check-address').is(":checked")) {
+      $('#txtfname_billing').val($('#txtfname').val());
+      $('#txtlname_billing').val($('#txtlname').val());
+      $('#txtaddress_billing').val($('#txtaddress').val());
+      $('#txtcity_billing').val($('#txtcity').val());
+      var country = $('#country option:selected').val();
+      $('#country_billing option[value=' + country + ']').attr('selected','selected');
+     } else { //Clear on uncheck
+      $('#txtfname_billing').val("");
+      $('#txtlname_billing').val("");
+      $('#txtaddress_billing').val("");
+      $('#txtcity_billing').val("");
+      $('#country_billing option[value=""]').attr('selected','selected');
+     };
+    });
+ 
+   });
+</script>
 
 <div class="container">
 <div class='row'>
@@ -357,7 +378,10 @@
         <div class="invalid-feedback">
           Zip code required.
         </div>
-      </div> 
+      </div>
+      <div class="col-md-2 mb-3">
+      <label><input type="checkbox" value="" id="check-address">Same as billing?</label> 
+      </div>
     
         </div>
         <hr class="mb-4">

@@ -141,46 +141,48 @@
 
 
 
-      <h1>Creating order</h1>
-      <fieldset>
-        <legend>
-          <h3>Selected Product</h3>
-        </legend>
-
-          <div class="gender" >
-              Product {{ order_id }} Price {{Order_total}} OrderId {{Order_id}}
-          </div>
-
-      </fieldset>
-      <fieldset>
-        <legend>
-          <h3>Personal Details</h3>
-        </legend>
-        <div  class="personal-details">
-          <div>
-            <div><label>Name*</label><input type="text" name="name" placeholder="{{ name }}" disabled></div>
-            <div><label>Phone*</label><input type="text" name="name" placeholder="{{ phone }}" disabled></div>
-            <div><label>Email*</label><input type="text" name="name" placeholder="{{ email }}" disabled></div>
-
-
-          </div>
-
-        </div>
-      </fieldset>
-        <script    src="https://checkout.razorpay.com/v1/checkout.js"
+        <div class="razorpay-embed-btn" data-url="https://pages.razorpay.com/pl_FLUiDdzga9h78w/view" data-text="Pay Now" data-amount="{{ price }}" data-color="#528FF0" data-size="large">
+          <script>
+            (function(){
+              var d=document; var x=!d.getElementById('razorpay-embed-btn-js')
+              if(x){ var s=d.createElement('script'); s.defer=!0;s.id='razorpay-embed-btn-js';
+              s.src='https://cdn.razorpay.com/static/embed_btn/bundle.js';d.body.appendChild(s);} else{var rzp=window['__rzp__'];
+              rzp && rzp.init && rzp.init()}})();
+          </script>
+        </div> 
+        <script    
+        src="https://checkout.razorpay.com/v1/checkout.js"
                    data-key="rzp_test_fu6uylByoiLTWv"
                    data-amount="{{ price }}"
                    data-currency="INR"
                    data-order_id="{{ order_id }}"
-                   data-buttontext="Pay with Razorpay"
+
                    data-name="Acme Corp"
                    data-description="Test transaction"
                    data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRpWzPOB8s9WRX7JXZ96x1oPESu-eoN5YUFfDKcebTKFn7piPBS&usqp=CAU"
                    data-prefill.name="{{ name }}"
                    data-prefill.email="{{ email }}"
                    data-prefill.contact="{{ phone }}"
-                   data-theme.color="#F37254"></script>
+                   data-theme.color="#000">
+                   (function(){
+              var d=document; var x=!d.getElementById('razorpay-embed-btn-js')
+              if(x){ var s=d.createElement('script'); s.defer=!0;s.id='razorpay-embed-btn-js';
+              s.src='https://cdn.razorpay.com/static/embed_btn/bundle.js';d.body.appendChild(s);} else{var rzp=window['__rzp__'];
+              rzp && rzp.init && rzp.init()}})();
+              </script>
+                   
         <input type="hidden" custom="Hidden Element" name="hidden">
+      
+         <div class="razorpay-embed-btn" data-url="https://pages.razorpay.com/pl_FLUiDdzga9h78w/view" data-text="Pay Now" data-amount="{{ price }}" data-color="#528FF0" data-size="large">
+          <script>
+            (function(){
+              var d=document; var x=!d.getElementById('razorpay-embed-btn-js')
+              if(x){ var s=d.createElement('script'); s.defer=!0;s.id='razorpay-embed-btn-js';
+              s.src='https://cdn.razorpay.com/static/embed_btn/bundle.js';d.body.appendChild(s);} else{var rzp=window['__rzp__'];
+              rzp && rzp.init && rzp.init()}})();
+          </script>
+        </div> 
+            
 
 
 
