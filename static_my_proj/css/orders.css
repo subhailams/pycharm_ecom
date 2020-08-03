@@ -1,7 +1,10 @@
 .container1{
 
 
-        padding: 16px;
+        padding-left: 95px;
+        padding-right: 95px;
+        padding-top: 16px;
+        padding-bottom: 16px;
         width: 100%;
         font-size: 14px;
         overflow: hidden;

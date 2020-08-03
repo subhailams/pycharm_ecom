@@ -4,7 +4,7 @@
 	License: Creative Commons Attribution 3.0 Unported
 	License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
-@import url("https://fonts.googleapis.com/css?family=Satisfy");
+@import url("https://fonts.googleapis.com/css?family=Roboto Slab");
 body{
 	margin:0;
 	padding:0;
@@ -902,7 +902,7 @@ color:#000;
 line-height: 1.8em;
 text-shadow: 0 1px 0 #ffffff;
 letter-spacing: 1px;
-font-family: 'Satisfy';
+font-family: 'Roboto Slab';
 }
 .details-left-info p  label{
 	font-size:0.7em;
@@ -1131,7 +1131,7 @@ p.qty {
   display: inline-block;
 }
 .details-left-info #quantity {
-  width: 50px;
+  width: 60px;
   height: 37px;
   display: inline-block;
   margin: 15px 10px 0 0;
@@ -1148,7 +1148,7 @@ p.qty {
 	margin-bottom:1em;
 }
 .cart-items{
-	padding-left:0;
+	padding-left:5em;
 	padding-top:1em;	
 }
 .cart-sec{
@@ -1264,12 +1264,12 @@ a.continue:hover{
 	padding:1px 0;
 }
 span.total{
-	width:50%;
+	width:47%;
 	float:left;
 }
 span.final{
 	font-weight:600;
-	padding-top:6px;
+	padding-top:9px;
 	font-size:1.3em;
 }
 h4.last-price{

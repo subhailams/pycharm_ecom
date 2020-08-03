@@ -18,18 +18,24 @@
    $(document).ready(function(){ 
      $('#check-address').click(function(){ 
      if ($('#check-address').is(":checked")) {
-      $('#txtfname_billing').val($('#txtfname').val());
-      $('#txtlname_billing').val($('#txtlname').val());
-      $('#txtaddress_billing').val($('#txtaddress').val());
-      $('#txtcity_billing').val($('#txtcity').val());
+      $('#firstName1').val($('#firstName').val());
+      $('#lastName1').val($('#lastName').val());
+      $('#id_address_lines_1').val($('#id_address_line_1').val());
+      $('#id_address_lines_2').val($('#id_address_line_2').val());
+      $('#id_city').val($('#id_cities').val());
+      $('#id_state').val($('#id_state1').val());
+      $('#id_postal_code').val($('#id_postal_code1').val());
       var country = $('#country option:selected').val();
-      $('#country_billing option[value=' + country + ']').attr('selected','selected');
+      $('#country1 option[value=' + country + ']').attr('selected','selected');
      } else { //Clear on uncheck
-      $('#txtfname_billing').val("");
-      $('#txtlname_billing').val("");
-      $('#txtaddress_billing').val("");
-      $('#txtcity_billing').val("");
-      $('#country_billing option[value=""]').attr('selected','selected');
+      $('#firstName1').val("");
+      $('#lastName1').val("");
+      $('#id_address_lines_1').val("");
+      $('#id_address_lines_2').val("");
+      $('#id_cities').val("");
+      $('#id_state1').val("");
+      $('#id_postal_code1').val("");
+      $('#country1 option[value=""]').attr('selected','selected');
      };
     });
  
@@ -64,7 +70,7 @@
       </div>
     </div>
     
-    <div class="mb-3">
+    <!-- <div class="mb-3">
       <label for="username">Username</label>
       <div class="input-group">
         <div class="input-group-prepend">
@@ -75,15 +81,15 @@
           Your username is required.
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <div class="mb-3">
+    <!-- <div class="mb-3">
       <label for="email">Email <span class="text-muted">(Optional)</span></label>
       <input type="email" class="form-control" id="email" placeholder="you@example.com">
       <div class="invalid-feedback">
         Please enter a valid email address for shipping updates.
       </div>
-    </div>
+    </div> -->
     <div class="mb-3">
       <label for="address">Address</label>
       <input type="text" name="address_line_1" class="form-control" id="id_address_line_1" placeholder="1234 Main St" required>

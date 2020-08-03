@@ -15,7 +15,7 @@
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="{% url 'products:products' %}" id="navbarDropdown"
-                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    role="button" data-hover="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Products
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -29,7 +29,7 @@
 
             {% if request.user.is_authenticated %}
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-user-circle" aria-hidden="true"></i>	
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
