@@ -58,6 +58,12 @@
 					<span class="login100-form-title p-b-49">
 						Login
 					</span>
+					{% for message in messages %}
+					<div class="alert alert-danger">
+				 
+					  {{message}}
+					</div>
+					{% endfor %}
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is required">
 						<span class="label-input100">Username</span>
@@ -73,12 +79,7 @@
 						<span toggle="#input-pwd" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 						<span class="focus-inputs100"><i class="fa fa-lock"></i></span>
 					</div>
-					{% for message in messages %}
-					<div class="alert alert-danger">
-				 
-					  {{message}}
-					</div>
-					{% endfor %}
+					
 					
 					<div class="text-right p-t-8 p-b-31">
 						<a href="{% url 'password_reset' %}" style="color:rgb(27, 121, 245)">Forgot your Password?</a>

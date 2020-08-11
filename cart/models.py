@@ -37,6 +37,7 @@ class CartItem(models.Model):
     product     = models.ForeignKey(Product,blank=True,on_delete=models.CASCADE)
     cart        = models.ForeignKey('Cart', null=True, on_delete=models.CASCADE)
     quantity    = models.PositiveIntegerField(default=1)
+    price       = models.DecimalField(decimal_places=2, max_digits=20, default=39.99)
     updated     = models.DateTimeField(auto_now_add=False ,auto_now=True)
     timestamp   = models.DateTimeField(auto_now_add=True)
 

@@ -1,134 +1,38 @@
 {% load static %}
+{% url 'login' as login_url %}
+{% url 'logout' as logout_url %}
+{% include "nav.html" %}
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>Account registration form</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel='stylesheet' type='text/css' />
     <style>
-      html, body {
-      min-height: 100%;
-      }
-      body, div, form, input, select, p {
-      padding: 0;
-      margin: 0;
-      outline: none;
-      font-family: Roboto, Arial, sans-serif;
-      font-size: 14px;
-      color: #666;
-      }
-      h1 {
-      margin: 0;
-      font-weight: 400;
-      }
-      h3 {
-      margin: 12px 0;
-      color: #8ebf42;
-      }
-      .main-block {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #fff;
-      }
-      form {
-      width: 100%;
-      padding: 20px;
-      }
-      fieldset {
-      border: none;
-      border-top: 1px solid #8ebf42;
-      }
-      .account-details, .personal-details {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      }
-      .account-details >div, .personal-details >div >div {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-      }
-      .account-details >div, .personal-details >div, input, label {
-      width: 100%;
-      }
-      label {
-      padding: 0 5px;
-      text-align: right;
-      vertical-align: middle;
-      }
-      input {
-      padding: 5px;
-      vertical-align: middle;
-      }
-      .checkbox {
-      margin-bottom: 10px;
-      }
-      select, .children, .gender, .bdate-block {
-      width: calc(100% + 26px);
-      padding: 5px 0;
-      }
-      select {
-      background: transparent;
-      }
-      .gender input {
-      width: auto;
-      }
-      .gender label {
-      padding: 0 5px 0 0;
-      }
-      .bdate-block {
-      display: flex;
-      justify-content: space-between;
-      }
-      .birthdate select.day {
-      width: 35px;
-      }
-      .birthdate select.mounth {
-      width: calc(100% - 94px);
-      }
-      .birthdate input {
-      width: 38px;
-      vertical-align: unset;
-      }
-      .checkbox input, .children input {
-      width: auto;
-      margin: -2px 10px 0 0;
-      }
-      .checkbox a {
-      color: #8ebf42;
-      }
-      .checkbox a:hover {
-      color: #82b534;
-      }
-      button {
-      width: 100%;
+      
+     
+      .main-block input {
+      width: 10%;
       padding: 10px 0;
-      margin: 10px auto;
+      margin-top: 10px;
+      /* margin-bottom: 10px; */
+      margin-left: 65em ;
       border-radius: 5px;
       border: none;
-      background: #8ebf42;
+      background: #3498db;
       font-size: 14px;
       font-weight: 600;
       color: #fff;
       }
-      button:hover {
-      background: #82b534;
+      .main-block h1 {
+        padding-bottom: 1rem;
+
+       
+
       }
-      @media (min-width: 568px) {
-      .account-details >div, .personal-details >div {
-      width: 50%;
-      }
-      label {
-      width: 40%;
-      }
-      input {
-      width: 60%;
-      }
-      select, .children, .gender, .bdate-block {
-      width: calc(60% + 16px);
-      }
-      }
+    
     </style>
   </head>
   <body>
@@ -141,56 +45,100 @@
 
 
 
-      <h1>Creating order</h1>
-      <fieldset>
-        <legend>
-          <h3>Selected Product</h3>
-        </legend>
-
-          <div class="gender" >
-              Product {{ order_id }} Price {{Order_total}} OrderId {{Order_id}}
-          </div>
-
-      </fieldset>
-      <fieldset>
-        <legend>
-          <h3>Personal Details</h3>
-        </legend>
-        <div  class="personal-details">
-          <div>
-            <div><label>Name*</label><input type="text" name="name" placeholder="{{ name }}" disabled></div>
-            <div><label>Phone*</label><input type="text" name="name" placeholder="{{ phone }}" disabled></div>
-            <div><label>Email*</label><input type="text" name="name" placeholder="{{ email }}" disabled></div>
+      <center><h1>Checkout</h1></center>
+      <hr class="mb-4">
+   
+   
+        <br>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 order-md-2 mb-4">
+              
+              <ul class="list-group  mb-3">
+                <b><h2 > Shipping Address</h2></b>
+                <p>Deliver to {{shipping_address.get_address}}</p>
 
 
-          </div>
-
-        </div>
-      </fieldset>
-        <script  
+                </ul>
+            </div>
+            <div class="col-md-4 order-md-2 mb-4">
+              <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Your cart</span>
+                <span class="badge badge-secondary badge-pill">{{request.session.cart_items}}</span>
+              </h4>
+              {% if cart.cartitem_set.exists %}
+                <ul class="list-group mb-3">
+                {% for item in cart.cartitem_set.all %}
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                  <div>
+                    <b><h6 class="my-0">{{ item.product.title }}</h6></b>
+                    <small class="text-muted">Quantity: {{ item.quantity }}</small>
+                  </div>
+                  <span class="text-muted">₹.{{ item.product.price }}</span>
+                </li>
+                {% endfor %}
+              
+		 
+		
+                <!-- <li class="list-group-item d-flex justify-content-between lh-condensed">
+                  <div>
+                    <h6 class="my-0">Second product</h6>
+                    <small class="text-muted">Brief description</small>
+                  </div>
+                  <span class="text-muted">$8</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                  <div>
+                    <h6 class="my-0">Third item</h6>
+                    <small class="text-muted">Brief description</small>
+                  </div>
+                  <span class="text-muted">$5</span>
+                </li> -->
+               
+                <li class="list-group-item d-flex justify-content-between">
+                  <span>Total (INR)</span>
+                  <strong>₹.{{ cart.total }}</strong>
+                </li>
+              </ul>
+              {% endif %}
+              
+      </div>
+            
+    </div>
+  </div>
+  
+    
+              <!-- <form class="card p-2">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Promo code">
+                  <div class="input-group-append">
+                    <button type="submit" class="btn btn-secondary">Pay Now</button>
+                  </div>
+                </div>
+              </form> -->
+         
+         
+        <script
         src="https://checkout.razorpay.com/v1/checkout.js"
                    data-key="rzp_test_fu6uylByoiLTWv"
                    data-amount="{{ price }}"
                    data-currency="INR"
                    data-order_id="{{ order_id }}"
-
-                   data-name="Acme Corp"
+                  
+                   data-name="Team Enduro"
                    data-description="Test transaction"
-                   data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRpWzPOB8s9WRX7JXZ96x1oPESu-eoN5YUFfDKcebTKFn7piPBS&usqp=CAU"
+                   data-image="{% static 'images/logo.png' %}"
                    data-prefill.name="{{ name }}"
                    data-prefill.email="{{ email }}"
                    data-prefill.contact="{{ phone }}"
-                   data-theme.color="#000">
+                   data-theme.color="#3498db">
+
         
-        </script>        
-        <input type="hidden" custom="Hidden Element" name="hidden">
-      
-    
-            
-
-
-
-
+        </script>  
+     
+       <input type="hidden" custom="Hidden Element" name="hidden">
+  
+  
       </form>
 
 

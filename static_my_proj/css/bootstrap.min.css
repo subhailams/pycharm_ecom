@@ -357,7 +357,7 @@ template {
 }
 
 .h6, h6 {
-    font-size: 1rem
+    font-size: 1.25rem;
 }
 
 .lead {
@@ -2895,6 +2895,7 @@ a.btn.disabled, fieldset:disabled a.btn {
     background-color: transparent
 }
 
+
 .btn-link:hover {
     color: #0056b3;
     text-decoration: underline;
@@ -4943,7 +4944,7 @@ tbody.collapse.show {
 .list-group-item {
     position: relative;
     display: block;
-    padding: .75rem 1.25rem;
+    padding: 1.75rem 1.25rem;
     margin-bottom: -1px;
     background-color: #fff;
     border: 1px solid rgba(0, 0, 0, .125)
@@ -7133,7 +7134,7 @@ a.bg-dark:focus, a.bg-dark:hover, button.bg-dark:focus, button.bg-dark:hover {
 }
 
 .mb-0, .my-0 {
-    margin-bottom: 0!important
+    margin-bottom: 1!important
 }
 
 .ml-0, .mx-0 {

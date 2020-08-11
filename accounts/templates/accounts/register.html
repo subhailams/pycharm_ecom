@@ -140,6 +140,12 @@
 					<span class="login100-form-title p-b-49">
 						SignUp
 					</span>
+					{% for message in messages %}
+					<div class="alert alert-danger">
+				 
+					  {{message}}
+					</div>
+					{% endfor %}
 
 					<div class="wrap-input100 validate-input m-b-23">
 						<span class="label-input100">Username</span>
@@ -187,12 +193,7 @@
 						<span class="focus-inputs100"><i class="fa fa-lock"></i></span>
 
 					</div>
-					{% for message in messages %}
-					<div class="alert alert-danger">
-				 
-					  {{message}}
-					</div>
-					{% endfor %}
+					
 					
 					
 					{{ field.errors }}
@@ -205,6 +206,15 @@
 								Register
 							</button>
 						</div>
+					</div>
+					<div class="flex-col-c p-t-55">
+						<!-- <span class="txt1 p-b-17">
+							Or Sign Up Using
+						</span> -->
+
+						<b><span>Already an User?</span>
+						<a href="{% url 'login' %}"> <span style="color:rgb(27, 121, 245)">Login</span></a> 
+				
 					</div>
 
 

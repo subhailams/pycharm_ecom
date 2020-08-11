@@ -14,6 +14,9 @@ from products.models import Product
 from addresses.models import Address
 from accounts.signals import user_logged_in
 
+c = 0
+import razorpay
+client = razorpay.Client(auth=("rzp_test_fu6uylByoiLTWv", "UHCkK8GTEqFliNdSub9L3Vrd"))
 
 def cart_detail_api_view(request):
     cart_obj, new_obj = Cart.objects.new_or_get(request)
@@ -85,6 +88,8 @@ def cart_update(request):
         new_total = 0.0
         for x in cart_obj.cartitem_set.all():
             line_item = float(x.product.price) * x.quantity
+            cart_item.price = line_item
+            cart_item.save()
             new_total += line_item
 
         request.session['cart_items'] = cart_obj.cartitem_set.count()
@@ -109,8 +114,10 @@ def cart_update(request):
 
 
 def checkout_home(request):
-    Email=request.session.get("email")
-    print(Email)
+    global c
+    c+=1
+    order_status = None
+    print(c)
     cart_obj, cart_created = Cart.objects.new_or_get(request)
     order_obj = None
     if cart_created or cart_obj.cartitem_set.count()== 0:
@@ -121,39 +128,50 @@ def checkout_home(request):
     address_form = AddressForm()
     billing_address_id = request.session.get("billing_address_id", None)
     shipping_address_id = request.session.get("shipping_address_id", None)
-    print("CHeck:",billing_address_id)
-
+    print("CHeck:",shipping_address_id)
 
     billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
     if billing_profile is not None:
         order_obj, order_obj_created = Order.objects.new_or_get(billing_profile, cart_obj)
-    
+  
     if shipping_address_id:
-            order_obj.shipping_address = Address.objects.get(id=shipping_address_id)
-            del request.session["shipping_address_id"]
-    if billing_address_id:
-            order_obj.billing_address = Address.objects.get(id=billing_address_id) 
-            del request.session["billing_address_id"]
-    if billing_address_id or shipping_address_id:
-            order_obj.save()
-
-    if request.method == "POST":
-        "check that order is done"
-        is_done = order_obj.check_done()
-        if is_done:
-            # order_obj.mark_paid()
-            # request.session['cart_items'] = 0
-            # del request.session['cart_id']
-            return redirect("billing:razor")
-
+        return redirect("billing:razor")
+        # order_obj.shipping_address = Address.objects.get(id=shipping_address_id)
+        # print("CHeck:",shipping_address_id)
+        # order_obj.save()
+        # shipping_address=order_obj.shipping_address.get_address
+        # order_amount = int(100 * cart_obj.total)
+        # order_currency = 'INR'
+        # order_receipt = 'order_rcptid_11'
+        # response = client.order.create(dict(amount=order_amount, currency=order_currency, receipt=order_receipt, payment_capture='0'))
+        # order = response['id']
+        # order_status = response['status']
+        # print("order razor:",order, order_status)
+        # print("Order amt:",order_amount )
+		# # print( order_obj.billing_profile.get_address)
+        # if order_status=='created':
+        #     context={
+        #     "Order_total":order_amount,
+        #     "Billing_address":billing_profile,
+        #     "object": order_obj,
+        #     "order_id":order,
+        #     "cart": cart_obj,
+        #     "shipping_address":shipping_address
+            
+        #     }
+        #     return render(request, 'billing/confirm_order.html', context)
+    
     context = {
-        "cart_obj" : cart_obj,
-        "object": order_obj,
-        "billing_profile": billing_profile,
-        "login_form": login_form,
-        "guest_form": guest_form,
-        "address_form":address_form
-    }
+            "cart_obj" : cart_obj,
+            "object": order_obj,
+            "billing_profile": billing_profile,
+            "login_form": login_form,
+            "guest_form": guest_form,
+            "address_form":address_form
+        }
+    
+    
+     
     return render(request, "carts/checkout.html", context)
 def checkout_done_view(request):
     return render(request, "carts/checkout-done.html", {})

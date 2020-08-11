@@ -11,6 +11,12 @@ def home_page(request):
 def logout_page(request):
     return render(request,"temp/index.html")
 
+def conditions_page(request):
+    return render(request,"temp/TAC.html")
+
+def policy(request):
+    return render(request,"temp/policy.html")
+
 
 
 def contact_page(request):
