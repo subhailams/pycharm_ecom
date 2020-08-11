@@ -16,10 +16,7 @@ class Address(models.Model):
     country         = models.CharField(max_length=120, default='United States of America')
     state           = models.CharField(max_length=120)
     postal_code     = models.CharField(max_length=120)
-    active           = models.BooleanField(default=True)
-    updated          = models.DateTimeField(auto_now=True)
-    timestamp        = models.DateTimeField(auto_now_add=True,blank=True)
-    
+
     def __str__(self):
         return str(self.billing_profile)
     
