@@ -58,10 +58,11 @@ INSTALLED_APPS = [
     'orders',
     'cart',
     'search',
-    'socialapp'
+    'socialapp',
+    'ecommerce',
 ]
 
-SITE_ID = 1
+SITE_ID = 2
 
 AUTH_USER_MODEL = 'accounts.User'
 LOGIN_URL='/applogin/'
