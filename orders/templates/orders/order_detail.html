@@ -69,13 +69,13 @@
 					  <div class="cart-item-info">
 							<h4>{{ item.product.title }}</h4><br/>
 							<h4>₹. {{ item.product.price }}</h4>
-                            <h4><span>Quantity: {{ item.quantity }}</span></h4>
-							<a class="btn btn-danger" href="{% url 'orders:request-refund' %}" onclick="Login();">Cancel Order</a>
+                            <h4><span class="quantity">Quantity: {{ item.quantity }}</span></h4>
+							<!-- <a class="btn btn-danger" href="{% url 'orders:request-refund' %}" onclick="Login();">Cancel Order</a> -->
 							
                             <!-- {% include 'carts/snippets/remove-product.html' with product_id=item.product.id %} -->
                             
 					  </div>
-					  <!-- <div class="clearfix"></div> -->
+					  <div class="clearfix"></div>
 					 
 						
 					
@@ -95,42 +95,33 @@
 				   
 		</div>
 		<div class="col-md-3 cart-total">
-			
-				<!-- <div class="price-details"> -->
-					<b><span>SubTotal : </span></b>
+			<h7 class="continue">Order Total</h7>
+			<div class="price-details">
+				<b><span>SubTotal : </span></b>
 				<span class="cart-subtotal">{{ object.cart.total }}</span><br/>
 				<b><span>ShippingTotal : </span></b>
 				<span class="cart-subtotal">{{ object.shipping_total }}</span><br/>
 				<b><span>Order Total : </span></b>
 				<span class="cart-subtotal">{{ object.total }}</span><br/>
 				<b><span>Order Status : </span></b>
-				<span class="cart-subtotal">{{ object.get_status }}</span><br/>
-				<!-- <div class="clearfix"></div> -->
+				<span class="cart-subtotal">{{ object.get_status }}</span><br/>			 
+			</div>	
 			
-
-		</div>
+			<div class="clearfix"></div>
+			<a class="order1" href="{% url 'orders:request-refund' %}" onclick="Login();">Cancel Order</a>
+		
+		   </div>
+	
 		
 	</div>
+		
+</div>
+</div>
 	<span id="loading" style="visibility: hidden; text-align: center;">
 		<img src="C:\Users\jayashree\Downloads\389.gif"  data-transition="slide" />
 	</span>
 	<script>
-		// $(document).ready(function() {
-			// function pageLoad(sender, args) {
-			// 	var prm = Sys.WebForms.PageRequestManager.getInstance();
-			// 	prm.add_beginRequest(BeginRequestHandler);
-			// 	prm.add_endRequest(EndRequestHandler);
-			// }
-		
-			// function BeginRequestHandler(sender, args) {
-			// 	document.getElementById("mainDiv").style.visibility = 'hidden';
-			// 	document.getElementById("loading").style.visibility = 'visible';
-			// }
-		
-			// function EndRequestHandler(sender, args) {
-			//    document.getElementById("mainDiv").style.visibility = 'visible';
-			//    document.getElementById("loading").style.visibility = 'hidden';
-			// }
+	
 		
 		function Login() {
 			
@@ -139,12 +130,10 @@
 			location = "https://youtube.com";
 			}
 		
-		// });
+		
 		
 		</script>
-		
-   </div>
-</div>
+	
 
 </body>
 </html>

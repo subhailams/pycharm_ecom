@@ -1245,8 +1245,8 @@ p.qty {
 	font-weight:400;
 	float:right;
 }
-a.continue{
-	background:orange;
+.continue{
+	/* background:orange;
 	padding:10px 1.5em;
 	border-radius:7px;
 	font-size:1em;
@@ -1256,14 +1256,22 @@ a.continue{
    font-weight: 600;  
    text-align: center;
    width: 72%;
-   margin: 0px auto 3em auto;
+   margin: 0px auto 3em auto; */
+   font-family: "Whitney";
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+    color: #282c3f;
+	margin: 0px auto 0.75em auto;
+	display: block;
+	padding:10px 1.5em;
 }
 a.continue:hover{
 	background:#333;
 }
 .price-details{
 	border-bottom:1px solid;
-	padding-bottom:10px;
+	padding-bottom:17px;
 }
 .price-details h3{
 	color:#333;
@@ -1273,7 +1281,11 @@ a.continue:hover{
 .price-details span{
 	width:50%;
 	float:left;
-	padding:1px 0;
+	padding:1px 0px 0px 2em;
+}
+.cart-subtotal{
+
+
 }
 span.total{
 	width:47%;
@@ -1310,8 +1322,28 @@ a.order {
   width: 85%;
   margin: 3em auto 0 auto;
 }
+a.order1 {
+	background:#fb641b;
+	padding: 10px 1.5em;
+	border-radius: 7px;
+	font-size: 1em;
+	color: #fff;
+	text-decoration: none;
+	display: block;
+	font-weight: 600;
+	text-align: center;
+	width: 85%;
+	margin: 2em auto 0 auto;
+  }
+  a.order1:hover{
+	background:red;
+}
 a.order:hover{
 	background:green;
+}
+.quantity{
+	text-align: right;
+	margin-left: 6em;
 }
 .total-item{
 	margin-top:2em;

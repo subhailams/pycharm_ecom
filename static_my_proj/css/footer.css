@@ -100,13 +100,14 @@ ul {
 }
 
 .footer-widget-heading h3::before {
-  content: "";
+  /* content:"{% url 'index' %}"; */
   position: absolute;
   left: 0;
   bottom: -15px;
   height: 2px;
   width: 50px;
   background: #ff5e14;
+  z-index: 1;
 }
 .footer-widget ul li {
   display: inline-block;
