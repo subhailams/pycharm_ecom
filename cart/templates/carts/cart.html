@@ -5,7 +5,7 @@
 
 <!--/banner-->
 <div class="cart cart-table">
-	<div class="container">
+	<div class="container-fluid">
 		<div class="cart-top">
 		   <a href="index.html">home</a>
 		</div>	
@@ -39,7 +39,7 @@
 							<input min="1" type="number" id="quantity" name="quantity" value="1" class="form-control input-small"> -->
 							{% include 'carts/snippets/remove-product.html' with product_id=item.product.id %}
 					  </div>
-					  <div class="clearfix"></div>
+					  <!-- <div class="clearfix"></div> -->
 					   <div class="delivery">
 							<!-- <p>Service Charges:: Rs.100.00</p> -->
 								<span>Delivered in 5-7 bussiness days</span>

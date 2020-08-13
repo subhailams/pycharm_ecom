@@ -5,6 +5,7 @@ ul {
 .footer-section {
   background: #232f3e!important;;
   position: relative;
+  
 }
 .footer-cta {
   border-bottom: 1px solid #373636;
@@ -153,6 +154,14 @@ ul {
   font-size: 14px;
   color: #878787;
   padding-left: 16em;
+}
+@media (max-width:1045px){
+  .copyright-text p {
+    margin: 0;
+    font-size: 14px;
+    color: #878787;
+    padding-left: 1em;
+  }
 }
 .copyright-text p a{
   color: #ff5e14;
