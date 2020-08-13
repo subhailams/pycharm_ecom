@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 from .models import BillingProfile
+from addresses.forms import AddressForm
 from accounts.models import GuestEmail
 from orders.models import Order, OrderConfirmation
 from cart.models import Cart
@@ -15,8 +16,10 @@ client = razorpay.Client(auth=("rzp_test_fu6uylByoiLTWv", "UHCkK8GTEqFliNdSub9L3
 order_id = None
 cart_id = None
 GLOBAL_Entry = None
-def razor_pay(request):
+def razor_pay(request,id=None,*args, **kwargs):
 	if request.method == 'GET':
+		shipping_address_id = request.session.get("shipping_address_id", None)
+		print("Session:",shipping_address_id)
 		cart_obj, cart_created = Cart.objects.new_or_get(request)
 		order_obj = None
 		billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
@@ -32,18 +35,26 @@ def razor_pay(request):
 		order = response['id']
 		order_status = response['status']
 
+		order_obj.shipping_address = Address.objects.get(id=shipping_address_id)
+		print("CHeck:",shipping_address_id)
+		order_obj.save()
+		shipping_address=order_obj.shipping_address.get_address
+		print("shipAdrr:",shipping_address)
+		
 		if order_status=='created':
 			context={
 				"Order_total":order_amount,
 				"Billing_address":billing_profile.email,
 				"Order_id": order_obj,
-				"order_id":order
+				"order_id":order,
+				'cart':cart_id,
+				'shipping_address':shipping_address
 			}
 			return render(request, 'billing/confirm_order.html', context)
 	return HttpResponse('<h1>Error in  create order function</h1>')
 
 def payment_status(request):
-	global order_id
+	global order_id, cart_id 
 	response = request.POST
 	print(response)
 	params_dict = {
@@ -53,11 +64,14 @@ def payment_status(request):
     }
 	try:
 		status = client.utility.verify_payment_signature(params_dict)
+		print("status:",status)
 		order_obj = order_id
-		order_obj.mark_paid()
-		obj = OrderConfirmation.objects.create(billing_profile = order_obj.billing_profile,order_id=order_obj,email=order_obj.billing_profile.email)
+		obj = OrderConfirmation.objects.create(billing_profile = order_obj.billing_profile,order_id=order_obj,cart_id=cart_id, email=order_obj.billing_profile.email)
 		obj.send_order_confirmation()
+		print("Orderpaid:",order_obj)
+		order_obj.mark_paid()
 		order_obj.save()
+		del request.session["shipping_address_id"]
 		del request.session['cart_id']
 		request.session['cart_items'] = 0
 		return render(request, 'billing/order_summary.html', {'status': 'Payment Successful'})

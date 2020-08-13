@@ -18,9 +18,12 @@ ORDER_STATUS_CHOICES = (
 class OrderManagerQuerySet(models.query.QuerySet):
     def by_request(self, request):
         billing_profile, created = BillingProfile.objects.new_or_get(request)
+        print("love:",self.filter(billing_profile=billing_profile))
         return self.filter(billing_profile=billing_profile)
+        
 
     def not_created(self):
+        print("hate:",self.exclude(status='created'))
         return self.exclude(status='created')
 
 class OrderManager(models.Manager):
@@ -105,9 +108,8 @@ class Order(models.Model):
         return False
 
     def mark_paid(self):
-        if self.check_done():
-            self.status = "paid"
-            self.save()
+        self.status = "paid"
+        self.save()
         return self.status
 
 def pre_save_create_order_id(sender, instance, *args, **kwargs):
@@ -153,12 +155,11 @@ class OrderConfirmationManager(models.Manager):
 
 class OrderConfirmation(models.Model):
     billing_profile = models.ForeignKey(BillingProfile ,null=True,blank=True,on_delete=models.CASCADE)
-    # cart            = models.ForeignKey(Cart, null=True, blank=True, on_delete=models.CASCADE)
     order_id        = models.CharField(max_length=120, blank=True) 
+    cart_id         =models.CharField(max_length=120, blank=True) 
     email           = models.EmailField()
-    timestamp       = models.DateTimeField(auto_now_add=True)
-    update          = models.DateTimeField(auto_now=True)
 
+    
     objects = OrderConfirmationManager()
 
     def __str__(self):
@@ -172,6 +173,7 @@ class OrderConfirmation(models.Model):
             # 'path': path,
             'email': self.billing_profile.email,
             'order_id': self.order_id,
+            'cart': self.cart_id
 
         }
         txt_ = get_template("orders/order_confirm.txt").render(context)

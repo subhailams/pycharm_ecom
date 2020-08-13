@@ -1283,6 +1283,7 @@ h4.last-price{
 .cart-total {
   padding-top: 26px;
   border-left: 1px solid;
+  /* padding-bottom: 3rem!important; */
 }
 a.order {
   background:#fb641b;

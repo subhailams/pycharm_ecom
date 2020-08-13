@@ -271,7 +271,7 @@ th {
 *:after {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
-          box-sizing: border-box;
+          box-sizing: inherit;
 }
 html {
   font-size: 62.5%;
@@ -298,15 +298,8 @@ a {
   text-decoration: none;
 }
 a:hover,
-a:focus {
-  color: #E74C3C;
-  text-decoration: underline;
-}
-a:focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
+
+
 figure {
   margin: 0;
 }
@@ -760,6 +753,7 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  /* padding-bottom: 3rem!important; */
 }
 @media (min-width: 768px) {
   .container {
@@ -2329,11 +2323,11 @@ fieldset[disabled] .btn-link {
   border-color: transparent;
 }
 .btn-link:hover,
-.btn-link:focus {
+/* .btn-link:focus {
   color: #E74C3C;
   text-decoration: underline;
   background-color: transparent;
-}
+} */
 .btn-link[disabled]:hover,
 fieldset[disabled] .btn-link:hover,
 .btn-link[disabled]:focus,

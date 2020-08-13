@@ -1,9 +1,11 @@
 from django.contrib.auth import authenticate, login, get_user_model
 from django.http import HttpResponse,JsonResponse
 from django.shortcuts import render,redirect
+from django.core.exceptions import ObjectDoesNotExist
 
 from .forms import ContactForm
-
+from .models import Contact
+from orders.models import Order
 
 def home_page(request):
     return render(request,"temp/index.html")
@@ -23,29 +25,28 @@ def contact_page(request):
     if request.method =='POST':
         name = request.POST['name']
         email = request.POST['email']
-        # content = request.POST['content']
-        # contact_form = request.POST
-        # print(contact_form)
-        # context = {
-        #     "title":"Contact",
-        #     "content":" Welcome to the contact page.",
-        #     "form": contact_form,
-        # }
-        # if name.is_valid() and email.is_valid():
-            # print(contact_form.cleaned_data)
-        if request.is_ajax():
-            return JsonResponse({"message": "Thank you for your submission"})
-
-        # else:
-        #     errors = contact_form.errors.as_json()
-        #     if request.is_ajax():
-        #         return HttpResponse(errors, status=400, content_type='application/json')
-
-    # if request.method == "POST":
-    #     #print(request.POST)
-    #     print(request.POST.get('fullname'))
-    #     print(request.POST.get('email'))
-    #     print(request.POST.get('content'))
+        order_id = request.POST['order_id']
+        message = request.POST['message']
+        try:
+            order_obj = Order.objects.get(order_id=order_id)
+            if email != order_obj.billing_profile.email:
+                messages.error(self.request, "Email does not match for the given OrderId.")
+                return redirect("contact")
+            contact = Contact()
+            contact.username = name
+            contact.email = email
+            contact.order_id = order_id
+            contact.message = message
+            contact.save()
+            if request.is_ajax():
+                return JsonResponse({"message": "Thank you for your submission"})
+                
+        except ObjectDoesNotExist:
+                # messages.error(self.request, "This order does not exist.")
+                if request.is_ajax():
+                    return JsonResponse({"message": "This order does not exist"})
+                return redirect("contact")
+        
     return render(request, "temp/contact.html")
 
 def access(request):

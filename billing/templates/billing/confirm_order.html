@@ -15,6 +15,7 @@
      
       .main-block input {
       width: 10%;
+      /* position: absolute; */
       padding: 10px 0;
       margin-top: 10px;
       /* margin-bottom: 10px; */
@@ -26,6 +27,61 @@
       font-weight: 600;
       color: #fff;
       }
+      @media(max-width: 779px){
+        .main-block input {
+      width: 23%;
+      position: absolute;
+    
+      padding: 10px 30px;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      margin-left: 25em ;
+      border-radius: 7px;
+      border: none;
+      background: #3498db;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      }
+
+      }
+      @media(min-width: 780px) and (max-width: 990px){
+        .main-block input {
+      width: 23%;
+      position: relative;
+    
+      padding: 10px 30px;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      margin-left: 39em ;
+      border-radius: 7px;
+      border: none;
+      background: #3498db;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      }
+
+      }
+      /* @media(min-width: 9px){
+        .main-block input {
+      width: 50%;
+      position: relative;
+    
+      padding: 10px 30px;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      margin-left: 25em ;
+      border-radius: 7px;
+      border: none;
+      background: #3498db;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      }
+
+      } */
+
       .main-block h1 {
         padding-bottom: 1rem;
 
@@ -42,6 +98,7 @@
 
 
       <form action="{% url 'billing:payment_status' %}" method="POST">{% csrf_token %}
+        
 
 
 
@@ -56,7 +113,14 @@
               
               <ul class="list-group  mb-3">
                 <b><h2 > Shipping Address</h2></b>
-                <p>Deliver to {{shipping_address.get_address}}</p>
+                <p>Deliver to {{shipping_address}}</p>
+                <b><h2 > Product Details</h2></b>
+                {% if cart.cartitem_set.exists %}
+                {% for item in cart.cartitem_set.all %}
+                <h3 class="my-0"> {{ item.product.title }} &nbsp;   <span class="money">₹.{{item.product.price}}</span> </h3>
+                <p class="text-muted">{{ item.product.description }} </p>
+                {% endfor %}
+                {% endif %}
 
 
                 </ul>
@@ -124,6 +188,7 @@
                    data-amount="{{ price }}"
                    data-currency="INR"
                    data-order_id="{{ order_id }}"
+                   
                   
                    data-name="Team Enduro"
                    data-description="Test transaction"
@@ -135,6 +200,7 @@
 
         
         </script>  
+       
      
        <input type="hidden" custom="Hidden Element" name="hidden">
   

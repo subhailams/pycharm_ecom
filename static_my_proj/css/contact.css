@@ -2,23 +2,32 @@
 #contact {
     width: 100%;
     height: 800%;
-    background-color: #111;
+    background-color:#fff!important;
     background-size: cover;
     overflow: hidden; 
      padding-bottom: 200px;
   }
   
   .section-header {
+    font-family: "Whitney";
+    font-size: 30px;
+    font-weight: 500;
     text-align: center;
-    margin: 0 auto;
-    padding-top: 50px;
-    margin-bottom: 50px;
-    font: 300 60px 'Oswald', sans-serif;
-    letter-spacing: 6px;
-    color: #fff;
-    margin-bottom: 25px;
+    color: #282c3f;
+    margin-bottom:0.25em;
+    
+
+    
+  }
+  .desc{
+    font-family: "Whitney";
+    font-size: 14px;
+    text-align: center;
+    color: #696b79;
+    margin-bottom: 3em;
   }
   
+ 
   .contact-wrapper {
     margin: 0 auto;
     padding-top: 4px;
@@ -37,7 +46,7 @@
   .form-control, textarea {
     display: block;
     max-width: 170rem;
-    background-color: #111;
+    background-color: #fff;
     color: #fff;
     letter-spacing: 1px;
   }

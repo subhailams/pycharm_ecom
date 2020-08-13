@@ -49,6 +49,7 @@
 </head>
 <body>
 <div id="mainDiv" class="cart cart-table">
+	<div class="container">
 		<div class="cart-top">
 		   <a href="index.html">home</a>
 		</div>	
@@ -75,18 +76,7 @@
                             
 					  </div>
 					  <!-- <div class="clearfix"></div> -->
-					  <div class="center1">
-						<!-- <div class="price-details"> -->
-							<b><span>SubTotal : </span></b>
-						<span class="cart-subtotal">{{ object.cart.total }}</span><br/>
-						<b><span>ShippingTotal : </span></b>
-						<span class="cart-subtotal">{{ object.shipping_total }}</span><br/>
-						<b><span>Order Total : </span></b>
-						<span class="cart-subtotal">{{ object.total }}</span><br/>
-						<b><span>Order Status : </span></b>
-						<span class="cart-subtotal">{{ object.get_status }}</span><br/>
-						<!-- <div class="clearfix"></div> -->
-						</div>
+					 
 						
 					
 					   <div class="delivery">
@@ -103,6 +93,21 @@
 		
             
 				   
+		</div>
+		<div class="col-md-3 cart-total">
+			
+				<!-- <div class="price-details"> -->
+					<b><span>SubTotal : </span></b>
+				<span class="cart-subtotal">{{ object.cart.total }}</span><br/>
+				<b><span>ShippingTotal : </span></b>
+				<span class="cart-subtotal">{{ object.shipping_total }}</span><br/>
+				<b><span>Order Total : </span></b>
+				<span class="cart-subtotal">{{ object.total }}</span><br/>
+				<b><span>Order Status : </span></b>
+				<span class="cart-subtotal">{{ object.get_status }}</span><br/>
+				<!-- <div class="clearfix"></div> -->
+			
+
 		</div>
 		
 	</div>
@@ -138,7 +143,7 @@
 		
 		</script>
 		
-   
+   </div>
 </div>
 
 </body>

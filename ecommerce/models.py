@@ -2,18 +2,18 @@ from django.conf import settings
 from django.db import models
 
 
-from products.models import Product
-
 
 User = settings.AUTH_USER_MODEL
 
 
-class Cart(models.Model):
-    user        = models.ForeignKey(User, null=True, blank=True)
-    products    = models.ManyToManyField(Product, blank=True)
-    total       = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
+class Contact(models.Model):
+    # user        = models.ForeignKey(User, null=True, blank=True)
+    username    = models.CharField(null=True,blank=True, max_length=255)
+    email       = models.EmailField(null=True,blank=True, max_length=255)
+    order_id    =models.CharField(null=True,blank=True, max_length=255)
+    message     =models.TextField(null=True,blank=True, max_length=1000)
     updated     = models.DateTimeField(auto_now=True)
     timestamp   = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.id)
+        return str(self.username)

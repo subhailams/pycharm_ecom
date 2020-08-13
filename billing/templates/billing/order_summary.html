@@ -2,12 +2,22 @@
 {% include "nav.html" %}
 <link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css' />
 <html>
-Payment Status : {{ status }}
+<!-- Payment Status : {{ status }} -->
+
 <div class="container">
+  {% if status == "Payment Successful" %} 
 <div class='col-6 mx-auto py-5 text-center'>
-    <h1 class='display-1'>Thank you for your order!! Keep shopping!</h1>
+    <h1 class='display-1'>Thank you for your order!! Keep shopping! </h1>
     <img src="{% static 'images/shopping.png' %}" height="120px" weight="155px" alt="hello" />
       </div>
+      {% else %}
+      <div class='col-6 mx-auto py-5 text-center'>
+        <h1 class='display-1'>Ouch!we have failed to place your order!!Please Try again!</h1>
+        <img src="{% static 'images/shopping.png' %}" height="120px" weight="155px" alt="hello" />
+          </div>
+          {% endif %}
+
+
      
 </div>
 

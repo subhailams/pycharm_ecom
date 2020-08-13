@@ -25,13 +25,22 @@
     width: 100%;
     position: relative;
     display: flex;
+    padding-top:15px ;
+    padding-right:30px ;
+    padding-bottom:15px ;
+    padding-left:2px ;
   }
   
   .searchTerm {
     width: 100%;
     border: 3px solid transparent;
     border-right: none;
-    padding: 15px;
+    /* padding: 15px; */
+    /* padding-top:15px ;
+    padding-right:30px ;
+    padding-bottom:15px ;
+    padding-left:30px ; */
+
     height: 36px;
     border-radius: 5px 0 0 5px;
     outline: none;
@@ -732,8 +741,8 @@
 		left: auto
 	}
 	.navbar-expand-lg .navbar-nav .nav-link {
-		padding-right: .rem;
-		padding-left: .5rem
+		padding-right: 0.rem;
+		padding-left: 2.0rem;
 	}
 	.navbar-expand-lg>.container, .navbar-expand-lg>.container-fluid {
 		-ms-flex-wrap: nowrap;

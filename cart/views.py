@@ -54,7 +54,6 @@ def cart_update(request):
             return redirect("cart:cart")
 
         cart_obj, new_obj = Cart.objects.new_or_get(request)
-        print(request)
         # cart_item, created = CartItem.objects.get_or_create(cart=cart_obj, product=product_obj)
         # if created:
         #     print("created")
@@ -88,15 +87,14 @@ def cart_update(request):
         new_total = 0.0
         for x in cart_obj.cartitem_set.all():
             line_item = float(x.product.price) * x.quantity
-            cart_item.price = line_item
-            cart_item.save()
+            cart_item.price= line_item
             new_total += line_item
 
         request.session['cart_items'] = cart_obj.cartitem_set.count()
         print("cartTotal:",cart_obj.cartitem_set.count())
         cart_obj.subtotal = new_total
         if cart_obj.subtotal > 0:
-            cart_obj.total = cart_obj.subtotal * 1.08
+            cart_obj.total = Decimal(cart_obj.subtotal) * Decimal(1.08)
         else :
             cart_obj.total = 0.00
         cart_obj.save()
@@ -111,6 +109,7 @@ def cart_update(request):
             }
             return JsonResponse(json_data)
     return redirect("cart:cart")
+
 
 
 def checkout_home(request):
@@ -135,6 +134,9 @@ def checkout_home(request):
         order_obj, order_obj_created = Order.objects.new_or_get(billing_profile, cart_obj)
   
     if shipping_address_id:
+        order_obj.shipping_address = Address.objects.get(id=shipping_address_id)
+        print("CHeck:",shipping_address_id)
+        order_obj.save()
         return redirect("billing:razor")
         # order_obj.shipping_address = Address.objects.get(id=shipping_address_id)
         # print("CHeck:",shipping_address_id)

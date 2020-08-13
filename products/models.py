@@ -42,7 +42,8 @@ class ProductManager(models.Manager):
 
 class Product(models.Model):
     title           = models.CharField(max_length=120)
-    description     = models.TextField()
+    detail          = models.TextField(default="Null")
+    description     = models.TextField(max_length=200)
     slug            = models.SlugField(blank=True, unique=True)
     category        = models.CharField(max_length=120,default='')
     quantity        = models.IntegerField(default=1, null=True)

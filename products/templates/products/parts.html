@@ -61,15 +61,18 @@
 		$('.post-wrapper1').slick({
   
 		slidesToShow: 3,
+		// breakpoint:800,
 		slidesToScroll: 1,
-		autoplay: false,
+		autoplay: true,
 		autoplaySpeed: 2000,
-		centerPadding:'0',
+		// centerPadding:'0',
 		nextArrow: $('.next1'),
 		prevArrow: $('.prev1'),
 		dots: true,
-		centerMode: true,
+		// centerMode: true,
 		focusOnSelect: true,
+		// slideMargin:6,
+		easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
 	});
 
 }
@@ -89,16 +92,19 @@
 	});
 }
 
-if (document.documentElement.clientWidth < 640)
+if (document.documentElement.clientWidth < 900)
 {
 	$('.post-wrapper2').slick({
   	
 	  slidesToShow: 3,
+	//   breakpoint:800,
 	  slidesToScroll: 1,
-	  autoplay: false,
+	  autoplay: true,
 	  autoplaySpeed: 2000,
 	  nextArrow: $('.next2'),
 	  prevArrow: $('.prev2'),
+	//   slideMargin:6,
+	  easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
 		});
 	
 }
@@ -119,11 +125,14 @@ if (document.documentElement.clientWidth < 640)
 	$('.post-wrapper3').slick({
   	
 	  slidesToShow: 3,
+	//   breakpoint:800,
 	  slidesToScroll: 1,
-	  autoplay: false,
+	  autoplay: true,
 	  autoplaySpeed: 2000,
 	  nextArrow: $('.next3'),
 	  prevArrow: $('.prev3'),
+	//   slideMargin:6,
+	  easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
 		});
 }
 else{
@@ -200,7 +209,7 @@ Ticker.prototype.loop = function() {
 		var currLetter = this.letters.eq( this.letterCurrent );
 		this.cycleCurrent = 0;
 		currLetter.text( currLetter.attr( 'data-orig' ) ).css( 'opacity', 1 ).addClass( 'done' );
-		this.letterCurrent++;
+		this.letterCurrent++;	
 	} else {
 		this.done = true;
 	}
@@ -265,15 +274,15 @@ $words.each( function() {
                                {% for product in allProds %}
                                {% if product.0.category == "parts" %}
 								<h1 class="slider-title"> {{ product.0.category}}</h1>
-								<i class="fa fa-chevron-left prev1"></i>
-								<i class="fa fa-chevron-right next1"></i>
+								<!-- <i class="fa fa-chevron-left prev1"></i>
+								<i class="fa fa-chevron-right next1"></i> -->
 								<div class="post-wrapper1">
 									 {% for i in product|slice:"0:" %}
 									<div class="post">
 										<a href=" {% url 'products:view' slug=i.slug %}"><div class="slider-sec">					 
 										 <img src="{{i.image.url}}" alt=""/>
 										 <div class="part-info">
-											 <a href="#"><h5>{{i.title}}<span><strong>₹ {{i.price}}</strong></span></h5></a>
+											 <h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs. {{i.price}}</span></h5>
 											 <a class="btn btn-danger" href="{% url 'products:view' slug=i.slug %}" onclick="Login();">Quick View</a>
 										 </div>
 									 </div></a>
@@ -286,8 +295,8 @@ $words.each( function() {
 
 								 {% if product.0.category == "safety" %}
 								<h1 class="slider-title"> {{ product.0.category}}</h1>
-								<i class="fa fa-chevron-left prev2"></i>
-								<i class="fa fa-chevron-right next2"></i>
+								<!-- <i class="fa fa-chevron-left prev2"></i>
+								<i class="fa fa-chevron-right next2"></i> -->
 								
 								<div class="post-wrapper2">
 									 {% for i in product|slice:"0:" %}
@@ -296,7 +305,7 @@ $words.each( function() {
 										 <img src="{{i.image.url}}" alt=""/>
 										
 										 <div class="part-info">
-											 <a href="#"><h5>{{i.title}}<span><strong>₹ {{i.price}}</strong></span></h5></a>
+											 <a href="#"><h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs. {{i.price}}</span></h5></a>
 											 <a class="btn btn-danger" href="{% url 'products:view' slug=i.slug %}" onclick="Login();">Quick View</a>
 										 </div>
 									 </div></a>
@@ -309,15 +318,15 @@ $words.each( function() {
 								{% endif %}
 								{% if product.0.category == "spare" %}
 								<h1 class="slider-title"> {{ product.0.category}}</h1>
-								<i class="fa fa-chevron-left prev3"></i>
-								<i class="fa fa-chevron-right next3"></i>
+								<!-- <i class="fa fa-chevron-left prev3"></i>
+								<i class="fa fa-chevron-right next3"></i> -->
 								<div class="post-wrapper3">
 									 {% for i in product|slice:"0:" %}
 									<div class="post">
 										<a href=" {% url 'products:view' slug=i.slug %}"><div class="slider-sec">					 
 										 <img src="{{i.image.url}}" alt=""/>
 										 <div class="part-info">
-											 <a href="#"><h5>{{i.title}}<span><strong>₹ {{i.price}}</strong></span></h5></a>
+											 <a href="#"><h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs. {{i.price}}</span></h5></a>
 											 <a class="btn btn-danger" href="{% url 'products:view' slug=i.slug %}" onclick="Login();">Quick View</a>
 										 </div>
 									 </div></a>
@@ -333,10 +342,7 @@ $words.each( function() {
 						</div>	
 		
 						</div>
-						<span id="loading" style="visibility: hidden; text-align: center;">
-							<div class="word">LOADING...</div>
-							<div class="overlay"></div>
-						</span>
+						
 						 <div class="clearfix"></div>
 						 <!-- <a href="#" id="scroll" style="display: none;"><span></span></a> -->
 					 </div>

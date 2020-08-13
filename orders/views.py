@@ -7,9 +7,11 @@ from django.contrib import messages
 from billing.models import BillingProfile
 from .models import Order, Refund
 from .forms import RefundForm
+
 class OrderListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
+        print(Order.objects.by_request(self.request).not_created())
         return Order.objects.by_request(self.request).not_created()
 
 

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Order, Refund
+from .models import Order, Refund, OrderConfirmation
 
 def make_refund_accepted(modeladmin, request, queryset):
     queryset.update(refund_requested=False, refund_granted=True)
@@ -26,3 +26,4 @@ class OrderAdmin(admin.ModelAdmin):
 
 admin.site.register(Order,OrderAdmin)
 admin.site.register(Refund)
+admin.site.register(OrderConfirmation)

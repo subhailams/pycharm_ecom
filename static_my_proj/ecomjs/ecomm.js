@@ -38,7 +38,7 @@ $(document).ready(function () {
         contactForm[0].reset()
         // $.alert("success bro")
         $.alert({
-          title: "Success!",
+          
           content: data.message,
           theme: "modern",
         })
@@ -52,14 +52,14 @@ $(document).ready(function () {
         var jsonData = error.responseJSON
         var msg = ""
 
-        $.each(jsonData, function (key, value) {
+        $(jsonData, function (key, value) {
 
           msg += key + ": " + value[0].message + "<br/>"
         })
 
         $.alert({
-          title: "Oops!",
-          content: msg,
+          // title: "Oops!",
+          content: data.message,
           theme: "modern",
         })
 

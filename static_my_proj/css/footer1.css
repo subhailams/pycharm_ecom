@@ -3,7 +3,7 @@ ul {
     padding: 0px;
 }
 .footer-section {
-  background: #151414;
+  background: #232f3e!important;
   position: relative;
   bottom: -143px;
 }
@@ -12,7 +12,9 @@ ul {
 }
 
 .pt-5, .py-5 {
-    padding-top: 3rem!important
+    padding-top: 3rem!important;
+    padding-left: 3rem!important;
+    padding-right: 3rem!important;  
 }
 
 .pb-5, .py-5 {

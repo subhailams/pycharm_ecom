@@ -15,15 +15,15 @@
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="{% url 'products:products' %}" id="navbarDropdown"
-                    role="button" data-hover="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    role="button" data-hover="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="Login();">
                     Products
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'products:products' %}">Chains</a>
-                    <a class="dropdown-item" href="{% url 'products:products' %}">Tubes</a>
+                    <a class="dropdown-item" href="{% url 'products:products' %}"  onclick="Login();">Chains</a>
+                    <a class="dropdown-item" href="{% url 'products:products' %}"  onclick="Login();">Tubes</a>
                     <!-- <div class="dropdown-divider"></div> -->
-                    <a class="dropdown-item" href="{% url 'products:products' %}">Tires</a>
-                    <a class="dropdown-item" href="{% url 'products:products' %}">Disk brakes</a>
+                    <a class="dropdown-item" href="{% url 'products:products' %}"  onclick="Login();">Tires</a>
+                    <a class="dropdown-item" href="{% url 'products:products' %}" onclick="Login();">Disk brakes</a>
                 </div>
             </li>
 
