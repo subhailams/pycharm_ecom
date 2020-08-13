@@ -69,7 +69,8 @@ def payment_status(request):
 		obj = OrderConfirmation.objects.create(billing_profile = order_obj.billing_profile,order_id=order_obj, email=order_obj.billing_profile.email)
 		obj.send_order_confirmation()
 		print("Orderpaid:",order_obj)
-		order_obj.mark_paid()
+		order_obj.status = "paid"
+		# order_obj.mark_paid()-
 		order_obj.save()
 		del request.session["shipping_address_id"]
 		del request.session['cart_id']
