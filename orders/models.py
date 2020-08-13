@@ -156,7 +156,6 @@ class OrderConfirmationManager(models.Manager):
 class OrderConfirmation(models.Model):
     billing_profile = models.ForeignKey(BillingProfile ,null=True,blank=True,on_delete=models.CASCADE)
     order_id        = models.CharField(max_length=120, blank=True) 
-    cart_id         =models.IntegerField(blank=True) 
     email           = models.EmailField()
 
     
@@ -173,7 +172,7 @@ class OrderConfirmation(models.Model):
             # 'path': path,
             'email': self.billing_profile.email,
             'order_id': self.order_id,
-            'cart': self.cart_id
+          
 
         }
         txt_ = get_template("orders/order_confirm.txt").render(context)
