@@ -156,7 +156,7 @@ class OrderConfirmationManager(models.Manager):
 class OrderConfirmation(models.Model):
     billing_profile = models.ForeignKey(BillingProfile ,null=True,blank=True,on_delete=models.CASCADE)
     order_id        = models.CharField(max_length=120, blank=True) 
-    cart_id         =models.CharField(max_length=120, blank=True) 
+    cart_id         =models.IntegerField(blank=True) 
     email           = models.EmailField()
 
     
