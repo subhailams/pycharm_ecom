@@ -61,7 +61,7 @@ INSTALLED_APPS = [
     'socialapp'
 ]
 
-SITE_ID = 2
+SITE_ID = 1
 
 AUTH_USER_MODEL = 'accounts.User'
 LOGIN_URL='/applogin/'
