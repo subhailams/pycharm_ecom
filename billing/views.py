@@ -66,7 +66,7 @@ def payment_status(request):
 		status = client.utility.verify_payment_signature(params_dict)
 		print("status:",status)
 		order_obj = order_id
-		obj = OrderConfirmation.objects.create(billing_profile = order_obj.billing_profile,order_id=order_obj,cart_id=cart_id, email=order_obj.billing_profile.email)
+		obj = OrderConfirmation.objects.create(billing_profile = order_obj.billing_profile,order_id=order_obj, email=order_obj.billing_profile.email)
 		obj.send_order_confirmation()
 		print("Orderpaid:",order_obj)
 		order_obj.mark_paid()
