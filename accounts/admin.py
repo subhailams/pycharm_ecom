@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from.forms import UserAdminCreationForm,UserAdminChangeForm
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .models import GuestEmail, EmailActivation
+from phone_field import PhoneField
 
 User=get_user_model()
 class UserAdmin(BaseUserAdmin):
@@ -17,7 +18,7 @@ class UserAdmin(BaseUserAdmin):
     list_filter = ('admin', 'staff', 'is_active')
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Personal info', {'fields': ('full_name',)}),
+        ('Personal info', {'fields': ('full_name','contact')}),
         ('Permissions', {'fields': ('admin', 'staff', 'is_active',)}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
@@ -28,7 +29,7 @@ class UserAdmin(BaseUserAdmin):
             'fields': ('email', 'password1', 'password2')}
         ),
     )
-    search_fields = ('email','full_name',)
+    search_fields = ('email','full_name','contact')
     ordering = ('email',)
     filter_horizontal = ()
 

@@ -133,30 +133,59 @@ def login_page(request):
             return redirect('login')
     return render(request, "accounts/index.html", {})
 
-
-
-    
 User = get_user_model()
 def RegisterView(request):
-    form = RegisterForm(request.POST or None)
     if request.method =="POST":
-        full_name=form['full_name'].value()
-        email=form['email'].value()
-        password1=form['password1'].value()
-        password2=form['password2'].value()
+        full_name=request.POST['full_name']
+        contact=request.POST['contact']
+        print("contact:",contact)
+        email=request.POST['email']
+        password1=request.POST['password1']
+        password2=request.POST['password2']
         qs = User.objects.filter(email=email)
         if qs.count() == 1:
             messages.error(request,'User is already registered')
-        elif form.is_valid():
-            form.save()
-            # print("User:", user)
-            messages.error(request,'A link has been sent to your email.Follow the link to activate your account')
-            return redirect('login')
         elif not email:
             messages.error(request,'email cannot be empty')
         elif not password1 or not password2:
             messages.error(request,'password cannot be empty')
         elif password1 != password2:
             messages.error(request,'password doesnt match')
+        else:
+            user = User.objects.create(email=email,full_name=full_name,contact=contact,is_active=False,staff=False,admin=False)
+            user.set_password(password1)
+            user.save()
+            print(user)
+            # print("User:", user)
+            messages.error(request,'A link has been sent to your email.Follow the link to activate your account')
+            return redirect('login')
+        
         # return redirect('login')
     return render(request, "accounts/register.html")
+
+
+    
+# User = get_user_model()
+# def RegisterView(request):
+#     form = RegisterForm(request.POST or None)
+#     if request.method =="POST":
+#         full_name=form['full_name'].value()
+#         email=form['email'].value()
+#         password1=form['password1'].value()
+#         password2=form['password2'].value()
+#         qs = User.objects.filter(email=email)
+#         if qs.count() == 1:
+#             messages.error(request,'User is already registered')
+#         elif form.is_valid():
+#             form.save()
+#             # print("User:", user)
+#             messages.error(request,'A link has been sent to your email.Follow the link to activate your account')
+#             return redirect('login')
+#         elif not email:
+#             messages.error(request,'email cannot be empty')
+#         elif not password1 or not password2:
+#             messages.error(request,'password cannot be empty')
+#         elif password1 != password2:
+#             messages.error(request,'password doesnt match')
+#         # return redirect('login')
+#     return render(request, "accounts/register.html")

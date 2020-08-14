@@ -19,26 +19,28 @@
                     Products
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'products:products' %}"  onclick="Login();">Chains</a>
-                    <a class="dropdown-item" href="{% url 'products:products' %}"  onclick="Login();">Tubes</a>
+                    <a class="dropdown-item" href="{% url 'products:products' %}" >Chains</a>
+                    <a class="dropdown-item" href="{% url 'products:products' %}">Tubes</a>
                     <!-- <div class="dropdown-divider"></div> -->
-                    <a class="dropdown-item" href="{% url 'products:products' %}"  onclick="Login();">Tires</a>
-                    <a class="dropdown-item" href="{% url 'products:products' %}" onclick="Login();">Disk brakes</a>
+                    <a class="dropdown-item" href="{% url 'products:products' %}">Tires</a>
+                    <a class="dropdown-item" href="{% url 'products:products' %}"   >Disk brakes</a>
                 </div>
             </li>
 
             {% if request.user.is_authenticated %}
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-user-circle" aria-hidden="true"></i>	
+                    <!-- <i class="fa fa-user-circle" aria-hidden="tr- -->
+                    {{request.user.full_name}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <!-- <a class="dropdown-item" href="{{request.user}}">dhg</a> -->
-                    <a class="dropdown-item" href="#">{{request.user.full_name}} </a>
-                  <a class="dropdown-item" href="{% url 'account:home' %}">Home</a>
-                  <a class="dropdown-item" href="#">Support</a>
-                  <a class="dropdown-item" href="#">Billing</a>
-                  <a class="dropdown-item" href="#">Prefernces</a>
+                    <a class="dropdown-item" href="{% url 'account:home' %}">Profile</a>
+                    <a class="dropdown-item" href="{% url 'orders:list' %}">Orders</a>
+                    
+                  <a class="dropdown-item" href="{% url 'returnpolicy' %}"">Return policy</a>
+                  <!-- <a class="dropdown-item" href="#">Billing</a>
+                  <a class="dropdown-item" href="#">Prefernces</a> -->
                   <!-- <a class="dropdown-item" href="#">History</a> -->
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>

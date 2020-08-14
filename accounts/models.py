@@ -16,7 +16,7 @@ DEFAULT_ACTIVATION_DAYS = getattr(settings, 'DEFAULT_ACTIVATION_DAYS', 7)
 
 # send_mail(subject, message, from_email, recipient_list, html_message)
 class UserManager(BaseUserManager):
-    def create_user(self, email, full_name=None, password=None, is_active=True, is_staff=False, is_admin=False):
+    def create_user(self, email, full_name=None, password=None, is_active=True,contact=None, is_staff=False, is_admin=False):
         if not email:
             raise ValueError("Users must have an email address")
         if not password:
@@ -27,7 +27,7 @@ class UserManager(BaseUserManager):
         user_obj = self.model(
             email = self.normalize_email(email),
             full_name=full_name,
-            # contact=contact
+            contact=contact
             # username=self.normalize_username(username)
         )
         user_obj.set_password(password) # change user password
@@ -37,12 +37,12 @@ class UserManager(BaseUserManager):
         user_obj.save(using=self._db)  
         return user_obj
 
-    def create_staffuser(self,email,full_name=None, password=None):
+    def create_staffuser(self,email,full_name=None, contact=None, password=None):
         user = self.create_user(
                 # username,
                 email,
                 full_name=full_name,
-                # contact=contact,
+                contact=contact,
                 password=password,
                 is_staff=True
         )
@@ -64,7 +64,7 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):
     email       = models.EmailField(max_length=255, unique=True)
     full_name   = models.CharField(max_length=255, blank=True, null=True)
-    # contact     = PhoneField(blank=True, help_text='Contact phone number', default='8610125217')
+    contact     = PhoneField(blank=True, help_text='Contact phone number')
     is_active      = models.BooleanField(default=True) 
     staff       = models.BooleanField(default=False) # staff user non superuser
     admin       = models.BooleanField(default=False) # superuser 

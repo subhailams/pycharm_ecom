@@ -94,16 +94,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 				{% if request.user.is_authenticated %}
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="fa fa-user-circle" aria-hidden="true"></i>	
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">
+						<!-- <i class="fa fa-user-circle" aria-hidden="tr- -->
+						{{request.user.full_name}}
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<!-- <a class="dropdown-item" href="{{request.user}}">dhg</a> -->
-						<a class="dropdown-item" href="#">{{request.user.full_name}} </a>
-					  <a class="dropdown-item" href="{% url 'account:home' %}">Home</a>
-					  <a class="dropdown-item" href="#">Support</a>
-					  <a class="dropdown-item" href="#">Billing</a>
-					  <a class="dropdown-item" href="#">Prefernces</a>
+						<a class="dropdown-item" href="{% url 'account:home' %}">Your Profile</a>
+						<a class="dropdown-item" href="{% url 'orders:list' %}">Your Orders</a>
+						
+					  <a class="dropdown-item" href="{% url 'returnpolicy' %}"">Return policy</a>
+					  <!-- <a class="dropdown-item" href="#">Billing</a>
+					  <a class="dropdown-item" href="#">Prefernces</a> -->
 					  <!-- <a class="dropdown-item" href="#">History</a> -->
 					  <div class="dropdown-divider"></div>
 					  <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>

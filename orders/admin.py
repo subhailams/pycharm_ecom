@@ -13,13 +13,15 @@ class OrderAdmin(admin.ModelAdmin):
         'order_id'
     ]
     list_display = [
+                        
                         'order_id',
+                        'status',
                         'being_delivered',
-                        'received',
                         'refund_requested',
                         'refund_granted',
                         
                         ]
+    list_filter = ('status','billing_profile__email','being_delivered','refund_requested', 'refund_granted')
     actions = [make_refund_accepted]
     class Meta:
         model = Order

@@ -346,9 +346,10 @@ h1{
 	line-height: 1;
 	font-weight:600;
 	margin-bottom:6px;
-	/* overflow: hidden; */
+	
 	white-space: nowrap;
 	margin-block-start: 0;
+	text-transform: capitalize;
 	/* text-align: left; */
 
 }
@@ -358,7 +359,7 @@ h1{
     line-height: 1;
     margin-bottom: 0;
     margin-top: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
     text-overflow: ellipsis;
     white-space: nowrap;
     font-weight: 400;
@@ -367,12 +368,16 @@ h1{
 	-webkit-font-smoothing: antialiased;
 	/* margin-bottom: 10px; */
 }
-.price{
+span.price{
 	font-size: 14px;
     color: #282c3f;
 	font-weight: 500;
 	line-height: 15px;
-    margin: 10px 0 6px;
+	/* margin: 10px 0 6px; */
+	margin-top: 2em;
+	margin-left: 2em;
+	margin-right: 2em;
+	margin-bottom: 0.5em;
 	white-space: nowrap;
 	-webkit-font-smoothing: antialiased;
 }
@@ -380,7 +385,7 @@ h1{
 	display:block;
 	font-size:14px;
 	font-weight:500;
-	margin-top:6px;
+	margin-top:1.35rem;
 }
 .slider-sec img{
 	width:80%;
