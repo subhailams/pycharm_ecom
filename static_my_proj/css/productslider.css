@@ -330,7 +330,7 @@ h1{
 	text-align:center;
 	position:relative;
 }
-@media (min-width:540px) and (max-width:900px){
+/* @media (min-width:540px) and (max-width:900px){
 	.slider-sec{
 		float:left;
 		margin:1 2%;
@@ -339,14 +339,14 @@ h1{
 		text-align:center;
 		position:relative;
 	}
-}
+} */
 .slider-sec a h5{
 	color:#282c3f;
 	font-size:16px;
 	line-height: 1;
 	font-weight:600;
 	margin-bottom:6px;
-	overflow: hidden;
+	/* overflow: hidden; */
 	white-space: nowrap;
 	margin-block-start: 0;
 	/* text-align: left; */

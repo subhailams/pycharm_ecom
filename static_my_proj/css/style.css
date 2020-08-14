@@ -1245,8 +1245,8 @@ p.qty {
 	font-weight:400;
 	float:right;
 }
-.continue{
-	/* background:orange;
+a.continue{
+	background:orange;
 	padding:10px 1.5em;
 	border-radius:7px;
 	font-size:1em;
@@ -1256,8 +1256,11 @@ p.qty {
    font-weight: 600;  
    text-align: center;
    width: 72%;
-   margin: 0px auto 3em auto; */
-   font-family: "Whitney";
+   margin: 0px auto 3em auto;
+  
+}
+.continue1{
+	font-family: "Whitney";
     font-size: 30px;
     font-weight: 500;
     text-align: center;
