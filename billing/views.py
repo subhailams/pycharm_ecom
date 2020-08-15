@@ -32,7 +32,7 @@ def razor_pay(request,id=None,*args, **kwargs):
 		print(order_amount)
 		order_currency = 'INR'
 		order_receipt = 'order_rcptid_11'
-		response = client.order.create(dict(amount=order_amount, currency=order_currency, receipt=order_receipt, payment_capture='0'))
+		response = client.order.create(dict(amount=order_amount, currency=order_currency, receipt=order_receipt, payment_capture='1'))
 		order = response['id']
 		order_status = response['status']
 
