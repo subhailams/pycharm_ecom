@@ -14,10 +14,41 @@ from .signals import user_logged_in
 from django.urls import reverse
 from django import forms
 
-class AccountHomeView(LoginRequiredMixin, DetailView):
-    template_name = 'accounts/home.html'
-    def get_object(self):
-        return self.request.user
+# class AccountHomeView(LoginRequiredMixin, DetailView):
+#     template_name = 'accounts/home.html'
+#     def get_object(self):
+#         return self.request.user
+User = get_user_model()
+def AccountHomeView(request):
+    if request.method =='POST': 
+        username=request.POST.get('username')
+        contact=request.POST.get('contact')
+        dob=request.POST.get('dob')
+        print("dob:",dob,username)
+        email=request.POST.get('email')
+        password1=request.POST['password1']
+        password2=request.POST['password2']
+        if not email:
+            messages.error(request,'email cannot be empty')
+        elif not password1 or not password2:
+            messages.error(request,'password cannot be empty')
+        elif password1 != password2:
+            messages.error(request,'password doesnt match')
+        else:
+            user = request.user
+            print(user)
+            user.full_name=username
+            user.contact= contact
+            user.dob= dob
+            user.email= email
+            user.set_password(password1)
+            # user.password1= password1
+            # user.password2= password2
+            user.save()
+            messages.success(request,'Your profile is successfully updated')
+        return redirect("account:home")
+
+    return render(request, 'accounts/home.html', {})
 
 class AccountEmailActivateView(View):
     def get(self, request, key, *args, **kwargs):
@@ -138,7 +169,8 @@ def RegisterView(request):
     if request.method =="POST":
         full_name=request.POST['full_name']
         contact=request.POST['contact']
-        print("contact:",contact)
+        dob=request.POST['dob']
+        print("dob:",dob)
         email=request.POST['email']
         password1=request.POST['password1']
         password2=request.POST['password2']
@@ -152,12 +184,12 @@ def RegisterView(request):
         elif password1 != password2:
             messages.error(request,'password doesnt match')
         else:
-            user = User.objects.create(email=email,full_name=full_name,contact=contact,is_active=False,staff=False,admin=False)
+            user = User.objects.create(email=email,full_name=full_name,dob=dob,contact=contact,is_active=False,staff=False,admin=False)
             user.set_password(password1)
             user.save()
             print(user)
             # print("User:", user)
-            messages.error(request,'A link has been sent to your email.Follow the link to activate your account')
+            messages.success(request,'A link has been sent to your email.Follow the link to activate your account')
             return redirect('login')
         
         # return redirect('login')

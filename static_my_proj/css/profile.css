@@ -92,12 +92,12 @@
   }
   .subcomponents-btn {
     padding: 11px 0;
-    border: 1px solid #ff3f6c;
+    border: 1px solid #007bff;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
     background-color: #ffffff;
-    color: #ff3f6c;
+    color: #007bff;
     font-weight: 600;
     text-transform: uppercase;
     font-size: 14px;
@@ -128,7 +128,7 @@
     margin: 0;
   }
   .subcomponents-btn.subcomponents-primary {
-    background-color: #ff3f6c;
+    background-color: #007bff;
     color: #ffffff;
   }
   @media (min-width: 780px) {

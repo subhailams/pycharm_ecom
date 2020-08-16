@@ -152,15 +152,23 @@
     <div class="page-profile">
       <div class="profileEdit-card">
         <div class="profileEdit-infoLabel">Edit Profile</div>
-        <form autocomplete="new-password" class="profileEdit-smartForm">
+        {% for message in messages %}
+        <div class="alert alert-danger">
+       
+          {{message}}
+        </div>
+        {% endfor %}
+        <form autocomplete="new-password" class="profileEdit-smartForm" method="POST">{% csrf_token %}
           <div class="profileEdit-formElement">
             <div class="textInput-form-group">
               <input
                 type="text"
+                id="username"
+                name="username"
                 autocomplete="new-password"
                 value=" " 
                 class="textInput-form-control"
-                placeholder=""
+                placeholder="Enter Your Name"
               /><span class="textInput-topPlaceholderAlternative"
                 ><!-- react-text: 74 -->
                 <!-- /react-text --><!-- react-text: 75 -->Full Name<!-- /react-text --><!-- react-text: 76 --><!-- /react-text --><!-- react-text: 77 -->
@@ -172,11 +180,12 @@
             <div class="textInput-form-group">
               <input
                 type="text"
-                disabled=""
+                id="email"
+                name="email"
                 autocomplete="new-password"
                 value=" "
                 class="textInput-form-control"
-                placeholder=""
+                placeholder="Enter Your Email"
               /><span class="textInput-topPlaceholderAlternative"
                 ><!-- react-text: 83 -->
                 <!-- /react-text --><!-- react-text: 84 -->Email<!-- /react-text --><!-- react-text: 85 --><!-- /react-text --><!-- react-text: 86 -->
@@ -184,55 +193,13 @@
               ><i class="textInput-bar"></i>
             </div>
           </div>
-          <div class="profileEdit-formElement">
-            <div>
-              <button
-                class="subcomponents-gender"
-                name="gender"
-                id="MALE"
-                value="MALE"
-                type="button"
-              >
-                <span class="subcomponents-selected"
-                  ><svg
-                    width="24px"
-                    height="24px"
-                    viewBox="0 0 24 24"
-                    version="1.1"
-                  >
-                    <title>icons/controls/check/active</title>
-                    <g
-                      id="icons/controls/check/active"
-                      stroke="none"
-                      stroke-width="1"
-                      fill="none"
-                      fill-rule="evenodd"
-                    >
-                      <path
-                        d="M16.7746405,8.22735801 C16.478929,7.91934842 16.0050049,7.92494859 15.716079,8.24015841 L10.3732719,14.0147382 C10.3368437,14.0543394 10.2772014,14.0547394 10.240416,14.0155382 L8.27793445,11.9086726 C7.98579433,11.5966629 7.51151306,11.5962629 7.21937294,11.9078726 C6.92687569,12.2194823 6.92687569,12.723498 7.21937294,13.0351077 L9.78399176,15.7767931 C9.92434758,15.9263977 10.1147029,16 10.3132725,16 L10.3175582,16 C10.5175563,16 10.7089831,15.9227976 10.8486246,15.7699928 L16.7867832,9.35379308 C17.0757091,9.03858326 17.070352,8.5353676 16.7746405,8.22735801"
-                        id="Fill-1"
-                        fill="#FF3F6C"
-                      ></path>
-                    </g></svg
-                  ><!-- react-text: 96 -->Male<!-- /react-text --></span
-                ></button
-              ><button
-                class="subcomponents-gender"
-                name="gender"
-                id="FEMALE"
-                value="FEMALE"
-                type="button"
-              >
-                <span class="subcomponents-selected"
-                  ><!-- react-text: 99 -->Female<!-- /react-text --></span
-                >
-              </button>
-            </div>
-          </div>
+     
           <div class="profileEdit-formElement">
             <div class="textInput-form-group">
               <input
-                type="tel"
+                type="date"
+                id="dob"
+                name="dob"
                 autocomplete="new-password"
                 value=" " 
                 class="textInput-form-control"
@@ -249,6 +216,8 @@
             <div class="textInput-form-group">
               <input
                 type="text"
+                id="location"
+                name="location"
                 autocomplete="new-password"
                 value=" "
                 class="textInput-form-control"
@@ -261,7 +230,7 @@
             </div>
           </div>
           <div class="profileEdit-formElement">
-            <p
+            <!-- <p
               style="
                 font-size: 12px;
                 margin-bottom: 16px;
@@ -269,50 +238,61 @@
               "
             >
               Alternate mobile number details
-            </p>
+            </p> -->
             <div class="textInput-form-group">
               <input
                 type="tel"
-                disabled=""
+                id="contact"
+                name="contact"
                 autocomplete="new-password"
                 value=""
                 class="textInput-form-control textInput-mobileNumberInput"
-                placeholder=""
+                placeholder="Mobile Number"
                 maxlength="10"
               /><span
                 class="textInput-placeholderAlternative textInput-mobileNumber"
                 ><!-- react-text: 123 -->+91<!-- /react-text --><span
                   style="padding: 0px 10px; position: relative; bottom: 1px;"
                   >|</span
-                ><span class="textInput-mobileNumberPlacholder"
-                  ><!-- react-text: 126 -->Mobile Number<!-- /react-text --><!-- react-text: 127 --><!-- /react-text --></span
-                ><!-- react-text: 128 -->
+               <i class="textInput-bar"></i>
+            </div>
+            
+          </div>
+          <div class="profileEdit-formElement">
+            <div class="textInput-form-group">
+              <input
+                type="password"
+                id="password1"
+                name="password1"
+                autocomplete="new-password"
+                value=""
+                class="textInput-form-control"
+                placeholder=""
+              /><span class="textInput-topPlaceholderAlternative"
+                ><!-- react-text: 113 -->
+                <!-- /react-text --><!-- react-text: 114 -->Password<!-- /react-text --><!-- react-text: 115 --><!-- /react-text --><!-- react-text: 116 -->
                 <!-- /react-text --></span
               ><i class="textInput-bar"></i>
             </div>
-            <div class="profileEdit-disabled">
-              <div class="textInput-form-group">
-                <input
-                  type="text"
-                  disabled=""
-                  autocomplete="new-password"
-                  value=""
-                  class="textInput-form-control"
-                  placeholder=""
-                /><span class="textInput-placeholderAlternative"
-                  ><!-- react-text: 134 -->
-                  <!-- /react-text --><!-- react-text: 135 -->Nickname<!-- /react-text --><!-- react-text: 136 --><!-- /react-text --><!-- react-text: 137 -->
-                  <!-- /react-text --></span
-                ><i class="textInput-bar"></i>
-              </div>
+          </div>
+          <div class="profileEdit-formElement">
+            <div class="textInput-form-group">
+              <input
+                type="password"
+                id="password2"
+                name="password2"
+                autocomplete="new-password"
+                value=""
+                class="textInput-form-control"
+                placeholder=""
+              /><span class="textInput-topPlaceholderAlternative"
+                ><!-- react-text: 113 -->
+                <!-- /react-text --><!-- react-text: 114 -->Confirm Password<!-- /react-text --><!-- react-text: 115 --><!-- /react-text --><!-- react-text: 116 -->
+                <!-- /react-text --></span
+              ><i class="textInput-bar"></i>
             </div>
           </div>
-          <button
-            class="subcomponents-btn profileEdit-buttonChangePwd"
-            type="button"
-          >
-            Change Password</button
-          ><button
+        <button
             class="subcomponents-btn profileEdit-buttonSaveDetails profileEdit-noBorderRadius subcomponents-primary"
           >
             Save Details
