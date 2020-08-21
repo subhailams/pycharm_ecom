@@ -41,7 +41,7 @@ def razor_pay(request,id=None,*args, **kwargs):
 		order_obj.save()
 		shipping_address=order_obj.shipping_address.get_address
 		print("shipAdrr:",shipping_address)
-		del request.session["shipping_address_id"]
+		
 		
 		if order_status=='created':
 			context={
@@ -74,9 +74,13 @@ def payment_status(request):
 		obj.send_order_confirmation()
 		print("Orderpaid:",order_obj)
 		order_obj.save()
-		
+		print("111imissu")
+		del request.session["shipping_address_id"] 
+		print("111imissur hands")
 		del request.session['cart_id']
+		print("111imissur lips")
 		request.session['cart_items'] = 0
+		print("111imissur body")
 		return render(request, 'billing/order_summary.html', {'status': 'Payment Successful'})
 	except:
 		return render(request, 'billing/order_summary.html', {'status': 'Payment Faliure!!!'})
