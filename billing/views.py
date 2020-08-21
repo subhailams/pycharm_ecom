@@ -67,13 +67,12 @@ def payment_status(request):
 	try:
 		status = client.utility.verify_payment_signature(params_dict)
 		print("status:",status)
-		order_obj = order_id
-		print("Order:",order_obj)
-		order_obj.status = "paid"
-		obj = OrderConfirmation.objects.create(billing_profile = order_obj.billing_profile,order_id=order_obj, email=order_obj.billing_profile.email)
+		print("Order:",order_id)
+		order_id.status = "paid"
+		obj = OrderConfirmation.objects.create(billing_profile = order_id.billing_profile,order_id=order_id, email=order_id.billing_profile.email)
 		obj.send_order_confirmation()
-		print("Orderpaid:",order_obj)
-		order_obj.save()
+		print("Orderpaid:",order_id)
+		order_id.save()
 		print("4")
 		del request.session['shipping_address_id']
 		print("1")
