@@ -54,6 +54,7 @@ def razor_pay(request,id=None,*args, **kwargs):
 			return render(request, 'billing/confirm_order.html', context)
 	return HttpResponse('<h1>Error in  create order function</h1>')
 
+@csrf_exempt
 def payment_status(request):
 	global order_id, cart_id 
 	response = request.POST

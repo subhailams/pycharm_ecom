@@ -72,7 +72,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 p {
-	font-family: Poppins-Regular;
+	font-family:'Roboto',sans-serif ;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -179,8 +179,8 @@ iframe {
   padding: 15px;
   background-repeat: no-repeat;
   background-position: center;
-  /* background-color: black; */
-  background-image: url(../images/bg-01.jpg);
+  background-color: rgb(133, 9, 9);
+  /* background-image: url(../images/bg-01.jpg); */
   background-size: cover;
   overflow: hidden;
 }
@@ -230,11 +230,12 @@ iframe {
 }
 
 .label-input100 {
-  font-family: Poppins-Regular;
+  font-family: Whitney,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;;
   font-size: 1.2em;
   color: #333333;
   line-height: 1.5;
   padding-left: 7px;
+  font-weight: 400;
 }
 
 .input100 {
@@ -359,11 +360,11 @@ iframe {
   z-index: -1;
   width: 300%;
   height: 100%;
-  background: #a64bf4;
-  background: -webkit-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
-  background: -o-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
-  background: -moz-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
-  background: linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
+  background: rgb(133, 9, 9);
+  background: -webkit-linear-gradient(right, rgb(133, 9, 9), #202020, rgb(133, 9, 9), #202020);
+  background: -o-linear-gradient(right, rgb(133, 9, 9), #202020, rgb(133, 9, 9), #202020);
+  background: -moz-linear-gradient(right, rgb(133, 9, 9), #202020, rgb(133, 9, 9), #202020);
+  background: linear-gradient(right, rgb(133, 9, 9), #202020, rgb(133, 9, 9), #202020);
   top: 0;
   left: -100%;
 
