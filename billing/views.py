@@ -81,8 +81,6 @@ def payment_status(request):
 		order_id.save()
 		print("4")
 		request.session['cart_items'] = 0
-		print("2")
-		del request.session['cart_id']
 		print("3")
 		return render(request, 'billing/order_summary.html', {'status': 'Payment Successful'})
 	except:
