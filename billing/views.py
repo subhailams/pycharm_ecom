@@ -74,8 +74,6 @@ def payment_status(request):
 		print("Orderpaid:",order_id)
 		order_id.save()
 		print("4")
-		del request.session['shipping_address_id']
-		print("1")
 		request.session['cart_items'] = 0
 		print("2")
 		del request.session['cart_id']
