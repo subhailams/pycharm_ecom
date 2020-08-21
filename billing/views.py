@@ -75,8 +75,11 @@ def payment_status(request):
 		print("Orderpaid:",order_obj)
 		order_obj.save()
 		del request.session['shipping_address_id']
+		print("1")
 		request.session['cart_items'] = 0
+		print("2")
 		del request.session['cart_id']
+		print("3")
 		return render(request, 'billing/order_summary.html', {'status': 'Payment Successful'})
 	except:
 		return render(request, 'billing/order_summary.html', {'status': 'Payment Faliure!!!'})
