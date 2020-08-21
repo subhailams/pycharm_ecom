@@ -35,7 +35,6 @@ def razor_pay(request,id=None,*args, **kwargs):
 		response = client.order.create(dict(amount=order_amount, currency=order_currency, receipt=order_receipt, payment_capture='1'))
 		order = response['id']
 		order_status = response['status']
-
 		order_obj.shipping_address = Address.objects.get(id=shipping_address_id)
 		print("CHeck:",shipping_address_id)
 		order_obj.save()
@@ -69,14 +68,15 @@ def payment_status(request):
 		status = client.utility.verify_payment_signature(params_dict)
 		print("status:",status)
 		order_obj = order_id
+		print("Order:",order_obj)
 		order_obj.status = "paid"
 		obj = OrderConfirmation.objects.create(billing_profile = order_obj.billing_profile,order_id=order_obj, email=order_obj.billing_profile.email)
 		obj.send_order_confirmation()
 		print("Orderpaid:",order_obj)
 		order_obj.save()
-		del request.session["shipping_address_id"]
-		del request.session['cart_id']
+		del request.session['shipping_address_id']
 		request.session['cart_items'] = 0
+		del request.session['cart_id']
 		return render(request, 'billing/order_summary.html', {'status': 'Payment Successful'})
 	except:
 		return render(request, 'billing/order_summary.html', {'status': 'Payment Faliure!!!'})
