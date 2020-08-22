@@ -50,7 +50,7 @@ def razor_pay(request,id=None,*args, **kwargs):
 				"Order_id": order_obj,
 				"order_id":order,
 				'cart':cart_obj,
-				'shipping_address':shipping_address-
+				'shipping_address':shipping_address,
 			}
 			return render(request, 'billing/confirm_order.html', context)
 	return HttpResponse('<h1>Error in  create order function</h1>')
