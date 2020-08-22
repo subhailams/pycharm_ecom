@@ -15,7 +15,7 @@ import razorpay
 client = razorpay.Client(auth=("rzp_live_vTFPJKKdWndqOM", "0lPkXJif7P6kCIfSv1MNXeQ8"))
 # rzp_live_vTFPJKKdWndqOM      0lPkXJif7P6kCIfSv1MNXeQ8
 order_id = None
-cart_id = None
+cart_Id = None
 GLOBAL_Entry = None
 def razor_pay(request,id=None,*args, **kwargs):
 	if request.method == 'GET':
@@ -25,9 +25,9 @@ def razor_pay(request,id=None,*args, **kwargs):
 		order_obj = None
 		billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
 		order_obj, order_obj_created= Order.objects.new_or_get(billing_profile, cart_obj)
-		global order_id, cart_id, GLOBAL_Entry
+		global order_id, cart_Id, GLOBAL_Entry
 		order_id=order_obj
-		cart_id=cart_obj
+		cart_Id=cart_obj
 		order_amount = int(100 * cart_obj.total)
 		print(order_amount)
 		order_currency = 'INR'
@@ -49,7 +49,7 @@ def razor_pay(request,id=None,*args, **kwargs):
 				"Billing_address":billing_profile.email,
 				"Order_id": order_obj,
 				"order_id":order,
-				'cart':cart_id,
+				'cart':cart_obj,
 				'shipping_address':shipping_address
 			}
 			return render(request, 'billing/confirm_order.html', context)
@@ -57,12 +57,14 @@ def razor_pay(request,id=None,*args, **kwargs):
 
 @csrf_exempt
 def payment_status(request):
-	global cart_id 
+	global cart_Id 
+	print("Cart:",cart_Id)
 	# cart_obj, cart_created = Cart.objects.new_or_get(request)
 	# order_id = None
 	# billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
 	
 	order_obj = request.POST['order_id']
+	cart_id = Cart.objects.get(id=cart_Id)
 	order_id= Order.objects.get(order_id=order_obj)	
 	response = request.POST
 	print(response)
