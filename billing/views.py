@@ -50,7 +50,7 @@ def razor_pay(request,id=None,*args, **kwargs):
 				"Order_id": order_obj,
 				"order_id":order,
 				'cart':cart_obj,
-				'shipping_address':shipping_address
+				'shipping_address':shipping_address-
 			}
 			return render(request, 'billing/confirm_order.html', context)
 	return HttpResponse('<h1>Error in  create order function</h1>')
@@ -64,8 +64,12 @@ def payment_status(request):
 	# billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
 	
 	order_obj = request.POST['order_id']
-	cart_id = Cart.objects.get(id=cart_Id)
+	cart = request.POST['cart_id']
+	print("Cart2:",cart)
+	
+	# cart_id = Cart.objects.get(id=cart_Id)
 	order_id= Order.objects.get(order_id=order_obj)	
+	print("Cart1:",order_id.cart)
 	response = request.POST
 	print(response)
 	params_dict = {

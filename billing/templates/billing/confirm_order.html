@@ -101,6 +101,7 @@
         <form action="{% url 'billing:payment_status' %}" method="POST">{% csrf_token %}
       
           <input type="hidden" name="order_id" value="{{Order_id}}">
+          <input type="hidden" name="cart_id" value="{{cart}}">
 
 
 
