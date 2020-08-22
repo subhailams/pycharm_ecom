@@ -19,8 +19,8 @@ cart_id = None
 GLOBAL_Entry = None
 def razor_pay(request,id=None,*args, **kwargs):
 	if request.method == 'GET':
-		shipping_address_id = request.session.get("shipping_address_id", None)
-		print("Session:",shipping_address_id)
+		shipping_address = request.session.get("shipping_address_id", None)
+		print("Session:",shipping_address)
 		cart_obj, cart_created = Cart.objects.new_or_get(request)
 		order_obj = None
 		billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
@@ -35,11 +35,12 @@ def razor_pay(request,id=None,*args, **kwargs):
 		response = client.order.create(dict(amount=order_amount, currency=order_currency, receipt=order_receipt, payment_capture='1'))
 		order = response['id']
 		order_status = response['status']
-		order_obj.shipping_address = Address.objects.get(id=shipping_address_id)
+		order_obj.shipping_address = Address.objects.get(id=shipping_address)
 		print("CHeck:",shipping_address_id)
 		order_obj.save()
-		shipping_address=order_obj.shipping_address.get_address
-		print("shipAdrr:",shipping_address)
+		ship_address=order_obj.shipping_address.get_address
+		print("shipAdrr:",ship_address)
+		del request.session['shipping_address_id']
 		
 		
 		if order_status=='created':
@@ -49,7 +50,7 @@ def razor_pay(request,id=None,*args, **kwargs):
 				"Order_id": order_obj,
 				"order_id":order,
 				'cart':cart_id,
-				'shipping_address':shipping_address
+				'shipping_address':ship_address
 			}
 			return render(request, 'billing/confirm_order.html', context)
 	return HttpResponse('<h1>Error in  create order function</h1>')
@@ -82,7 +83,7 @@ def payment_status(request):
 		print("4")
 		request.session['cart_items'] = 0
 		print("3")
-		del request.session["shipping_address_id"]
+		
 		return render(request, 'billing/order_summary.html', {'status': 'Payment Successful'})
 	except:
 		return render(request, 'billing/order_summary.html', {'status': 'Payment Faliure!!!'})
