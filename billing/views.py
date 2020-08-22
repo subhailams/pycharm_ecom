@@ -57,8 +57,8 @@ def razor_pay(request,id=None,*args, **kwargs):
 
 @csrf_exempt
 def payment_status(request):
-	global cart_Id 
-	print("Cart:",cart_Id)
+	# global cart_Id 
+	# print("Cart:",cart_Id)
 	# cart_obj, cart_created = Cart.objects.new_or_get(request)
 	# order_id = None
 	# billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
@@ -69,7 +69,8 @@ def payment_status(request):
 	
 	# cart_id = Cart.objects.get(id=cart_Id)
 	order_id= Order.objects.get(order_id=order_obj)	
-	print("Cart1:",order_id.cart)
+	cart_id = Cart.objects.get(id=cart)
+	print("Cart3:",cart_id)
 	response = request.POST
 	print(response)
 	params_dict = {
