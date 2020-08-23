@@ -18,7 +18,7 @@ order_id = None
 cart_Id = None
 GLOBAL_Entry = None
 def razor_pay(request,id=None,*args, **kwargs):
-	if request.method == 'GET':
+	if request.method == 'POST':
 		shipping_address_id = request.session.get("shipping_address_id", None)
 		print("Session:",shipping_address_id)
 		cart_obj, cart_created = Cart.objects.new_or_get(request)
