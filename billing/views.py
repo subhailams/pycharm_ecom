@@ -88,9 +88,9 @@ def payment_status(request):
 		print("Orderpaid:",order_id)
 		order_id.save()
 		print("4")
-		request.session['cart_items'] = 0
+		# request.session['cart_items'] = 0
 		print("3")
-		del request.session['cart_id']
+		# del request.session['cart_id']
 		print("5")
 		return render(request, 'billing/order_summary.html', {'status': 'Payment Successful'})
 	except:

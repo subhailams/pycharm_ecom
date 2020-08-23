@@ -19,6 +19,7 @@ class OrderAdmin(admin.ModelAdmin):
                         'being_delivered',
                         'refund_requested',
                         'refund_granted',
+                        'timestamp'
                         
                         ]
     list_filter = ('status','billing_profile__email','being_delivered','refund_requested', 'refund_granted')
