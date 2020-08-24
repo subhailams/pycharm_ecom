@@ -90,7 +90,7 @@ def payment_status(request):
 		print("4")
 		request.session['cart_items'] = 0
 		print("3")
-		del request.session['cart_id']
+		del request.session['cart_ids']
 		print("5")
 		return render(request, 'billing/order_summary.html', {'status': 'Payment Successful'})
 	except:
