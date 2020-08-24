@@ -131,7 +131,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				
 				<li class="nav-item ">
-					<a class="nav-link" href="{% url 'cart:cart' %}"> <span class='navbar-cart-count'>{% if cart_id.isordered %} {{0}} {% else %} {{request.session.cart_items}} {% endif %}</span><img src="{% static 'images/cart.png' %}" alt="" /></a>
+					<a class="nav-link" href="{% url 'cart:cart' %}"> <span class='navbar-cart-count'>{% if not cart_id.isordered %} {{request.session.cart_items}} {% else %} {{0}} {% endif %}</span><img src="{% static 'images/cart.png' %}" alt="" /></a>
 				</li>
 
 			</ul>
