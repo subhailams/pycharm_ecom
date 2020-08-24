@@ -10,7 +10,7 @@ from cart.models import Cart
 from .Checksum import generate_checksum, verify_checksum
 from products.models import Product
 from addresses.models import Address
-
+import sys
 import razorpay
 client = razorpay.Client(auth=("rzp_live_vTFPJKKdWndqOM", "0lPkXJif7P6kCIfSv1MNXeQ8"))
 # rzp_live_vTFPJKKdWndqOM      0lPkXJif7P6kCIfSv1MNXeQ8
@@ -90,10 +90,11 @@ def payment_status(request):
 		print("4")
 		request.session['cart_items'] = 0
 		print("3")
-		# del request.session['cart_id']
+		del request.session['cart_id']
 		print("5")
 		return render(request, 'billing/order_summary.html', {'status': 'Payment Successful'})
 	except:
+		print("Oops!", sys.exc_info()[0], "occurred.")
 		return render(request, 'billing/order_summary.html', {'status': 'Payment Faliure!!!'})
 
 
