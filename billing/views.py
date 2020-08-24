@@ -93,6 +93,7 @@ def payment_status(request):
 		try:
 			del request.session['cart_id']
 		except KeyError:
+			print("===========================Key Error!!!!")
 			pass
 		print("5")
 		return render(request, 'billing/order_summary.html', {'status': 'Payment Successful'})
