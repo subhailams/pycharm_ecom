@@ -90,9 +90,14 @@ def payment_status(request):
 		print("4")
 		request.session['cart_items'] = 0
 		print("3")
-		del request.session['cart_ids']
+		try:
+			del request.session['cart_id']
+		except KeyError:
+        	pass
 		print("5")
 		return render(request, 'billing/order_summary.html', {'status': 'Payment Successful'})
+
+	
 	except:
 		print("Oops!", sys.exc_info()[0], "occurred.")
 		return render(request, 'billing/order_summary.html', {'status': 'Payment Faliure!!!'})
