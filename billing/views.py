@@ -90,13 +90,21 @@ def payment_status(request):
 		print("Orderpaid:",order_id)
 		order_id.save()
 		print("4")
+		context={
+			'status': 'Payment Successful',
+			'cart_id':cart_id
+			}
 
-		return render(request, 'billing/order_summary.html', {'status': 'Payment Successful','cart_id':cart_id})
+		return render(request, 'billing/order_summary.html', context)
 
 	
 	except:
 		print("Oops!", sys.exc_info()[0], "occurred.")
-		return render(request, 'billing/order_summary.html', {'status': 'Payment Faliure!!!','cart_id':cart_id})
+		context={
+		'status': 'Payment Failure!',
+		'cart_id':cart_id
+		}
+		return render(request, 'billing/order_summary.html',context)
 
 
 # merchant_key = settings.PAYTM_SECRET_KEY
