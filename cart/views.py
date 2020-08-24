@@ -55,6 +55,7 @@ def cart_update(request):
 
         cart_obj, new_obj = Cart.objects.new_or_get(request)
         request.session['cart_id'] = cart_obj.id
+        print("CCCart:",request.session['cart_id'],cart_obj)
         # cart_item, created = CartItem.objects.get_or_create(cart=cart_obj, product=product_obj)
         # if created:
         #     print("created")
