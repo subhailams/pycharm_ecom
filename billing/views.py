@@ -90,8 +90,10 @@ def payment_status(request):
 		print("4")
 		request.session['cart_items'] = 0
 		print("3")
+		
 		try:
-			del request.session['cart_id']
+			cart_id.delete()
+			# del request.session['cart_id']
 		except KeyError:
 			print("===========================Key Error!!!!")
 			pass
