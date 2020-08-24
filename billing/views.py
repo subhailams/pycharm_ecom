@@ -83,7 +83,7 @@ def payment_status(request):
 		print("status:",status)
 		print("Order:",order_id)
 		order_id.status = "paid"
-		cart_id.isordered=0
+		cart_id.isordered=True
 		cart_id.save()
 		obj = OrderConfirmation.objects.create(billing_profile = order_id.billing_profile,order_id=order_id, email=order_id.billing_profile.email)
 		obj.send_order_confirmation()
