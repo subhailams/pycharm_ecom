@@ -21,7 +21,7 @@
 					   });	  
 				   });
 			  </script> -->
-			  {% if cart.cartitem_set.exists and cart.isordered==False %}
+			  {% if cart.cartitem_set.exists and not cart.isordered %}
 		   <!--    <div clas="cart-products"> -->
 				<div class="cart-header">
 					{% for item in cart.cartitem_set.all %}
