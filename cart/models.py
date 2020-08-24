@@ -55,6 +55,7 @@ class Cart(models.Model):
     total       = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
     updated     = models.DateTimeField(auto_now=True)
     timestamp   = models.DateTimeField(auto_now_add=True)
+    isordered   = models.BooleanField(default=False)
 
 
     objects = CartManager()

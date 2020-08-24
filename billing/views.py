@@ -83,27 +83,20 @@ def payment_status(request):
 		print("status:",status)
 		print("Order:",order_id)
 		order_id.status = "paid"
+		cart_id.isordered=True
+		cart_id.save()
 		obj = OrderConfirmation.objects.create(billing_profile = order_id.billing_profile,order_id=order_id, email=order_id.billing_profile.email)
 		obj.send_order_confirmation()
 		print("Orderpaid:",order_id)
 		order_id.save()
 		print("4")
-		# request.session['cart_items'] = 0
-		print("3")
-		
-		try:
-			cart_id.delete()
-			# del request.session['cart_id']
-		except KeyError:
-			print("===========================Key Error!!!!")
-			pass
-		print("5")
-		return render(request, 'billing/order_summary.html', {'status': 'Payment Successful'})
+
+		return render(request, 'billing/order_summary.html', {'status': 'Payment Successful','cart_id':cart_id})
 
 	
 	except:
 		print("Oops!", sys.exc_info()[0], "occurred.")
-		return render(request, 'billing/order_summary.html', {'status': 'Payment Faliure!!!'})
+		return render(request, 'billing/order_summary.html', {'status': 'Payment Faliure!!!','cart_id':cart_id})
 
 
 # merchant_key = settings.PAYTM_SECRET_KEY
