@@ -34,6 +34,8 @@ def cart_detail_api_view(request):
 
 def cart_home(request):
     cart_obj, new_obj = Cart.objects.new_or_get(request)
+    if cart_obj.isordered== True:
+        del request.session['cart_id']
     return render(request, "carts/cart.html", {"cart": cart_obj})
 
 def cart_update(request):

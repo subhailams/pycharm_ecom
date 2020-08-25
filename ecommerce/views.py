@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login, get_user_model
 from django.http import HttpResponse,JsonResponse
 from django.shortcuts import render,redirect
 from django.core.exceptions import ObjectDoesNotExist
-
+from cart.models import Cart
 from .forms import ContactForm
 from .models import Contact
 from orders.models import Order
