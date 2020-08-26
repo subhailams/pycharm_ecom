@@ -3,7 +3,7 @@ ul {
     padding: 0px;
 }
 .footer-section {
-  background: #232f3e!important;
+  background: #202020!important;
   position: relative;
   bottom: -143px;
 }
@@ -53,10 +53,10 @@ ul {
   background-position: 100% 100%;
 }
 .footer-logo {
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 }
 .footer-logo img {
-    max-width: 200px;
+    width: 130px;
 }
 .footer-text p {
   margin-bottom: 14px;

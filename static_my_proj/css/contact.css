@@ -6,6 +6,7 @@
     background-size: cover;
     overflow: hidden; 
      padding-bottom: 200px;
+     
   }
   
   .section-header {
@@ -15,6 +16,7 @@
     text-align: center;
     color: #282c3f;
     margin-bottom:0.25em;
+
     
 
     
@@ -25,6 +27,7 @@
     text-align: center;
     color: #696b79;
     margin-bottom: 3em;
+    /* border:1px solid #696b79; */
   }
   
  
@@ -47,7 +50,7 @@
     display: block;
     max-width: 170rem;
     background-color: #fff;
-    color: #fff;
+    /* color: #fff; */
     letter-spacing: 1px;
   }
   .form-control {
@@ -105,13 +108,13 @@
   
   .list-item {
     line-height: 4;
-    color: #aaa;
+    color: rgb(59, 56, 56);
   }
   
   .contact-text {
     font: 300 18px 'Lato', sans-serif;
     letter-spacing: 1.9px;
-    color: #bbb;
+    color: rgb(26, 23, 23);
   }
   
   .place {
@@ -127,13 +130,13 @@
   }
   
   .contact-text a {
-    color: #bbb;
+    color: rgb(44, 44, 44);
     text-decoration: none;
     transition-duration: 0.2s;
   }
   
   .contact-text a:hover {
-    color: #fff;
+    color: rgb(44, 44, 44);
     text-decoration: none;
   }
   

@@ -45,7 +45,7 @@
                 <div class="col-xl-4 col-lg-4 mb-50">
                     <div class="footer-widget">
                         <div class="footer-logo">
-                            <a href="index.html"><img src="{% static 'images/logo.png' %}" class="img-fluid" alt="logo"></a>
+                            <a href="index.html"><img src="{% static 'images/MM_ENDURO.png' %}" class="img-fluid" alt="logo"></a>
                         </div>
                         <div class="footer-text">
                             <p>Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor incididuntut consec tetur adipisicing
@@ -61,6 +61,7 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                    <br><br>
                     <div class="footer-widget">
                         <div class="footer-widget-heading">
                             <h3>Useful Links</h3>
@@ -68,18 +69,21 @@
                         <ul>
                             <li><a href="{% url 'index' %}">Home</a></li>
                             <li><a href="{% url 'products:products' %}">Products</a></li>
+                            <li><a href="{% url 'TAC' %}">Terms of Use</a></li> 
                             <!-- <li><a href="#">services</a></li> -->
                             <!-- <li><a href="#">portfolio</a></li> -->
                             <!-- <li><a href="#">Contact</a></li> -->
                             <li><a href="{% url 'login'%}">Login</a></li>
-                            <li><a href="#">About</a></li>
+                            <!-- <li><a href="#">About</a></li> -->
                             <!-- <li><a href="#">Expert Team</a></li> -->
+                            <li><a href="{% url 'policy' %}">Privacy Policy</a></li>
                             <li><a href="{% url 'contact' %}">Contact us</a></li>
                             <!-- <li><a href="#">Latest News</a></li> -->
                         </ul>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                    <br><br>
                     <div class="footer-widget">
                         <div class="footer-widget-heading">
                             <h3>Subscribe</h3>
@@ -92,6 +96,13 @@
                                 <input type="text" placeholder="Email Address">
                                 <button><i class="fa fa-telegram" aria-hidden="true"></i></button>
                             </form>
+                        </div><br><br>
+                        <div class="single-cta">
+                            <i class="fa fa-envelope-open"></i>
+                            <div class="cta-text">
+                                <h4>Mail us</h4>
+                                <span>mmenduro122@gmail.com</span>
+                            </div>
                         </div>
                     </div>
                 </div>

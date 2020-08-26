@@ -3,9 +3,12 @@ ul {
     padding: 0px;
 }
 .footer-section {
-  background: #202020!important;;
-  position: relative;
+  background: #202020!important;
+  position: relative !important;
   
+}
+.footer-section .container{
+  width:95% !important;
 }
 .footer-cta {
   border-bottom: 1px solid #373636;
@@ -51,15 +54,15 @@ ul {
   background-position: 100% 100%;
 }
 .footer-logo {
-  margin-bottom: 30px;
+  /* margin-bottom: 5px; */
 }
 .footer-logo img {
-    max-width: 200px;
+    width: 120px;
 }
 .footer-text p {
   margin-bottom: 14px;
   font-size: 14px;
-      color: #7e7e7e;
+  color: #7e7e7e;
   line-height: 28px;
 }
 .footer-social-icon span {

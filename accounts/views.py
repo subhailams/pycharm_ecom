@@ -40,7 +40,7 @@ def AccountHomeView(request):
             user.full_name=username
             user.contact= contact
             user.dob= dob
-            user.email= email
+            user.email= email               
             user.set_password(password1)
             # user.password1= password1
             # user.password2= password2

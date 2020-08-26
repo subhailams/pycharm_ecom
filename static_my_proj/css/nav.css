@@ -408,6 +408,9 @@
     visibility: visible;
     opacity: 1;
 }
+.dropdown-item:hover{
+    color:red;
+}
 .dropdown-divider {
     height: 0;
     margin: .5rem 0;
@@ -549,12 +552,28 @@
 
 .navbar-brand {
 	display: inline-block;
-	padding-top: .3125rem;
-	padding-bottom: .3125rem;
+	padding-top: .95rem;
+	padding-bottom: 0.3rem;
 	margin-right: 1rem;
 	font-size: 1.25rem;
 	line-height: inherit;
 	white-space: nowrap
+}
+.image{
+    height:70px;
+     width:70px; 
+     padding-bottom:15px; 
+     padding-left:-40px;
+     overflow: hidden;
+    
+}
+@media(max-width:990px){
+    .image{
+        float: left;
+        margin-right: 19em;
+        /* margin-bottom: .3rem; */
+        
+    }
 }
 
 .navbar-brand:focus, .navbar-brand:hover {
@@ -610,7 +629,8 @@
 	line-height: 1;
 	background-color: transparent;
 	border: 1px solid transparent;
-	border-radius: .25rem
+    border-radius: .25rem;
+    position: relative;
 }
 
 .navbar-toggler:focus, .navbar-toggler:hover {
