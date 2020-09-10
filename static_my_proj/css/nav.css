@@ -73,14 +73,14 @@
     
   
   .searchTerm:focus{
-    color: #00B4CC;
+    color: rgb(229 32 35);
   }
   
   .searchButton {
     width: 40px;
     height: 36px;   
-    border: 1px solid #00B4CC;
-    background: #00B4CC;
+    border: 1px solid rgb(229 32 35);
+    background: rgb(229 32 35);
     text-align: center;
     color: #fff;
     border-radius: 0 5px 5px 0;
@@ -427,7 +427,7 @@
 .dropdown-item.active, .dropdown-item:active {
     color: #fff;
     text-decoration: none;
-    background-color: #007bff
+    background-color: rgb(133, 9, 9);
 }
 
 .dropdown-item.disabled, .dropdown-item:disabled {
@@ -554,7 +554,7 @@
 	display: inline-block;
 	padding-top: .95rem;
 	padding-bottom: 0.3rem;
-	margin-right: 1rem;
+	margin-right: 0.03rem;
 	font-size: 1.25rem;
 	line-height: inherit;
 	white-space: nowrap
@@ -570,7 +570,7 @@
 @media(max-width:990px){
     .image{
         float: left;
-        margin-right: 19em;
+        margin-right: 1em;
         /* margin-bottom: .3rem; */
         
     }
@@ -631,6 +631,19 @@
 	border: 1px solid transparent;
     border-radius: .25rem;
     position: relative;
+}
+
+@media (max-width:640px){
+    .navbar-toggler {
+        padding: .25rem .75rem;
+        font-size: 1.25rem;
+        line-height: 1;
+        background-color: transparent;
+        border: 1px solid transparent;
+        border-radius: .25rem;
+        position: relative;
+        float: right;
+    }
 }
 
 .navbar-toggler:focus, .navbar-toggler:hover {

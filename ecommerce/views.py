@@ -53,3 +53,4 @@ def contact_page(request):
 
 def access(request):
     return render(request,"temp/accessories.html")
+    

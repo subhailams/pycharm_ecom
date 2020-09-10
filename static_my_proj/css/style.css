@@ -153,14 +153,14 @@ ul.callbacks_tabs.callbacks1_tabs {
 	margin-bottom:1em;
 }
 .caption p span{
-	color:#fcff19;	
+	color:rgb(133, 9, 9);	
 }
 a.morebtn{
 	background:#000;
 	padding:1em 2.3em;
 	font-size:0.875em;
 	text-transform:uppercase;
-	color:#fcff19;
+	color:rgb(133, 9, 9);
 	display:inline-block;
 	margin:0 auto;
 	border-radius:7px;
@@ -171,7 +171,7 @@ a.morebtn{
 	-ms-transition:0.5s all ease;
 }
 a.morebtn:hover{
-	background:#fcff19;
+	background:rgb(133, 9, 9);
 	color:#000;
 }
 /*--categories--*/
@@ -213,7 +213,7 @@ a.morebtn:hover{
 	background:url(../images/16158.jpg) no-repeat;
 }
 .cate-grid h4{
-	color:#fcff19;
+	color:rgb(133, 9, 9);
 	font-size:1.1em;
 	font-weight:600;
 	letter-spacing:1px;
@@ -235,8 +235,8 @@ a.store{
 	margin-top:1.5em;
 }
 a.store:hover{
-	border:2px solid #fcff19;
-	color:#fcff19;
+	border:2px solid rgb(133, 9, 9);
+	color:rgb(133, 9, 9);
 }
 /*--bikes--*/
 .bikes{
