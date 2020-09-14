@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'search',
     'socialapp',
     'ecommerce',
+    'phone_field',
 ]
 
 SITE_ID = 2

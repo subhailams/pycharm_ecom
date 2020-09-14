@@ -13,6 +13,7 @@ from.models import GuestEmail, EmailActivation
 from .signals import user_logged_in
 from django.urls import reverse
 from django import forms
+from phone_field import PhoneField
 
 # class AccountHomeView(LoginRequiredMixin, DetailView):
 #     template_name = 'accounts/home.html'
