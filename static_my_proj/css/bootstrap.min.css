@@ -1902,7 +1902,7 @@ pre code {
 
 .form-control {
     display: block;
-    width: 79%;
+    width: 88%;
     padding: .375rem .75rem;
     font-size: 1.25rem;
     line-height: 1.5;
@@ -7255,6 +7255,7 @@ a.bg-dark:focus, a.bg-dark:hover, button.bg-dark:focus, button.bg-dark:hover {
 .mb-4, .my-4 {
     margin-bottom: 1.5rem!important;
     margin-top: 1rem!important;
+    width: 100%!important;
 }
 
 .ml-4, .mx-4 {
