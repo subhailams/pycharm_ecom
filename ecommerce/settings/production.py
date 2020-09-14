@@ -63,7 +63,7 @@ INSTALLED_APPS = [
     'phone_field',
 ]
 
-SITE_ID = 2
+SITE_ID = 3
 
 AUTH_USER_MODEL = 'accounts.User'
 LOGIN_URL='/applogin/'
