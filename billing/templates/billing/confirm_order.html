@@ -97,7 +97,6 @@
 
 
 
-      <!-- <form action="https://enduro2020.herokuapp.com/billing/payment_status/" method="POST">{% csrf_token %} -->
         <form action="{% url 'billing:payment_status' %}" method="POST">{% csrf_token %}
       
           <input type="hidden" name="order_id" value="{{Order_id}}">
@@ -173,9 +172,9 @@
                    data-order_id="{{ order_id }}"
                    
                   
-                   data-name="Team Enduro"
+                   data-name="MMEnduro"
                    data-description="Live Mode"
-                   data-image="{% static 'images/logo.png' %}"
+                   data-image="https://enduro-ecommerce.s3.amazonaws.com/static/images/MM_ENDURO.png"
                    data-prefill.name="{{ name }}"
                    data-prefill.email="{{ email }}"
                    data-prefill.contact="{{ phone }}"
