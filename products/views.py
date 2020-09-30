@@ -27,6 +27,48 @@ def ProductListView(request):
     # }
     return render(request, "products/parts.html", context)
 
+def ProductListView2(request):
+    allProds = []
+    catprods = Product.objects.values('category', 'id')
+    cats ={item['category'] for item in catprods}
+    print("%%%%%%",cats)
+    cats=sorted(cats)
+    print("category",cats)
+    for cat in cats:
+        product = Product.objects.filter(category=cat)
+        # n= len(product)
+        # print("*****",product,"**",n)
+        # nslides= n//4+ceil((n/4)-(n//4))
+        allProds.append(product)
+    print(allProds)
+    context ={'allProds':allProds}
+    # queryset = Product.objects.all()
+    # context = {
+    #     'object_list': queryset
+    # }
+    return render(request, "products/gears.html", context)
+
+def ProductListView3(request):
+    allProds = []
+    catprods = Product.objects.values('category', 'id')
+    cats ={item['category'] for item in catprods}
+    print("%%%%%%",cats)
+    cats=sorted(cats)
+    print("category",cats)
+    for cat in cats:
+        product = Product.objects.filter(category=cat)
+        # n= len(product)
+        # print("*****",product,"**",n)
+        # nslides= n//4+ceil((n/4)-(n//4))
+        allProds.append(product)
+    print(allProds)
+    context ={'allProds':allProds}
+    # queryset = Product.objects.all()
+    # context = {
+    #     'object_list': queryset
+    # }
+    return render(request, "products/bikes.html", context)
+
 def SingleView(request, slug=None, *args, **kwargs):
     try:
         instance = Product.objects.get(slug=slug, active=True)

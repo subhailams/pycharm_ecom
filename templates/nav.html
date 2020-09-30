@@ -84,11 +84,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						Products
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="{% url 'products:products' %}">Chains</a>
-						<a class="dropdown-item" href="{% url 'products:products' %}">Tubes</a>
+						<a class="dropdown-item" href="{% url 'products:products' %}">Parts & Accessories</a>
+						<a class="dropdown-item" href="{% url 'products:gears' %}">Riding Gears</a>
 						<!-- <div class="dropdown-divider"></div> -->
-						<a class="dropdown-item" href="{% url 'products:products' %}">Tires</a>
-						<a class="dropdown-item" href="{% url 'products:products' %}">Disk brakes</a>
+						<a class="dropdown-item" href="{% url 'products:bikes' %}">Cars & Bikes</a>
 					</div>
 				</li>
 	
@@ -100,8 +99,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<!-- <a class="dropdown-item" href="{{request.user}}">dhg</a> -->
-						<a class="dropdown-item" href="{% url 'account:home' %}">Your Profile</a>
-						<a class="dropdown-item" href="{% url 'orders:list' %}">Your Orders</a>
+						<a class="dropdown-item" href="{% url 'account:home' %}">Profile</a>
+						<a class="dropdown-item" href="{% url 'orders:list' %}"> Orders</a>
 						
 					  <a class="dropdown-item" href="{% url 'returnpolicy' %}"">Return policy</a>
 					  <!-- <a class="dropdown-item" href="#">Billing</a>

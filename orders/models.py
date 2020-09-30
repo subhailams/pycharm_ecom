@@ -54,7 +54,7 @@ class OrderManager(models.Manager):
 
 
 class Order(models.Model):
-    billing_profile  =models.ForeignKey(BillingProfile ,null=True,blank=True,on_delete=models.CASCADE)
+    billing_profile  = models.ForeignKey(BillingProfile ,null=True,blank=True,on_delete=models.CASCADE)
     order_id         = models.CharField(max_length=120, blank=True) # AB31DE3 
     shipping_address = models.ForeignKey(Address, related_name="shipping_address",null=True, blank=True,on_delete=models.CASCADE)
     billing_address  = models.ForeignKey(Address, related_name="billing_address", null=True, blank=True,on_delete=models.CASCADE)
@@ -69,6 +69,7 @@ class Order(models.Model):
     received         = models.BooleanField(default=False)
     refund_requested = models.BooleanField(default=False)
     refund_granted   = models.BooleanField(default=False)
+    cash_on_delivery = models.BooleanField(default=False)
 
     def __str__(self):
         return self.order_id

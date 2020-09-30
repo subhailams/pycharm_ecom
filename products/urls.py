@@ -2,6 +2,9 @@ from django.conf.urls import url
 
 from .views import (
         ProductListView,
+        ProductListView2,
+        ProductListView3,
+
         
         # ProductDetailView,
         SingleView
@@ -9,7 +12,9 @@ from .views import (
         )
 
 urlpatterns = [
-    url(r'^products/$', ProductListView, name='products'),
+    url(r'^parts/$', ProductListView, name='products'),
+    url(r'^gears/$', ProductListView2, name='gears'),
+    url(r'^bikes/$', ProductListView3, name='bikes'),
     # url(r'^products/$', ProductListView1.as_view(), name='prod'),
     # url(r'^slider/$', ProductSlideView),
 

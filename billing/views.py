@@ -106,7 +106,23 @@ def payment_status(request):
 		}
 		return render(request, 'billing/order_summary.html',context)
 
-
+def cash_on_delivery(request):
+	cart_obj, cart_created = Cart.objects.new_or_get(request)
+	order_id = None
+	billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
+	order_id, order_obj_created= Order.objects.new_or_get(billing_profile, cart_obj)
+	cart_obj.isordered=True
+	cart_obj.save()
+	order_id.cash_on_delivery=True
+	order_id.save()
+	obj = OrderConfirmation.objects.create(billing_profile = order_id.billing_profile,order_id=order_id, email=order_id.billing_profile.email)
+	obj.send_order_confirmation()
+	del request.session['cart_id']
+	request.session['cart_items'] = 0
+	context = {
+		'status': 'Payment Successful'
+	}
+	return render(request,'billing/order_summary.html',context)
 # merchant_key = settings.PAYTM_SECRET_KEY
 
 # order_id = None

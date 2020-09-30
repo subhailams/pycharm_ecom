@@ -16,13 +16,14 @@ class OrderAdmin(admin.ModelAdmin):
                         
                         'order_id',
                         'status',
+                        'cash_on_delivery',
                         'being_delivered',
                         'refund_requested',
                         'refund_granted',
                         'timestamp'
                         
                         ]
-    list_filter = ('status','billing_profile__email','being_delivered','refund_requested', 'refund_granted')
+    list_filter = ('status','billing_profile__email','being_delivered','refund_requested', 'refund_granted', 'cash_on_delivery')
     actions = [make_refund_accepted]
     class Meta:
         model = Order
