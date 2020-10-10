@@ -114,6 +114,7 @@ def cash_on_delivery(request):
 	cart_obj.isordered=True
 	cart_obj.save()
 	order_id.cash_on_delivery=True
+	order_id.status = "COD"
 	order_id.save()
 	obj = OrderConfirmation.objects.create(billing_profile = order_id.billing_profile,order_id=order_id, email=order_id.billing_profile.email)
 	obj.send_order_confirmation()

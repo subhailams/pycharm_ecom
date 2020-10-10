@@ -22,6 +22,9 @@ def policy(request):
 def return_(request):
     return render(request,"temp/return.html")
 
+def about(request):
+    return render(request,"temp/about.html")
+
 
 def contact_page(request):
     if request.method =='POST':

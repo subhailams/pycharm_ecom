@@ -20,7 +20,7 @@ from django.contrib.auth import views as auth_views
 
 from django.conf.urls import url,include
 from django.contrib import admin
-from .views import home_page,access,logout_page,contact_page,conditions_page,policy,return_
+from .views import home_page,access,logout_page,contact_page,conditions_page,policy,return_,about
 from accounts.views import login_page,RegisterView,guest_register_view
 from search.views import SearchProductView
 from addresses.views import checkout_address_create_view
@@ -38,6 +38,7 @@ urlpatterns = [
     url('register/', RegisterView, name='register'),
     url('contact/', contact_page, name='contact'),
     url('TAC/', conditions_page, name='TAC'),
+    url('about/', about, name='about'),
     url('policy/', policy, name='policy'),
     url('return/', return_, name='returnpolicy'),
     url('accessories/', access, name='accessories'),

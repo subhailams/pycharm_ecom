@@ -6,7 +6,11 @@
 
 <p>Your order has been placed successfully!</p>
 <p>Your Order Id: <b>{{order_id}}</b></p>
-<p>Your Cart Id: <b>{{cart}}</b></p>
+<!-- <p>Your Cart Id: <b>{{cart}}</b></p> -->
+{% if order_id.status == "COD" %}
+<p>Your have to pay Rs.{{order_id.total}} while delivering your product.</p>
+{% endif %}
+
 
 
 

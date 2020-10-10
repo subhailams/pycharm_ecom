@@ -14,6 +14,7 @@ ORDER_STATUS_CHOICES = (
     ('paid', 'Paid'),
     ('shipped', 'Shipped'),
     ('refunded', 'Refunded'),
+    ('COD','CashOnDelivery'),
 )
 class OrderManagerQuerySet(models.query.QuerySet):
     def by_request(self, request):
