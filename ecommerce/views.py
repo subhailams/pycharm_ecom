@@ -19,8 +19,8 @@ def conditions_page(request):
 def policy(request):
     return render(request,"temp/policy.html")
 
-def return_policy(request):
-    return render(request,"temp/returnpolicy.html")
+def return_(request):
+    return render(request,"temp/return.html")
 
 
 def contact_page(request):
