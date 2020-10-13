@@ -12,7 +12,7 @@ from products.models import Product
 from addresses.models import Address
 import sys
 import razorpay
-client = razorpay.Client(auth=("rzp_live_vTFPJKKdWndqOM", "0lPkXJif7P6kCIfSv1MNXeQ8"))
+client = razorpay.Client(auth=("rzp_live_YZbvhRh0dOKiAS", "untpMRoqObXpppl55AmETt8q"))
 # rzp_live_vTFPJKKdWndqOM      0lPkXJif7P6kCIfSv1MNXeQ8
 order_id = None
 cart_Id = None
