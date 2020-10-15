@@ -25,7 +25,7 @@ SECRET_KEY = ')(h*y!uaq+@4$xb(uu95r*cbpr*mu4#5!%1hk8@)9tqy4m&ndm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.enduro2020.herokuapp.com']
+ALLOWED_HOSTS = ['.mmenduro.com']
 
 
 # Application definition
@@ -219,7 +219,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "narmusanjay@gmail.com"
 EMAIL_HOST_PASSWORD = 'sanman000'
 DEFAULT_FROM_EMAIL = 'Team Enduro <narmusanjay@gmail.com>'
-BASE_URL = 'https://enduro2020.herokuapp.com/'
+BASE_URL = 'https://www.mmenduro.com'
 
 #https encrypt
 
