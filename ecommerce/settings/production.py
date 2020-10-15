@@ -25,7 +25,7 @@ SECRET_KEY = ')(h*y!uaq+@4$xb(uu95r*cbpr*mu4#5!%1hk8@)9tqy4m&ndm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.mmenduro.com']
+ALLOWED_HOSTS = ['.enduro2020.herokuapp.com']
 
 
 # Application definition
