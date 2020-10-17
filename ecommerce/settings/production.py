@@ -223,13 +223,13 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 # BASE_URL = BASE_URL
 
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = "narmusanjay@gmail.com"
-EMAIL_HOST_PASSWORD = "sanman000"
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = "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"
 EMAIL_PORT = 587
 BASE_URL= 'https://www.mmenduro.com'
-DEFAULT_FROM_EMAIL = 'Team Enduro <narmusanjay@gmail.com>'
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'Team Enduro <mmenduro122@gmail.com>'
+EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
 #https encrypt
 
 CORS_REPLACE_HTTPS_REFERER      = True
