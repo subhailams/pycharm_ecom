@@ -8,3 +8,4 @@ EMAIL_HOST_USER = "narmusanjay@gmail.com"
 EMAIL_HOST_PASSWORD = 'sanman000'
 DEFAULT_FROM_EMAIL = 'Team Enduro <narmusanjay@gmail.com>'
 BASE_URL = 'https://www.mmenduro.com'
+
