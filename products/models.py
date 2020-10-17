@@ -48,7 +48,7 @@ class Product(models.Model):
     category        = models.CharField(max_length=120,default='')
     quantity        = models.IntegerField(default=1, null=True)
     price           = models.DecimalField(decimal_places=2, max_digits=20, default=39.99)
-    image           = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
+    image           = models.ImageField(upload_to="products/", null=True, blank=True)
     active          = models.BooleanField(default=True)
 
     objects = ProductManager()
