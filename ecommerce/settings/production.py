@@ -211,15 +211,16 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
 # SMTP Config
+from .email_info import *
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "narmusanjay@gmail.com"
-EMAIL_HOST_PASSWORD = 'sanman000'
-DEFAULT_FROM_EMAIL = 'Team Enduro <narmusanjay@gmail.com>'
-BASE_URL = 'https://www.mmenduro.com'
+EMAIL_BACKEND = EMAIL_BACKEND 
+EMAIL_HOST = EMAIL_HOST
+EMAIL_PORT = EMAIL_PORT
+EMAIL_USE_TLS = EMAIL_USE_TLS
+EMAIL_HOST_USER = EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
+DEFAULT_FROM_EMAIL = DEFAULT_FROM_EMAIL
+BASE_URL = BASE_URL
 
 #https encrypt
 
