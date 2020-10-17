@@ -230,6 +230,7 @@ EMAIL_PORT = 587
 BASE_URL= 'https://www.mmenduro.com'
 DEFAULT_FROM_EMAIL = 'Team Enduro <mmenduro122@gmail.com>'
 EMAIL_BACKEND = "sgbackend.SendGridBackend"
+SENDGRID_API_KEY = "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"
 #https encrypt
 
 CORS_REPLACE_HTTPS_REFERER      = True
