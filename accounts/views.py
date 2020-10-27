@@ -14,6 +14,9 @@ from .signals import user_logged_in
 from django.urls import reverse
 from django import forms
 from phone_field import PhoneField
+from django.contrib.auth import views as auth_views
+
+from django.urls import reverse_lazy
 
 # class AccountHomeView(LoginRequiredMixin, DetailView):
 #     template_name = 'accounts/home.html'
@@ -94,7 +97,12 @@ def guest_register_view(request):
                 return redirect("/register/")
     return redirect("/register/")
 
-
+# class PasswordResetView(auth_views.PasswordResetView):
+#     form_class = forms.PasswordResetForm
+#     template_name = 'accounts/registeration/password-reset.html'
+#     success_url = reverse_lazy('accounts:password-reset-done')
+#     subject_template_name = 'accounts/registeration/password-reset-email.txt'
+#     email_template_name = 'accounts/registeration/password-reset-email.html'
 
 # class LoginView(FormView):
 #     form_class = LoginForm

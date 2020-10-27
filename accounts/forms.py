@@ -51,6 +51,17 @@ class UserAdminChangeForm(forms.ModelForm):
         # field does not have access to the initial value
         return self.initial["password"]
 
+# class PasswordResetForm(authtoolsforms.FriendlyPasswordResetForm):
+
+#     def __init__(self, *args, **kwargs):
+#         super(PasswordResetForm, self).__init__(*args, **kwargs)
+#         self.helper = FormHelper()
+
+#         self.helper.layout = Layout(
+#             Field('email', placeholder="Enter email",
+#                   autofocus=""),
+#             Submit('pass_reset', 'Reset Password', css_class="btn-warning"),
+#             )
 
 class GuestForm(forms.Form):
     email    = forms.EmailField()
