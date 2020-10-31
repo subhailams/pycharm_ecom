@@ -75,10 +75,12 @@ def cart_update(request):
             cart_item = CartItem.objects.get(cart=cart_obj, product=product_obj)
             cart_item.delete()
             print("sss",product_obj)
+            cart_obj.products.remove(product_obj)
             
             added = False
         else:
             cart_item, created = CartItem.objects.get_or_create(cart=cart_obj, product=product_obj)
+            cart_obj.products.add(product_obj)
             # cart_item.add(product_obj)
             print("elseeee") 
             added = True
@@ -141,14 +143,18 @@ def checkout_home(request):
         order_obj, order_obj_created = Order.objects.new_or_get(billing_profile, cart_obj)
   
     if shipping_address_id:
-        order_obj.shipping_address = Address.objects.get(id=shipping_address_id)
-        print("CHeck:",shipping_address_id)
+        order_obj.shipping_profile = Address.objects.get(id=shipping_address_id)
+        
+        shipping_address=order_obj.shipping_profile.get_address()
+        order_obj.shipping_address = shipping_address
+        print("CHeck:",shipping_address_id,order_obj.shipping_profile, shipping_address)
         order_obj.save()
         return redirect("billing:razor")
         # order_obj.shipping_address = Address.objects.get(id=shipping_address_id)
         # print("CHeck:",shipping_address_id)
         # order_obj.save()
-        # shipping_address=order_obj.shipping_address.get_address
+        # print(shipping_address.get_address)
+
         # order_amount = int(100 * cart_obj.total)
         # order_currency = 'INR'
         # order_receipt = 'order_rcptid_11'

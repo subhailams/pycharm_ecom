@@ -163,10 +163,12 @@ else{
 						 <li><a href="#">parts</a></li>
 					 </ul>				 
 				 </div>
+				
 				 <div class="bike-apparels">
 					 <div class="parts1">
 					 	<div class="page-wrapper">
 							<div class="post-slider">
+								
                                {% for product in allProds %}
                                {% if product.0.category == "parts" %}
 								<h1 class="slider-title"> {{ product.0.category}}</h1>
@@ -174,19 +176,22 @@ else{
 								<i class="fa fa-chevron-right next1"></i> -->
 								<div class="post-wrapper1">
 									 {% for i in product|slice:"0:" %}
-									<div class="post">
+									<!-- <div class="post"> -->
+										<div class="card" style="display:inline-block">
 										<a href=" {% url 'products:view' slug=i.slug %}"><div class="slider-sec">					 
-										 <img src="{{i.image.url}}" alt=""/>
+										 <img class="card-img-top" src="{{i.image.url}}" alt=""/>
 										 <div class="part-info">
-											 <h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs. {{i.price}}</span></h5>
+											 <h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs.{{i.price}}</span></h5>
 											 <a class="btn btn-danger" href="{% url 'products:view' slug=i.slug %}">Quick View</a>
 										 </div>
 									 </div></a>
+									 <!-- </div> -->
 											
 									</div>
 										 {% endfor %} 
 							
 								</div>
+								
 								{% endif %}
 								
 								 {% if product.0.category == "bodyparts" %}
@@ -196,9 +201,9 @@ else{
 								
 								<div class="post-wrapper2">
 									 {% for i in product|slice:"0:" %}
-									<div class="post">
+									<div class="card">
 										<a href=" {% url 'products:view' slug=i.slug %}"><div class="slider-sec">					 
-										 <img src="{{i.image.url}}" alt=""/>
+										 <img class="card-img-top" src="{{i.image.url}}" alt=""/>
 										
 										 <div class="part-info">
 											 <a href="#"><h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs. {{i.price}}</span></h5></a>
@@ -218,34 +223,35 @@ else{
 								<i class="fa fa-chevron-right next3"></i> -->
 								<div class="post-wrapper3">
 									 {% for i in product|slice:"0:" %}
-									<div class="post">
+									 <div class="card" style="display:inline-block">
 										<a href=" {% url 'products:view' slug=i.slug %}"><div class="slider-sec">					 
-										 <img src="{{i.image.url}}" alt=""/>
+										 <img class="card-img-top" src="{{i.image.url}}" alt=""/>
 										 <div class="part-info">
-											 <a href="#"><h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs. {{i.price}}</span></h5></a>
+											 <h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs.{{i.price}}</span></h5>
 											 <a class="btn btn-danger" href="{% url 'products:view' slug=i.slug %}">Quick View</a>
 										 </div>
 									 </div></a>
+									 <!-- </div> -->
 											
 									</div>
 										 {% endfor %} 
 										 	
 								</div>
-								{% endif %}  
+								{% endif %}  <br>
 								{% if product.0.category == "tyres & wheels" %}
 								<h1 class="slider-title"> {{ product.0.category}}</h1>
 								<!-- <i class="fa fa-chevron-left prev3"></i>
 								<i class="fa fa-chevron-right next3"></i> -->
 								<div class="post-wrapper3">
 									 {% for i in product|slice:"0:" %}
-									<div class="post">
-										<a href=" {% url 'products:view' slug=i.slug %}"><div class="slider-sec">					 
-										 <img src="{{i.image.url}}" alt=""/>
+									<div class="card">
+										<a href=" {% url 'products:view' slug=i.slug %}">	<div class="slider-sec">			 
+										 <img class="card-img-top" src="{{i.image.url}}" alt=""/>
 										 <div class="part-info">
-											 <a href="#"><h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs. {{i.price}}</span></h5></a>
-											 <a class="btn btn-danger" href="{% url 'products:view' slug=i.slug %}">Quick View</a>
-										 </div>
-									 </div></a>
+											<a href="#"><h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs. {{i.price}}</span></h5></a>
+											<a class="btn btn-danger" href="{% url 'products:view' slug=i.slug %}">Quick View</a>
+										</div>
+									</div></a>
 											
 									</div>
 										 {% endfor %} 
@@ -258,14 +264,15 @@ else{
 								<i class="fa fa-chevron-right next3"></i> -->
 								<div class="post-wrapper3">
 									 {% for i in product|slice:"0:" %}
-									<div class="post">
+									 <div class="card" style="display:inline-block">
 										<a href=" {% url 'products:view' slug=i.slug %}"><div class="slider-sec">					 
-										 <img src="{{i.image.url}}" alt=""/>
+										 <img class="card-img-top" src="{{i.image.url}}" alt=""/>
 										 <div class="part-info">
-											 <a href="#"><h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs. {{i.price}}</span></h5></a>
+											 <h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs.{{i.price}}</span></h5>
 											 <a class="btn btn-danger" href="{% url 'products:view' slug=i.slug %}">Quick View</a>
 										 </div>
 									 </div></a>
+									 <!-- </div> -->
 											
 									</div>
 										 {% endfor %} 
@@ -278,14 +285,15 @@ else{
 								<i class="fa fa-chevron-right next3"></i> -->
 								<div class="post-wrapper3">
 									 {% for i in product|slice:"0:" %}
-									<div class="post">
+									 <div class="card" style="display:inline-block">
 										<a href=" {% url 'products:view' slug=i.slug %}"><div class="slider-sec">					 
-										 <img src="{{i.image.url}}" alt=""/>
+										 <img class="card-img-top" src="{{i.image.url}}" alt=""/>
 										 <div class="part-info">
-											 <a href="#"><h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs. {{i.price}}</span></h5></a>
+											 <h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs.{{i.price}}</span></h5>
 											 <a class="btn btn-danger" href="{% url 'products:view' slug=i.slug %}">Quick View</a>
 										 </div>
 									 </div></a>
+									 <!-- </div> -->
 											
 									</div>
 										 {% endfor %} 
@@ -298,14 +306,15 @@ else{
 								<i class="fa fa-chevron-right next3"></i> -->
 								<div class="post-wrapper3">
 									 {% for i in product|slice:"0:" %}
-									<div class="post">
+									 <div class="card" style="display:inline-block">
 										<a href=" {% url 'products:view' slug=i.slug %}"><div class="slider-sec">					 
-										 <img src="{{i.image.url}}" alt=""/>
+										 <img class="card-img-top" src="{{i.image.url}}" alt=""/>
 										 <div class="part-info">
-											 <a href="#"><h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs. {{i.price}}</span></h5></a>
+											 <h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs.{{i.price}}</span></h5>
 											 <a class="btn btn-danger" href="{% url 'products:view' slug=i.slug %}">Quick View</a>
 										 </div>
 									 </div></a>
+									 <!-- </div> -->
 											
 									</div>
 										 {% endfor %} 
@@ -318,14 +327,15 @@ else{
 								<i class="fa fa-chevron-right next3"></i> -->
 								<div class="post-wrapper3">
 									 {% for i in product|slice:"0:" %}
-									<div class="post">
+									 <div class="card" style="display:inline-block">
 										<a href=" {% url 'products:view' slug=i.slug %}"><div class="slider-sec">					 
-										 <img src="{{i.image.url}}" alt=""/>
+										 <img class="card-img-top" src="{{i.image.url}}" alt=""/>
 										 <div class="part-info">
-											 <a href="#"><h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs. {{i.price}}</span></h5></a>
+											 <h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs.{{i.price}}</span></h5>
 											 <a class="btn btn-danger" href="{% url 'products:view' slug=i.slug %}">Quick View</a>
 										 </div>
 									 </div></a>
+									 <!-- </div> -->
 											
 									</div>
 										 {% endfor %} 
@@ -338,14 +348,15 @@ else{
 								<i class="fa fa-chevron-right next3"></i> -->
 								<div class="post-wrapper3">
 									 {% for i in product|slice:"0:" %}
-									<div class="post">
+									 <div class="card" style="display:inline-block">
 										<a href=" {% url 'products:view' slug=i.slug %}"><div class="slider-sec">					 
-										 <img src="{{i.image.url}}" alt=""/>
+										 <img class="card-img-top" src="{{i.image.url}}" alt=""/>
 										 <div class="part-info">
-											 <a href="#"><h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs. {{i.price}}</span></h5></a>
+											 <h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs.{{i.price}}</span></h5>
 											 <a class="btn btn-danger" href="{% url 'products:view' slug=i.slug %}">Quick View</a>
 										 </div>
 									 </div></a>
+									 <!-- </div> -->
 											
 									</div>
 										 {% endfor %} 
