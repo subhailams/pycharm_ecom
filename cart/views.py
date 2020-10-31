@@ -143,9 +143,9 @@ def checkout_home(request):
         order_obj, order_obj_created = Order.objects.new_or_get(billing_profile, cart_obj)
   
     if shipping_address_id:
-        # shipping_address=Address.objects.get(id=shipping_address_id).get_address()
-        # order_obj.shipping_address = shipping_address
-        # print("CHeck:",shipping_address)
+        shipping_address=Address.objects.get(id=shipping_address_id).get_address()
+        order_obj.shipp_address = shipping_address
+        print("CHeck:",shipping_address)
         order_obj.save()
         return redirect("billing:razor")
         # order_obj.shipping_address = Address.objects.get(id=shipping_address_id)

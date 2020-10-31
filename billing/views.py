@@ -36,7 +36,7 @@ def razor_pay(request,id=None,*args, **kwargs):
 		order = response['id']
 		order_status = response['status']
 		
-		shipping_address=order_obj.shipping_address
+		shipping_address=order_obj.shipp_address
 		print("shipAdrr:",shipping_address)
 		del request.session["shipping_address_id"]
 		
