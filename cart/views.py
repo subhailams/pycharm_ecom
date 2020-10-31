@@ -143,16 +143,14 @@ def checkout_home(request):
         order_obj, order_obj_created = Order.objects.new_or_get(billing_profile, cart_obj)
   
     if shipping_address_id:
-        shipping_address=Address.objects.get(id=shipping_address_id).get_address()
-        order_obj.shipp_address = shipping_address
-        print("CHeck:",shipping_address)
+        order_obj.shipping_address = Address.objects.get(id=shipping_address_id)
+        print("CHeck:",shipping_address_id)
         order_obj.save()
         return redirect("billing:razor")
         # order_obj.shipping_address = Address.objects.get(id=shipping_address_id)
         # print("CHeck:",shipping_address_id)
         # order_obj.save()
-        # print(shipping_address.get_address)
-
+        # shipping_address=order_obj.shipping_address.get_address
         # order_amount = int(100 * cart_obj.total)
         # order_currency = 'INR'
         # order_receipt = 'order_rcptid_11'

@@ -57,7 +57,8 @@ class OrderManager(models.Manager):
 class Order(models.Model):
     billing_profile  = models.ForeignKey(BillingProfile ,null=True,blank=True,on_delete=models.CASCADE)
     order_id         = models.CharField(max_length=120, blank=True) # AB31DE3 
-    shipp_address    = models.CharField(max_length=120,default="Chennai")
+    shipping_address = models.ForeignKey(Address, related_name="shipping_address",null=True, blank=True,on_delete=models.CASCADE)
+    # billing_address  = models.ForeignKey(Address, related_name="billing_address", null=True, blank=True,on_delete=models.CASCADE)
     cart             = models.ForeignKey(Cart,on_delete=models.CASCADE)
     status           = models.CharField(max_length=120, default='created', choices=ORDER_STATUS_CHOICES)
     shipping_total   = models.DecimalField(default=5.99, max_digits=100, decimal_places=2)
@@ -99,14 +100,14 @@ class Order(models.Model):
         self.save()
         return new_total
 
-    # def check_done(self):
-    #     billing_profile = self.billing_profile
-    #     shipping_address = self.shipping_address
-    #     billing_address = self.billing_address
-    #     total   = self.total
-    #     if billing_profile and shipping_address and billing_address and total > 0:
-    #         return True
-    #     return False
+    def check_done(self):
+        billing_profile = self.billing_profile
+        shipping_address = self.shipping_address
+        billing_address = self.billing_address
+        total   = self.total
+        if billing_profile and shipping_address and billing_address and total > 0:
+            return True
+        return False
 
     def mark_paid(self):
         self.status = "paid"

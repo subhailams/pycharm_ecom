@@ -35,8 +35,10 @@ def razor_pay(request,id=None,*args, **kwargs):
 		response = client.order.create(dict(amount=order_amount, currency=order_currency, receipt=order_receipt, payment_capture='1'))
 		order = response['id']
 		order_status = response['status']
-		
-		shipping_address=order_obj.shipp_address
+		order_obj.shipping_address = Address.objects.get(id=shipping_address_id)
+		print("CHeck:",shipping_address_id)
+		order_obj.save()
+		shipping_address=order_obj.shipping_address.get_address
 		print("shipAdrr:",shipping_address)
 		del request.session["shipping_address_id"]
 		
