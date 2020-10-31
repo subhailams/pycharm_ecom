@@ -103,7 +103,8 @@ def cart_update(request):
         print("cartTotal:",cart_obj.cartitem_set.count())
         cart_obj.subtotal = new_total
         if cart_obj.subtotal > 0:
-            cart_obj.total = Decimal(cart_obj.subtotal) * Decimal(1.08)
+            cart_obj.total = Decimal(cart_obj.subtotal) 
+            print("cart_total:",cart_obj.total)
         else :
             cart_obj.total = 0.00
         cart_obj.save()
