@@ -58,7 +58,7 @@ class Order(models.Model):
     billing_profile  = models.ForeignKey(BillingProfile ,null=True,blank=True,on_delete=models.CASCADE)
     order_id         = models.CharField(max_length=120, blank=True) # AB31DE3 
     shipping_profile = models.ForeignKey(Address, related_name="shipping_address", null=True, blank=True,on_delete=models.CASCADE)
-    shipping_address = models.CharField(max_length=120)
+    shipping_address = models.CharField(max_length=120, null=True)
     cart             = models.ForeignKey(Cart,on_delete=models.CASCADE)
     status           = models.CharField(max_length=120, default='created', choices=ORDER_STATUS_CHOICES)
     shipping_total   = models.DecimalField(default=5.99, max_digits=100, decimal_places=2)
