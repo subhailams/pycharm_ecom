@@ -99,14 +99,14 @@ class Order(models.Model):
         self.save()
         return new_total
 
-    def check_done(self):
-        billing_profile = self.billing_profile
-        shipping_address = self.shipping_address
-        billing_address = self.billing_address
-        total   = self.total
-        if billing_profile and shipping_address and billing_address and total > 0:
-            return True
-        return False
+    # def check_done(self):
+    #     billing_profile = self.billing_profile
+    #     shipping_address = self.shipping_address
+    #     billing_address = self.billing_address
+    #     total   = self.total
+    #     if billing_profile and shipping_address and billing_address and total > 0:
+    #         return True
+    #     return False
 
     def mark_paid(self):
         self.status = "paid"
