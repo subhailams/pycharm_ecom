@@ -5640,15 +5640,20 @@ button.close {
     position: relative
 }
 
+
+
+
+
 .carousel-inner {
     position: relative;
     width: 100%;
     overflow: hidden
 }
 
+
 .carousel-item {
     position: relative;
-    display: none;
+    /* display: none; */
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;

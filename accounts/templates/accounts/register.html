@@ -55,75 +55,137 @@
                 password1 = form.password1.value; 
 				password2 = form.password2.value; 
 				if (password1 == '') 
-                    alert ("Please enter Password"); 
+                    // swal("Please enter Password");
+					swal({
+							title: "Oops!!",
+							text: "Please enter the Password",
+							icon: "warning",
+							buttons: true,
+							dangerMode: true,
+					}) 
                       
                 // If confirm password not entered 
                 else if (password2 == '') 
-                    alert ("Please enter confirm password"); 
+                    // swal("Please enter confirm password"); 
+					swal({
+							title: "Oops!!",
+							text: "Please enter confirm Password",
+							icon: "warning",
+							buttons: true,
+							dangerMode: true,
+					}) 
                       
                 // If Not same return False.     
                 else if (password1 != password2) { 
-                    alert ("\nPassword did not match: Please try again...") 
+					swal({
+							title: "Ouch!!",
+							text: "Password did not match: Please try again...",
+							icon: "warning",
+							buttons: true,
+							dangerMode: true,
+					}) 
+                    // swal("\nPassword did not match: Please try again...") 
                     return false; 
                 } 
 			}
+			function validatePassword(password) {
+                
+                // Do not show anything when the length of password is zero.
+                if (password.length === 0) {
+                    document.getElementById("invalid").innerHTML = "";
+                    return;
+                }
+                // Create an array and push all possible values that you want in password
+                var matchedCase = new Array();
+                matchedCase.push("[$@$!%*#?&]"); // Special Charector
+                matchedCase.push("[A-Z]");      // Uppercase Alpabates
+                matchedCase.push("[0-9]");      // Numbers
+                matchedCase.push("[a-z]");     // Lowercase Alphabates
+
+                // Check the conditions
+                var ctr = 0;
+                for (var i = 0; i < matchedCase.length; i++) {
+                    if (new RegExp(matchedCase[i]).test(password)) {
+                        ctr++;
+                    }
+                }
+                // Display it
+                var color = "";
+                var strength = "";
+                switch (ctr) {
+                    case 0:
+                    case 1:
+                    case 2:
+                        strength = "Password is Very Weak";
+                        color = "red";
+                        break;
+                    case 3:
+                        strength = "Hmmm? not Enough";
+                        color = "orange";
+                        break;
+                    case 4:
+                        strength = "Gotcha!!!PERFECT";
+                        color = "green";
+                        break;
+                }
+                document.getElementById("invalid").innerHTML = strength;
+                document.getElementById("invalid").style.color = color;
+            }
+
+			function validatePassword1(password1) {
+                
+                // Do not show anything when the length of password is zero.
+                if (password1.length === 0) {
+                    document.getElementById("invalid1").innerHTML = "";
+                    return;
+                }
+                // Create an array and push all possible values that you want in password
+                var matchedCase = new Array();
+                matchedCase.push("[$@$!%*#?&]"); // Special Charector
+                matchedCase.push("[A-Z]");      // Uppercase Alpabates
+                matchedCase.push("[0-9]");      // Numbers
+                matchedCase.push("[a-z]");     // Lowercase Alphabates
+
+                // Check the conditions
+                var ctr = 0;
+                for (var i = 0; i < matchedCase.length; i++) {
+                    if (new RegExp(matchedCase[i]).test(password1)) {
+                        ctr++;
+                    }
+                }
+                // Display it
+                var color = "";
+                var strength = "";
+                switch (ctr) {
+                    case 0:
+                    case 1:
+                    case 2:
+                        strength = "Password is Very Weak";
+                        color = "red";
+                        break;
+                    case 3:
+                        strength = "Hmmm? not Enough";
+                        color = "orange";
+                        break;
+                    case 4:
+                        strength = "Gotcha!!!PERFECT";
+                        color = "green";
+                        break;
+                }
+                document.getElementById("invalid1").innerHTML = strength;
+                document.getElementById("invalid1").style.color = color;
+            }
 	$(document).ready(function() {
 	var myInput = document.getElementById("password1");
-	var letter = document.getElementById("letter");
-	var capital = document.getElementById("capital");
-	var number = document.getElementById("number");
-	var length = document.getElementById("length");
 	
 	// When the user clicks on the password field, show the message box
 	myInput.onfocus = function() {
-	  document.getElementById("message").style.display = "block";
+	  document.getElementById("msg").style.display = "block";
 	}
 	
 	// When the user clicks outside of the password field, hide the message box
 	myInput.onblur = function() {
-	  document.getElementById("message").style.display = "none";
-	}
-	
-	// When the user starts to type something inside the password field
-	myInput.onkeyup = function() {
-	  // Validate lowercase letters
-	  var lowerCaseLetters = /[a-z]/g;
-	  if(myInput.value.match(lowerCaseLetters)) {  
-		letter.classList.remove("invalid");
-		letter.classList.add("valid");
-	  } else {
-		letter.classList.remove("valid");
-		letter.classList.add("invalid");
-	  }
-	  
-	  // Validate capital letters
-	  var upperCaseLetters = /[A-Z]/;
-	  if(myInput.value.match(upperCaseLetters)) {  
-		capital.classList.remove("invalid");
-		capital.classList.add("valid");
-	  } else {
-		capital.classList.remove("valid");
-		capital.classList.add("invalid");
-	  }
-	
-	  // Validate numbers
-	  var numbers = /[0-9]/;
-	  if(myInput.value.match(numbers)) {  
-		number.classList.remove("invalid");
-		number.classList.add("valid");
-	  } else {
-		number.classList.remove("valid");
-		number.classList.add("invalid");
-	  }
-	  
-	  // Validate length
-	  if(myInput.value.length >= 8) {
-		length.classList.remove("invalid");
-		length.classList.add("valid");
-	  } else {
-		length.classList.remove("valid");
-		length.classList.add("invalid");
-	  }
+	  document.getElementById("msg").style.display = "none";
 	}
 });
 
@@ -181,21 +243,24 @@
 
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
 						<span class="label-input100">Password</span>
-						<input class="input100" type="password" id="password1"  name="password1" placeholder="Type your password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+						<input class="input100" type="password" id="password1" onkeyup="validatePassword(this.value);" onpaste="return false;" oncopy="return false;" ondrag="return false;" ondrop="return false;"  name="password1" placeholder="Type your password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+						
 						<span toggle="#password1" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 						<span class="focus-inputs100"><i class="fa fa-lock"></i></span>
-						<div id="message">
-							<!-- <h3>Password must contain the following:</h3> -->
+						<span id="invalid"></span> 
+						<!-- <div id="message">
+							
 							<p id="letter" class="invalid">A <b>lowercase</b> letter</p>
 							<p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
 							<p id="number" class="invalid">A <b>number</b></p>
 							<p id="length" class="invalid">Minimum <b>8 characters</b></p>
 						  </div>
-					  </div>
+					  </div> -->
 					  <br/>
           			<div class="wrap-input100 validate-input" data-validate="Password is required">
 						<span class="label-input100">Re-Enter Password</span>
-						<input class="input100" type="password" id="password2" name="password2" placeholder="Type your password again">
+						<input class="input100" type="password" id="password2" onkeyup="validatePassword1(this.value);" onpaste="return false;" oncopy="return false;" ondrag="return false;" ondrop="return false;" name="password2" placeholder="Type your password again">
+						<span id="invalid1 "></span>
 						<span toggle="#password2" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 						<span class="focus-inputs100"><i class="fa fa-lock"></i></span>
 
@@ -215,10 +280,7 @@
 						</div>
 					</div>
 					<div class="flex-col-c p-t-55">
-						<!-- <span class="txt1 p-b-17">
-							Or Sign Up Using
-						</span> -->
-
+						
 						<b><span>Already an User?</span>
 						<a href="{% url 'login' %}"> <span style="color:rgb(27, 121, 245)">Login</span></a> 
 				
@@ -236,6 +298,7 @@
 	
 <!--===============================================================================================-->
 	<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!--===============================================================================================-->
 	<script src="{% static 'js/animsition.min.js' %}"></script>
 <!--===============================================================================================-->

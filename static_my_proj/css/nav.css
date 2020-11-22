@@ -1,5 +1,9 @@
 .navbar {
-	position: relative;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    /* position: fixed; */
+    width: 100%;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -11,11 +15,24 @@
 	-webkit-box-pack: justify;
 	-ms-flex-pack: justify;
 	justify-content: space-between;
-	padding: .5rem 1rem
+    padding: .5rem 1rem;
+    -webkit-transition: all 0.6s ease-out;
+    -moz-transition: all 0.6s ease-out;
+    -o-transition: all 0.6s ease-out;
+    -ms-transition: all 0.6s ease-out;
+    transition: all 0.6s ease-out;
+   
+        
+}
+.navbar.scrolled {
+    background: rgb(68, 68, 68); /* IE */
+    background: rgba(0, 0, 0, 0.78); /* NON-IE */
 }
 .nav-link {
     display: block;
-    padding: .5rem 1rem
+    padding: .5rem 1rem;
+    /* background-color: rgba(0, 0, 0, .9); */
+
 }
 .navbar-custom{
     background-color: red;
@@ -164,7 +181,8 @@
       pointer-events: none;
   }
 .nav-link:focus, .nav-link:hover {
-    text-decoration: none
+    text-decoration: none;
+    color:orangered;
 }
 
 .nav-link.disabled {
@@ -312,7 +330,7 @@
     margin-left: .255em;
     vertical-align: .255em;
     content: "";
-    border-top: .3em solid;
+    border-top: .3em solid transparent;
     border-right: .3em solid transparent;
     border-bottom: 0;
     border-left: .3em solid transparent
@@ -405,9 +423,23 @@
     background-color: transparent;
     border: 0;
     border-bottom:1.25px solid rgba(234,234,236);
+    /* overflow: hidden; */
     visibility: visible;
     opacity: 1;
 }
+nav.navbar{
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+ }
+ 
+ nav.navbar-inverse {
+     background-color: #222;
+     border-color: #080808;
+ }
+ 
+ nav.navbar.transparent {
+   background-color:transparent ! important;
+ }
 .dropdown-item:hover{
     color:red;
 }

@@ -4,28 +4,52 @@ from analytics.mixins import ObjectViewedMixin
 from math import ceil
 from .models import Product
 from cart.models import Cart
+from django.forms.models import model_to_dict
+from django.core.serializers import serialize
+import json
+from django.core.serializers.json import DjangoJSONEncoder
+from django.utils.safestring import mark_safe
+import jsonpickle
+from json import JSONEncoder
 
 
 def ProductListView(request):
-    allProds = []
-    catprods = Product.objects.values('category', 'id')
-    cats ={item['category'] for item in catprods}
-    print("%%%%%%",cats)
-    cats=sorted(cats)
-    print("category",cats)
-    for cat in cats:
-        product = Product.objects.filter(category=cat)
-        # n= len(product)
-        # print("*****",product,"**",n)
-        # nslides= n//4+ceil((n/4)-(n//4))
-        allProds.append(product)
+    allProds = Product.objects.all()
+
+    print(type(allProds))
+    context = {
+        'allProds': allProds, 
+    }
+    print(allProds)
+    return render(request, "products/parts.html", context)
+
+
+def ProductPriceSort(request):
+    sub_category = request.POST.getlist('checks')
+    print(sub_category)
+    filter_price1 = request.POST.get('min')
+    filter_price2 = request.POST.get('max')
+    category    = request.POST.get("category")
+    # prod_array = product.objects.filter(category = 'category')
+    print("%%%%")
+    # data =list(prod_array)
+    # print(type(data))
+    if filter_price1 =='':
+        filter_price1=0
+    if filter_price2=='':
+        filter_price2=Product.objects.all().aggregate(Max('price'))
+   
+    allProds = Product.objects.filter(price__range=(filter_price1,filter_price2),category=category)
+   
+    jsonData=serialize('json', allProds)
+    print(jsonData)
+    
+    # qs = Product.objects.filter(int(price)>=min_price, active=True)
+    print(filter_price1, filter_price2)
+    print("*********")
     print(allProds)
     context ={'allProds':allProds}
-    # queryset = Product.objects.all()
-    # context = {
-    #     'object_list': queryset
-    # }
-    return render(request, "products/parts.html", context)
+    return render(request, "products/parts.html",context)
 
 def ProductListView2(request):
     allProds = []
@@ -52,7 +76,7 @@ def ProductListView3(request):
     allProds = []
     catprods = Product.objects.values('category', 'id')
     cats ={item['category'] for item in catprods}
-    print("%%%%%%",cats)
+    print("%%%%%%",catprods)
     cats=sorted(cats)
     print("category",cats)
     for cat in cats:

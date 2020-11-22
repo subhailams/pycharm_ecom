@@ -14,6 +14,7 @@ from products.models import Product
 from addresses.models import Address
 from accounts.signals import user_logged_in
 
+
 c = 0
 import razorpay
 client = razorpay.Client(auth=("rzp_test_fu6uylByoiLTWv", "UHCkK8GTEqFliNdSub9L3Vrd"))

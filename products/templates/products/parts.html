@@ -10,6 +10,7 @@
 <link href="{% static 'css/productslider.css' %}" rel='stylesheet' type='text/css' />
 <script src="{% static 'js/jquery.min.js' %}"></script>
 <script src="{% static 'js/loadImg.js' %}"></script>
+<script src="{% static 'js/jsonData.js' %}"></script>
 <style>
 	@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400);
 
@@ -48,114 +49,72 @@
   right: 0;
   top: 0;
 }
+
 </style>
-
-
-
 <script type="text/javascript">
-
-
-  $(document).ready(function() {
-	if (document.documentElement.clientWidth < 640)
-	{
-		$('.post-wrapper1').slick({
-  
-		slidesToShow: 2,
-		// breakpoint:800,
-		slidesToScroll: 1,
-		autoplay: true,
-		autoplaySpeed: 2000,
-		// centerPadding:'0',
-		nextArrow: $('.next1'),
-		prevArrow: $('.prev1'),
-		dots: true,
-		// centerMode: true,
-		focusOnSelect: true,
-		// slideMargin:6,
-		easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
-	});
-
-}
-	else{
-		$('.post-wrapper1').slick({
-  
-			slidesToShow: 4,
-			slidesToScroll: 1,
-			autoplay: true,
-			autoplaySpeed: 2000,
-			centerPadding:'0',
-			nextArrow: $('.next1'),
-			prevArrow: $('.prev1'),
-			dots: true,
-			centerMode: true,
-			focusOnSelect: true,
-	});
-}
-
-if (document.documentElement.clientWidth < 900)
-{
-	$('.post-wrapper2').slick({
-  	
-	  slidesToShow: 2,
-	//   breakpoint:800,
-	  slidesToScroll: 1,
-	  autoplay: true,
-	  autoplaySpeed: 2000,
-	  nextArrow: $('.next2'),
-	  prevArrow: $('.prev2'),
-	//   slideMargin:6,
-	  easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
-		});
+	var data = JSON.parse("{{jsonData|escapejs}}"); 
 	
-}
-else{
-	$('.post-wrapper2').slick({
-  	
-	  slidesToShow: 4,
-	  slidesToScroll: 1,
-	  autoplay: true,
-	  autoplaySpeed: 2000,
-	  nextArrow: $('.next2'),
-	  prevArrow: $('.prev2'),
+
+	function sort(value){
+		console.log(value);
+		let allProds = []
+		var text = "";
+		for(i of data){
+			
+			if(i.fields.subcategory == value)
+			{
+				
+				allProds.push(i)
+				text += ` 
+				
+						<div class="part-sec">	
+
+						<img src="/media/${i.fields.image}" alt=""/>
+						<div class="part-info">
+						<a href="#"><h5>${i.fields.title} <span class="text">${i.fields.description}</span> <span><strong>₹ ${i.fields.price}</strong></span></h5></a>
+						<a class="btn btn-danger" onclick="Login();">Quick View</a>
+						</div>
+						</div>
+						`
+			}
+			
+		}
+
+		document.getElementById('cat').innerHTML=text;
+		console.log(allProds);
+
+	}
+	jQuery(document).ready(function($) {
+	var btn = $('#button');
+
+		$(window).scroll(function() {
+		if ($(window).scrollTop() > 300) {
+			btn.addClass('show');
+		} else {
+			btn.removeClass('show');
+		}
 		});
 
-}
-if (document.documentElement.clientWidth < 640)
-{
-	$('.post-wrapper3').slick({
-  	
-	  slidesToShow: 2,
-	//   breakpoint:800,
-	  slidesToScroll: 1,
-	  autoplay: true,
-	  autoplaySpeed: 2000,
-	  nextArrow: $('.next3'),
-	  prevArrow: $('.prev3'),
-	//   slideMargin:6,
-	  easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
+		btn.on('click', function(e) {
+		e.preventDefault();
+		$('html, body').animate({scrollTop:0}, '300');
 		});
-}
-else{
-	$('.post-wrapper3').slick({
-  	
-	  slidesToShow: 4,
-	  slidesToScroll: 1,
-	  autoplay: true,
-	  autoplaySpeed: 2000,
-	  nextArrow: $('.next3'),
-	  prevArrow: $('.prev3'),
-		});
-	}
- 
- });
+	});
+
+
+	
 </script>
+
+
+
 </head>
 
-<div class="parts">
-	 <div class="container-fluid">
+<div class="parts" id="mainDiv">
+	
+	 <div class="container">
 		 <h2>BIKE-PARTS</h2>
 		 <div class="bike-parts-sec">
-		    
+		      <div class="bike-parts">
 				 <div class="top">
 					 <ul>
 						 <li><a href="index.html">home</a></li>
@@ -163,222 +122,237 @@ else{
 						 <li><a href="#">parts</a></li>
 					 </ul>				 
 				 </div>
-				
 				 <div class="bike-apparels">
-					 <div class="parts1">
-					 	<div class="page-wrapper">
-							<div class="post-slider">
+					 <div class="parts1"><br>
+						<div class="col-lg-2 mt-7 p-lg-0 col-md-4 col-sm-4  ">
+							<form  method='POST' action="{% url 'products:sort'  %}"  class="form"> {% csrf_token %}
+							<div class="side-bar p-sm-4 p-3">
+								<div class="border-bottom py-2">
+									
+									<h3 class="agileits-sear-head mt-3 mb-3">Brand</h3>
+									<!-- <form action="#" method="post">
+										<input type="search" placeholder="Search Brand..." name="search" required="">
+										<input type="submit" value=" ">
+									</form> --> 
+									<div class="left-side py-2">
+										<ul>
+											<li>
+												<input type="checkbox" onclick="sort(this.value)" name="checks" class="checked" id="check" value="mobiles">
+												<span class="span">mobiles</span>
+											</li>
+											<li>
+												<input type="checkbox" name="checks" onclick="sort(this.value)" class="checked" id="check" value="automob">
+												<span class="span">automob</span>
+											</li>
+											<li>
+												<input type="checkbox" name="checks" onclick="sort(this.value)" class="checked" id="check" value="hel">
+												<span class="span">hel</span>
+											</li>
+											
+										</ul>
+									</div>
+								</div>
+								<!-- ram -->
+								<div class="left-side border-bottom py-2">
+									<h3 class="agileits-sear-head mb-3">Ram</h3>
+									<ul>
+										<li>
+											<input type="checkbox" class="checked">
+											<span class="span">Less than 512 MB</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checked">
+											<span class="span">512 MB - 1 GB</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checked">
+											<span class="span">1 GB</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checked">
+											<span class="span">2 GB</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checked">
+											<span class="span">3 GB</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checked">
+											<span class="span">5 GB</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checked">
+											<span class="span">6 GB</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checked">
+											<span class="span">6 GB & Above</span>
+										</li>
+									</ul>
+								</div>
+								<!-- //ram -->
+								<!-- price -->
 								
-                               {% for product in allProds %}
-                               {% if product.0.category == "parts" %}
-								<h1 class="slider-title"> {{ product.0.category}}</h1>
-								<!-- <i class="fa fa-chevron-left prev1"></i>
-								<i class="fa fa-chevron-right next1"></i> -->
-								<div class="post-wrapper1">
-									 {% for i in product|slice:"0:" %}
-									<!-- <div class="post"> -->
-										<div class="card" style="display:inline-block">
-										<a href=" {% url 'products:view' slug=i.slug %}"><div class="slider-sec">					 
-										 <img class="card-img-top" src="{{i.image.url}}" alt=""/>
-										 <div class="part-info">
-											 <h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs.{{i.price}}</span></h5>
-											 <a class="btn btn-danger" href="{% url 'products:view' slug=i.slug %}">Quick View</a>
-										 </div>
-									 </div></a>
-									 <!-- </div> -->
-											
+									<strong>Sort by Price:</strong> 
+									  <input type='hidden'  name='category' value='{{category}}' />
+									  <label for="min"> Min:</label>
+									  <input type="number" id="min" name="min">
+									  <label for="max"> Max:</label>
+									  <input type="number" id="max" name="max">
+									  <button type='submit'  class='btn btn-primary'>Go</button>
+									
+			
+								<!-- <div class="range border-bottom py-2">
+									<h3 class="agileits-sear-head mb-3">Price</h3>
+									<div class="w3l-range">
+										<ul>
+											<li>
+												<a href="#">Under $1,000</a>
+											</li>
+											<li class="my-1">
+												<a href="#">$1,000 - $5,000</a>
+											</li>
+											<li>
+												<a href="#">$5,000 - $10,000</a>
+											</li>
+											<li class="my-1">
+												<a href="#">$10,000 - $20,000</a>
+											</li>
+											<li>
+												<a href="#">$20,000 $30,000</a>
+											</li>
+											<li class="mt-1">
+												<a href="#">Over $30,000</a>
+											</li>
+										</ul>
 									</div>
-										 {% endfor %} 
-							
+								</div> -->
+								<!-- //price -->
+								<!-- discounts -->
+								<div class="left-side border-bottom py-2">
+									<h3 class="agileits-sear-head mb-3">Discount</h3>
+									<ul>
+										<li>
+											<input type="checkbox" class="checked">
+											<span class="span">5% or More</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checked">
+											<span class="span">10% or More</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checked">
+											<span class="span">20% or More</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checked">
+											<span class="span">30% or More</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checked">
+											<span class="span">50% or More</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checked">
+											<span class="span">60% or More</span>
+										</li>
+									</ul>
 								</div>
-								
-								{% endif %}
-								
-								 {% if product.0.category == "bodyparts" %}
-								<h1 class="slider-title"> {{ product.0.category}}</h1>
-								<!-- <i class="fa fa-chevron-left prev2"></i>
-								<i class="fa fa-chevron-right next2"></i> -->
-								
-								<div class="post-wrapper2">
-									 {% for i in product|slice:"0:" %}
-									<div class="card">
-										<a href=" {% url 'products:view' slug=i.slug %}"><div class="slider-sec">					 
-										 <img class="card-img-top" src="{{i.image.url}}" alt=""/>
-										
-										 <div class="part-info">
-											 <a href="#"><h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs. {{i.price}}</span></h5></a>
-											 <a class="btn btn-danger" href="{% url 'products:view' slug=i.slug %}">Quick View</a>
-										 </div>
-									 </div></a>
-									 
-									</div>
-										 {% endfor %} 
-										
-							
-								</div> 
-								{% endif %}
-								{% if product.0.category == "lights" %}
-								<h1 class="slider-title"> {{ product.0.category}}</h1>
-								<!-- <i class="fa fa-chevron-left prev3"></i>
-								<i class="fa fa-chevron-right next3"></i> -->
-								<div class="post-wrapper3">
-									 {% for i in product|slice:"0:" %}
-									 <div class="card" style="display:inline-block">
-										<a href=" {% url 'products:view' slug=i.slug %}"><div class="slider-sec">					 
-										 <img class="card-img-top" src="{{i.image.url}}" alt=""/>
-										 <div class="part-info">
-											 <h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs.{{i.price}}</span></h5>
-											 <a class="btn btn-danger" href="{% url 'products:view' slug=i.slug %}">Quick View</a>
-										 </div>
-									 </div></a>
-									 <!-- </div> -->
-											
-									</div>
-										 {% endfor %} 
-										 	
+								<!-- //discounts -->
+								<!-- offers -->
+								<div class="left-side border-bottom py-2">
+									<h3 class="agileits-sear-head mb-3">Offers</h3>
+									<ul>
+										<li>
+											<input type="checkbox" class="checked">
+											<span class="span">Exchange Offer</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checked">
+											<span class="span">No Cost EMI</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checked">
+											<span class="span">Special Price</span>
+										</li>
+									</ul>
 								</div>
-								{% endif %}  <br>
-								{% if product.0.category == "tyres & wheels" %}
-								<h1 class="slider-title"> {{ product.0.category}}</h1>
-								<!-- <i class="fa fa-chevron-left prev3"></i>
-								<i class="fa fa-chevron-right next3"></i> -->
-								<div class="post-wrapper3">
-									 {% for i in product|slice:"0:" %}
-									<div class="card">
-										<a href=" {% url 'products:view' slug=i.slug %}">	<div class="slider-sec">			 
-										 <img class="card-img-top" src="{{i.image.url}}" alt=""/>
-										 <div class="part-info">
-											<a href="#"><h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs. {{i.price}}</span></h5></a>
-											<a class="btn btn-danger" href="{% url 'products:view' slug=i.slug %}">Quick View</a>
-										</div>
-									</div></a>
-											
-									</div>
-										 {% endfor %} 
-										 	
+								<!-- //offers -->
+								<!-- delivery -->
+								<div class="left-side border-bottom py-2">
+									<h3 class="agileits-sear-head mb-3">Cash On Delivery</h3>
+									<ul>
+										<li>
+											<input type="checkbox" class="checked">
+											<span class="span">Eligible for Cash On Delivery</span>
+										</li>
+									</ul>
 								</div>
-								{% endif %}  
-								{% if product.0.category == "windscreens" %}
-								<h1 class="slider-title"> {{ product.0.category}}</h1>
-								<!-- <i class="fa fa-chevron-left prev3"></i>
-								<i class="fa fa-chevron-right next3"></i> -->
-								<div class="post-wrapper3">
-									 {% for i in product|slice:"0:" %}
-									 <div class="card" style="display:inline-block">
-										<a href=" {% url 'products:view' slug=i.slug %}"><div class="slider-sec">					 
-										 <img class="card-img-top" src="{{i.image.url}}" alt=""/>
-										 <div class="part-info">
-											 <h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs.{{i.price}}</span></h5>
-											 <a class="btn btn-danger" href="{% url 'products:view' slug=i.slug %}">Quick View</a>
-										 </div>
-									 </div></a>
-									 <!-- </div> -->
-											
-									</div>
-										 {% endfor %} 
-										 	
+								<!-- //delivery -->
+								<!-- arrivals -->
+								<div class="left-side border-bottom py-2">
+									<h3 class="agileits-sear-head mb-3">New Arrivals</h3>
+									<ul>
+										<li>
+											<input type="checkbox" class="checked">
+											<span class="span">Last 30 days</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checked">
+											<span class="span">Last 90 days</span>
+										</li>
+									</ul>
 								</div>
-								{% endif %}  
-								{% if product.0.category == "crash protectors" %}
-								<h1 class="slider-title"> {{ product.0.category}}</h1>
-								<!-- <i class="fa fa-chevron-left prev3"></i>
-								<i class="fa fa-chevron-right next3"></i> -->
-								<div class="post-wrapper3">
-									 {% for i in product|slice:"0:" %}
-									 <div class="card" style="display:inline-block">
-										<a href=" {% url 'products:view' slug=i.slug %}"><div class="slider-sec">					 
-										 <img class="card-img-top" src="{{i.image.url}}" alt=""/>
-										 <div class="part-info">
-											 <h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs.{{i.price}}</span></h5>
-											 <a class="btn btn-danger" href="{% url 'products:view' slug=i.slug %}">Quick View</a>
-										 </div>
-									 </div></a>
-									 <!-- </div> -->
-											
-									</div>
-										 {% endfor %} 
-										 	
+								<div class="left-side py-2">
+									<h3 class="agileits-sear-head mb-3">Availability</h3>
+									<ul>
+										<li>
+											<input type="checkbox" class="checked">
+											<span class="span">Exclude Out of Stock</span>
+										</li>
+									</ul>
 								</div>
-								{% endif %}  
-								{% if product.0.category == "luggage" %}
-								<h1 class="slider-title"> {{ product.0.category}}</h1>
-								<!-- <i class="fa fa-chevron-left prev3"></i>
-								<i class="fa fa-chevron-right next3"></i> -->
-								<div class="post-wrapper3">
-									 {% for i in product|slice:"0:" %}
-									 <div class="card" style="display:inline-block">
-										<a href=" {% url 'products:view' slug=i.slug %}"><div class="slider-sec">					 
-										 <img class="card-img-top" src="{{i.image.url}}" alt=""/>
-										 <div class="part-info">
-											 <h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs.{{i.price}}</span></h5>
-											 <a class="btn btn-danger" href="{% url 'products:view' slug=i.slug %}">Quick View</a>
-										 </div>
-									 </div></a>
-									 <!-- </div> -->
-											
-									</div>
-										 {% endfor %} 
-										 	
-								</div>
-								{% endif %} 
-								{% if product.0.category == "security" %}
-								<h1 class="slider-title"> {{ product.0.category}}</h1>
-								<!-- <i class="fa fa-chevron-left prev3"></i>
-								<i class="fa fa-chevron-right next3"></i> -->
-								<div class="post-wrapper3">
-									 {% for i in product|slice:"0:" %}
-									 <div class="card" style="display:inline-block">
-										<a href=" {% url 'products:view' slug=i.slug %}"><div class="slider-sec">					 
-										 <img class="card-img-top" src="{{i.image.url}}" alt=""/>
-										 <div class="part-info">
-											 <h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs.{{i.price}}</span></h5>
-											 <a class="btn btn-danger" href="{% url 'products:view' slug=i.slug %}">Quick View</a>
-										 </div>
-									 </div></a>
-									 <!-- </div> -->
-											
-									</div>
-										 {% endfor %} 
-										 	
-								</div>
-								{% endif %}  
-								{% if product.0.category == "covers" %}
-								<h1 class="slider-title"> {{ product.0.category}}</h1>
-								<!-- <i class="fa fa-chevron-left prev3"></i>
-								<i class="fa fa-chevron-right next3"></i> -->
-								<div class="post-wrapper3">
-									 {% for i in product|slice:"0:" %}
-									 <div class="card" style="display:inline-block">
-										<a href=" {% url 'products:view' slug=i.slug %}"><div class="slider-sec">					 
-										 <img class="card-img-top" src="{{i.image.url}}" alt=""/>
-										 <div class="part-info">
-											 <h5>{{i.title}} <span class="text">{{i.description}}</span><span class="price">Rs.{{i.price}}</span></h5>
-											 <a class="btn btn-danger" href="{% url 'products:view' slug=i.slug %}">Quick View</a>
-										 </div>
-									 </div></a>
-									 <!-- </div> -->
-											
-									</div>
-										 {% endfor %} 
-										 	
-								</div>
-								{% endif %}   
-								{% endfor %}  
-								
+								<!-- //arrivals -->
 							</div>
-						</div>	
-		
+						</form>
+							<!-- //product right -->
 						</div>
-						
-						 <div class="clearfix"></div>
-						 
+					
+		
+									<div id="cat">
+									 {% for i in allProds %}
+
+											<div class="slider-sec col-lg-2  col-md-3 col-sm-6">	
+												  
+										 <img src="{{i.image.url}}" alt=""/>
+										 <div class="part-info">
+											 <a href="#"><h5>{{i.title}} <span class="text">{{i.description}}</span> <span><strong>₹ {{i.price}}</strong></span></h5></a>
+											 <a class="btn btn-danger" href="{% url 'products:view' slug=i.slug %}" onclick="Login();">Quick View</a>
+										 </div>
+									 </div>
+									</a>
+											
+									
+										 {% endfor %} 
+							
+								
+								
+								
+									</div>
+									<div id="mat">
+
+									</div>
+							
+						</div>
+					
 					 </div>
-				
+				</div>
 		
 			
 			</div>			 
 			 
-    </div>
+	</div>
+	<a id="button"></a>
 </div>
 
 

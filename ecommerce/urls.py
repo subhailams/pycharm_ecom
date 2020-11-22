@@ -20,7 +20,7 @@ from django.contrib.auth import views as auth_views
 
 from django.conf.urls import url,include
 from django.contrib import admin
-from .views import home_page,access,logout_page,contact_page,conditions_page,policy,return_,about
+from .views import home_page,access,logout_page,contact_page,conditions_page,policy,return_,about,get_products
 from accounts.views import login_page,RegisterView,guest_register_view
 from search.views import SearchProductView
 from addresses.views import checkout_address_create_view
@@ -51,6 +51,7 @@ urlpatterns = [
     url(r'^accounts/$', RedirectView.as_view(url='/account')),
     url(r'^account/', include(("accounts.urls",'account'), namespace='account')),
     url(r'^accounts/', include("accounts.passwords.urls")),
+    url(r'^filter/(?P<category>[\w-]+)/$', get_products, name='category'),
     
     # url(r'^password/change/done/$',
     #         auth_views.PasswordChangeDoneView.as_view(), 

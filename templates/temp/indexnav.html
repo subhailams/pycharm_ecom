@@ -38,7 +38,7 @@
                     <a class="dropdown-item" href="{% url 'account:home' %}">Profile</a>
                     <a class="dropdown-item" href="{% url 'orders:list' %}">Orders</a>
                     
-                  <a class="dropdown-item" href="{% url 'returnpolicy' %}"">Return policy</a>
+                  <a class="dropdown-item" href="{% url 'returnpolicy' %}">Return policy</a>
                   <!-- <a class="dropdown-item" href="#">Billing</a>
                   <a class="dropdown-item" href="#">Prefernces</a> -->
                   <!-- <a class="dropdown-item" href="#">History</a> -->
@@ -54,7 +54,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'contact' %}">Contact</a>
             </li>
-            <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}"  method="GET" autocomplete="on"  required >
+            <form class="form-inline my-2 my-lg-0 search-form" action="{% url 'search' %}"  method="GET" autocomplete="on"  required >
                 <div class="wrap">
                 <div class="search">
                 <input class="searchTerm" type="search" name="q" placeholder="Search">

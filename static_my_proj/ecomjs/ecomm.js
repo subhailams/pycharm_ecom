@@ -106,7 +106,7 @@ $(document).ready(function () {
     var query = searchInput.val()
     setTimeout(function () {
       window.location.href = '/search/?q=' + query
-    }, 500)
+    }, 600)
 
   }
 

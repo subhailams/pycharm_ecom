@@ -29,4 +29,5 @@ sqlparse==0.3.1
 urllib3==1.25.9
 whitenoise==5.1.0
 sendgrid==3.6.5
-sendgrid-django==4.2.0
+sendgrid-django==4.2.0martor 
+gunicorn 

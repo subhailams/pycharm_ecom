@@ -46,6 +46,7 @@ class Product(models.Model):
     description     = models.TextField(max_length=200)
     slug            = models.SlugField(blank=True, unique=True)
     category        = models.CharField(max_length=120,default='')
+    subcategory     = models.CharField(max_length=120,default='')
     quantity        = models.IntegerField(default=1, null=True)
     price           = models.DecimalField(decimal_places=2, max_digits=20, default=39.99)
     image           = models.ImageField(upload_to=upload_image_path, null=True, blank=True)

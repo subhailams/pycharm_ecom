@@ -18,10 +18,7 @@ from django.contrib.auth import views as auth_views
 
 from django.urls import reverse_lazy
 
-# class AccountHomeView(LoginRequiredMixin, DetailView):
-#     template_name = 'accounts/home.html'
-#     def get_object(self):
-#         return self.request.user
+
 User = get_user_model()
 def AccountHomeView(request):
     if request.method =='POST': 

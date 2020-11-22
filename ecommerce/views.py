@@ -6,9 +6,16 @@ from cart.models import Cart
 from .forms import ContactForm
 from .models import Contact
 from orders.models import Order
+from products.models import Product
+from django.core.serializers import serialize
 
 def home_page(request):
-    return render(request,"temp/index.html")
+    allProds = Product.objects.all()
+    context={
+        'allProds':allProds,
+    }
+    print(allProds)
+    return render(request,"temp/index.html",context)
 
 def logout_page(request):
     return render(request,"temp/index.html")
@@ -25,6 +32,14 @@ def return_(request):
 def about(request):
     return render(request,"temp/about.html")
 
+def get_products(request,category=None, *args, **kwargs):
+    allProds = Product.objects.filter(category=category, active=True)
+    jsonData=serialize('json', allProds)
+    print(jsonData)
+    print("&&&&&&&&")
+    # print(allProds)
+    context ={'allProds':allProds,'category':category,'jsonData':jsonData}
+    return render(request, "products/parts.html",context)
 
 def contact_page(request):
     if request.method =='POST':
